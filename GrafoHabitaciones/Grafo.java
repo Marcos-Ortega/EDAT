@@ -84,12 +84,11 @@ public class Grafo {
     public boolean existeHabitacion(NodoVert habitacion){
         boolean exito=false;
         NodoVert aux=this.inicio;
-        if(this.inicio!=null){
+        if(aux!=null){
             while (aux!=null && !exito) {
                 if(aux.getElem().equals(habitacion.getElem())){
                     exito=true;
                 }else{
-                    
                     aux=aux.getSigVert();
                 }
             }
