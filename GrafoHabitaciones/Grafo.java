@@ -96,5 +96,40 @@ public class Grafo {
         }
         return exito;
     }
-    
+    public boolean existeCamino(NodoVert hab1, NodoVert hab2) {
+        boolean existe = false, valido = false;
+        NodoVert aux = this.inicio;
+        if (aux != null) {
+            while ((!valido) && (aux != null)) {
+                if (hab1.getElem().equals(aux.getElem())) {
+                    valido = true;
+                } else {
+                    aux = aux.getSigVert();
+                }
+            }
+            if (valido) {
+                Lista visitados = new Lista();
+                existe = profundidadDesde(aux, hab2, visitados);
+            }
+        }
+        return existe;
+    }
+
+    private boolean profundidadDesde(NodoVert hab1, NodoVert hab2, Lista visitados) {
+        boolean existe = false;
+        if (hab1.getElem().equals(hab2.getElem())) {
+            existe = true;
+        } else {
+            visitados.insertar(hab1.getElem(), visitados.longitud() + 1);
+            NodoAdy aux2 = hab1.getPrimerAdy();
+            while ((aux2 != null) && (!existe)) {
+                if (visitados.localizar(aux2.getVertice().getElem()) < 0) {
+                    existe = profundidadDesde(aux2.getVertice(), hab2, visitados);
+                }
+                aux2 = aux2.getSigAdyacente();
+
+            }
+        }
+        return existe;
+    }
 }
