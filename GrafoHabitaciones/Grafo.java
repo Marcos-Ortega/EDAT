@@ -1,3 +1,4 @@
+package GrafoHabitaciones;
 import GrafoHabitaciones.estructurasAuxiliares.Lista;
 
 public class Grafo {
@@ -103,7 +104,7 @@ public class Grafo {
     }
 
     public boolean existeCamino(Object codHab1, Object codHab2) {
-        boolean existe = false, valido = false;
+        boolean existe = false;
         NodoVert hab1 = buscarVertice(codHab1);
         NodoVert hab2 = buscarVertice(codHab2);
         if (this.inicio != null && hab1 != null && hab2 != null) {
