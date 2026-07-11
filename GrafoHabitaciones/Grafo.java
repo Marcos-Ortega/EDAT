@@ -1,4 +1,5 @@
 package GrafoHabitaciones;
+import GrafoHabitaciones.estructurasAuxiliares.Lista;
 public class Grafo {
     private NodoVert inicio;
 
@@ -95,4 +96,5 @@ public class Grafo {
         }
         return exito;
     }
+    
 }
