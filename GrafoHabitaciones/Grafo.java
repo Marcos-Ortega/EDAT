@@ -140,4 +140,12 @@ public class Grafo {
         }
         return existe;
     }
+    //vemos si hay alguna habitacion
+    public boolean esVacio(){
+        return this.inicio==null;
+    }
+    //eliminamos todas las habitaciones
+    public void vaciar(){
+        this.inicio=null;
+    }
 }
