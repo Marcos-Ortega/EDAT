@@ -1,4 +1,5 @@
 import GrafoHabitaciones.estructurasAuxiliares.Lista;
+import GrafoHabitaciones.estructurasAuxiliares.Nodo;
 
 public class Grafo {
     private NodoVert inicio;
@@ -150,7 +151,8 @@ public class Grafo {
         this.inicio = null;
     }
 
-    // como en el grafo van a recibir el codigo de la habitacion y no el vertice en si, hay que buscarlos
+    // como en el grafo van a recibir el codigo de la habitacion y no el vertice en
+    // si, hay que buscarlos
     private NodoVert buscarVertice(Object codHab) {
         NodoVert vertice = null;
         boolean encontrado = false;
@@ -167,4 +169,70 @@ public class Grafo {
         }
         return vertice;
     }
+
+    public boolean insertarArco(Object codHab1, Object codHab2, int etiqueta) {
+        NodoVert hab1 = buscarVertice(codHab1);
+        NodoVert hab2 = buscarVertice(codHab2);
+        boolean exito = false;
+        if (hab1 != null && hab2 != null) {
+            boolean verificarArco = verificarArcoAux(hab1, hab2);
+            //busco si existe un arco entre las habitaciones
+            if (!verificarArco) {
+                //si no existe el arco, lo creo
+                NodoAdy nuevoAdy1 = new NodoAdy(hab2, hab1.getPrimerAdy(), etiqueta);
+                NodoAdy nuevoAdy2 = new NodoAdy(hab1, hab2.getPrimerAdy(), etiqueta);
+                hab1.setPrimerAdy(nuevoAdy1);
+                hab2.setPrimerAdy(nuevoAdy2);
+                exito=true;
+            }
+            //si el arco ya existe, no creo uno nuevo y retorno falso, ya que no tiene sentido crear arcos paralelos
+        }
+        return exito;
+    }
+
+    private boolean verificarArcoAux(NodoVert hab1, NodoVert hab2) {
+        NodoAdy auxAdy = hab1.getPrimerAdy();
+        boolean encontrado = false;
+        while (auxAdy != null && !encontrado) {
+            //busco si existe un arco entre las habitaciones
+            if (auxAdy.getVertice().getElem().equals(hab2.getElem())) {
+                encontrado = true;
+            } else {
+                auxAdy = auxAdy.getSigAdyacente();
+            }
+        }
+        return encontrado;
+    }
+    /*
+    //metodo si se puede llegar a modificar el puntaje entre algunas habitaciones
+    public boolean modificarPuntajeArco(Object codHab1, Object codHab2, int nuevoPuntaje) {
+        NodoVert hab1 = buscarVertice(codHab1);
+        NodoVert hab2 = buscarVertice(codHab2);
+        boolean exito = false;
+        if (hab1 != null && hab2 != null) {
+            NodoAdy ady1 = buscarAdyacente(hab1, hab2);
+            NodoAdy ady2 = buscarAdyacente(hab2, hab1);
+            if (ady1 != null && ady2 != null) {
+                ady1.setEtiqueta(nuevoPuntaje);
+                ady2.setEtiqueta(nuevoPuntaje);
+                exito = true;
+            }
+        }
+        return exito;
+    }
+    private NodoAdy buscarAdyacente(NodoVert hab1, NodoVert hab2){
+        NodoAdy ady=null;
+        NodoAdy auxAdy=hab1.getPrimerAdy();
+        boolean encontrado = false;
+        while (auxAdy != null && !encontrado) {
+            if (auxAdy.getVertice().getElem().equals(hab2.getElem())) {
+                ady=auxAdy;
+                encontrado = true;
+            } else {
+                auxAdy = auxAdy.getSigAdyacente();
+            }
+        }
+        return ady;
+    }
+    */
 }
