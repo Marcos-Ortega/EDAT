@@ -86,6 +86,7 @@ public class Grafo {
         boolean exito=false;
         NodoVert aux=this.inicio;
         if(aux!=null){
+            // va a recorrer hasta que encuentre la habitacion o ya no queden mas habitaciones 
             while (aux!=null && !exito) {
                 if(aux.getElem().equals(habitacion.getElem())){
                     exito=true;
@@ -100,6 +101,7 @@ public class Grafo {
         boolean existe = false, valido = false;
         NodoVert aux = this.inicio;
         if (aux != null) {
+            //va a buscar la primera habitacion pasada por parametro
             while ((!valido) && (aux != null)) {
                 if (hab1.getElem().equals(aux.getElem())) {
                     valido = true;
@@ -107,7 +109,9 @@ public class Grafo {
                     aux = aux.getSigVert();
                 }
             }
+            //en el caso de encontrarla llama al metodo para ver si hay algun camino entre las habitaciones 
             if (valido) {
+                //creamos una lista para recorrer los caminos efectivamente
                 Lista visitados = new Lista();
                 existe = profundidadDesde(aux, hab2, visitados);
             }
@@ -117,12 +121,16 @@ public class Grafo {
 
     private boolean profundidadDesde(NodoVert hab1, NodoVert hab2, Lista visitados) {
         boolean existe = false;
+        //verifica que la habitacion en la que estamos parados es la misma que la segunda ingresada por parametro
         if (hab1.getElem().equals(hab2.getElem())) {
             existe = true;
         } else {
+            //utilizamos la lista para que no se armen bucles y solo pasemos una vez por cada camino 
             visitados.insertar(hab1.getElem(), visitados.longitud() + 1);
+            //avanzamos por todos los caminos que hayan desde la habitacion 1
             NodoAdy aux2 = hab1.getPrimerAdy();
             while ((aux2 != null) && (!existe)) {
+                //si la habitacion no se encuntra en la lista (es decir que no analizamos caminos todavia) vuelve a llamar al metodo
                 if (visitados.localizar(aux2.getVertice().getElem()) < 0) {
                     existe = profundidadDesde(aux2.getVertice(), hab2, visitados);
                 }
