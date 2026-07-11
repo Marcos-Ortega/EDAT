@@ -1,4 +1,5 @@
 package GrafoHabitaciones;
+
 import GrafoHabitaciones.estructurasAuxiliares.Lista;
 
 public class Grafo {
@@ -151,7 +152,8 @@ public class Grafo {
         this.inicio = null;
     }
 
-    // como en el grafo van a recibir el codigo de la habitacion y no el vertice en si, hay que buscarlos
+    // como en el grafo van a recibir el codigo de la habitacion y no el vertice en
+    // si, hay que buscarlos
     private NodoVert buscarVertice(Object codHab) {
         NodoVert vertice = null;
         boolean encontrado = false;
@@ -167,5 +169,48 @@ public class Grafo {
             }
         }
         return vertice;
+    }
+
+    public boolean eliminarArco(Object codHab1, Object codHab2) {
+        boolean eliminado = false;
+        if (this.inicio != null) {
+            // busco las habitaciones por su codigo
+            NodoVert hab1 = buscarVertice(codHab1);
+            NodoVert hab2 = buscarVertice(codHab2);
+            // si ambas habitaciones existen busco si hay un arco entre ella y lo elimino
+            if ((hab1 != null) && (hab2 != null)) {
+                // llamamos al metodo para buscar y elminar dos veces porque es no dirigido
+                eliminado = eliminarAdy(hab1, hab2);
+                //si se elimino para un lado del grafo elimino para el otro
+                if (eliminado) {
+                    eliminado = eliminarAdy(hab2, hab1);
+                }
+            }
+        }
+        return eliminado;
+    }
+
+    private boolean eliminarAdy(NodoVert hab1, NodoVert hab2) {
+        boolean eliminado = false;
+        NodoAdy anterior = null;
+        NodoAdy aux2 = hab1.getPrimerAdy();
+        // recorremos hasta que encontremos la habitacion a eliminar o no queden mas habitaciones
+        while ((aux2 != null) && (!eliminado)) {
+            if (aux2.getVertice().getElem().equals(hab2.getElem())) {
+                // verificamos si el que se tiene que eliminar es el primer adyacente
+                if (anterior == null) {
+                    hab1.setPrimerAdy(aux2.getSigAdyacente());
+                } else {
+                    anterior.setSigAdyacente(aux2.getSigAdyacente());
+                }
+                eliminado = true;
+            } else {
+                //avanzamos si no es la habitacion que queremos
+                anterior = aux2;
+                aux2 = aux2.getSigAdyacente();
+            }
+
+        }
+        return eliminado;
     }
 }
