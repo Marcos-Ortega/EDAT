@@ -1,11 +1,11 @@
-
-public class Desafio {
-    private int puntaje;
+package clases;
+public class Desafio implements Comparable<Desafio> {
+    private int puntaje; // Clave dentro del AVL de la habitación
     private String nombre;
     private String tipo;
 
     public Desafio(int puntaje) {
-        this.puntaje=puntaje;
+        this.puntaje = puntaje;
     }
 
     public Desafio(int puntaje, String nom, String tipo) {
@@ -15,26 +15,18 @@ public class Desafio {
     }
 
     // Métodos observadores (Getters)
-    public int getPuntaje() {
-        return puntaje;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
+    public int getPuntaje() { return puntaje; }
+    public String getNombre() { return nombre; }
+    public String getTipo() { return tipo; }
 
     // Métodos modificadores (Setters)
-    // Nota: El puntaje es la clave por eso no pongo su setter
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    // (Compara los desafíos por su puntaje)
+    @Override
+    public int compareTo(Desafio otro) {
+        return Integer.compare(this.puntaje, otro.puntaje);
     }
 
     @Override

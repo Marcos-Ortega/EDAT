@@ -1,4 +1,4 @@
-
+package clases;
 public class Equipo {
     private String nombre;
     private int puntajeExigido;

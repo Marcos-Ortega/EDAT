@@ -1,4 +1,5 @@
-import GrafoHabitaciones.estructurasAuxiliares.Lista;
+package GrafoHabitaciones.estructurasAuxiliares;
+
 public class ArbolAVL {
     private NodoAVL raiz;
 
