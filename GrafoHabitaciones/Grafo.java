@@ -103,7 +103,7 @@ public class Grafo {
         }
         return exito;
     }
-//holaaaa
+
     public boolean existeCamino(Object codHab1, Object codHab2) {
         boolean existe = false;
         NodoVert hab1 = buscarVertice(codHab1);
@@ -112,7 +112,6 @@ public class Grafo {
             // creamos una lista para recorrer los caminos efectivamente
             Lista visitados = new Lista();
             existe = profundidadDesde(hab1, hab2, visitados);
-
         }
         return existe;
     }
