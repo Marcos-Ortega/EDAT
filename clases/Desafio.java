@@ -4,49 +4,52 @@ public class Desafio implements Comparable<Desafio> {
     private String nombre;
     private String tipo;
 
-    public Desafio(int puntaje) {
-        this.puntaje = puntaje;
+    //constructores
+    public Desafio(int unPuntaje) {
+        this.puntaje = unPuntaje;
     }
 
-    public Desafio(int puntaje, String nom, String tipo) {
-        this.puntaje = puntaje;
+    public Desafio(int unPuntaje, String nom, String unTipo) {
+        this.puntaje = unPuntaje;
         this.nombre = nom;
-        this.tipo = tipo;
+        this.tipo = unTipo;
     }
 
-    // Métodos observadores (Getters)
-    public int getPuntaje() { return puntaje; }
-    public String getNombre() { return nombre; }
-    public String getTipo() { return tipo; }
+    // visualizadores
+    public int getPuntaje() {
+        return puntaje;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public String getTipo() {
+        return tipo;
+    }
 
-    // Métodos modificadores (Setters)
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
+    // Modificadores
+    public void setNombre(String nom) {
+        this.nombre = nom;
+    }
+    public void setTipo(String unTipo) {
+        this.tipo = unTipo;
+    }
 
-    // (Compara los desafíos por su puntaje)
-    @Override
+    // (Compara dos desafíos segun su puntaje)
     public int compareTo(Desafio otro) {
-        return Integer.compare(this.puntaje, otro.puntaje);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        boolean iguales = false;
-        if (obj != null && obj instanceof Desafio) {
-            Desafio otro = (Desafio) obj;
-            if (this.puntaje == otro.puntaje) {
-                iguales = true;
-            }
+        int comparTo=-1;
+        if (this.puntaje> otro.puntaje) {
+            comparTo=1;
+        }else if(this.puntaje==otro.puntaje){
+            comparTo =0;
         }
-        return iguales;
+        return comparTo;
     }
 
-    @Override
-    public int hashCode() {
-        return Integer.hashCode(this.puntaje);
+    //compara si dos desafios son iguales
+    public boolean equals(Desafio otro) {
+        return this.puntaje==otro.puntaje;
     }
 
-    @Override
     public String toString() {
         return "Desafio [Puntaje: " + puntaje + ", Nombre: " + nombre + ", Tipo: " + tipo + "]";
     }
