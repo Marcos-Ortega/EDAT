@@ -17,13 +17,13 @@ public class Desafio implements Comparable<Desafio> {
 
     // visualizadores
     public int getPuntaje() {
-        return puntaje;
+        return this.puntaje;
     }
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
     public String getTipo() {
-        return tipo;
+        return this.tipo;
     }
 
     // Modificadores
