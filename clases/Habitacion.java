@@ -10,6 +10,7 @@ public class Habitacion implements Comparable<Habitacion> {
 
     public Habitacion(int codigo) {
         this.codigo = codigo;
+        this.desafios = new ArbolAVL(); 
     }
 
     public Habitacion(int codigo, String nombre, int planta, int metros, boolean tieneSalida) {
