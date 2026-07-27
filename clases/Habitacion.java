@@ -70,4 +70,6 @@ public class Habitacion implements Comparable<Habitacion> {
         return "Habitacion [Codigo: " + codigo + ", Nombre: " + nombre + ", Planta: " + planta +
                 ", Metros: " + metros + ", Salida Exterior: " + (tieneSalida ? "Sí" : "No") + "]";
     }
+    //metodos de los desafios 
+    
 }
