@@ -1,0 +1,68 @@
+package clases;
+
+public class TablaHashEquipos {
+    private static final int TAMANIO_INICIAL = 31;
+    private NodoHash[] tabla;
+
+    public TablaHashEquipos() {
+        this.tabla = new NodoHash[TAMANIO_INICIAL];
+    }
+
+    // Función de dispersión (Hash) basada en la clave (Nombre del equipo)
+    //Java toma la cadena de texto y calcula un número entero a partir de las letras de la clave
+    private int funcionHash(String clave) {
+        int hash = Math.abs(clave.hashCode());
+        return hash % TAMANIO_INICIAL;
+    }
+
+    public boolean insertar(Equipo equipo) {
+    boolean insertado = false;
+
+    // calculamos la posicion (indice) del arreglo con la funcion Hash
+    int pos = funcionHash(equipo.getNombre());
+
+    // apuntamos al primer nodo de la lista en la posición 'pos'
+    NodoHash aux = tabla[pos];
+    boolean existe = false;
+
+    // recorremos la lista para verificar que el equipo no exista previamente
+    while (aux != null && !existe) {
+        if (aux.getEquipo().getNombre().equalsIgnoreCase(equipo.getNombre())) {
+            existe = true; // si se encontró un duplicado, frenamos el recorrido
+        } else {
+            aux = aux.getSiguiente(); // avanzamos al siguiente nodo
+        }
+    }
+
+    // si no existe un equipo con ese nombre, lo insertamos al principio de la lista
+    if (!existe) {
+        tabla[pos] = new NodoHash(equipo, tabla[pos]);
+        insertado = true;
+    }
+    return insertado;
+}
+
+    public Equipo buscar(String nombreEquipo) {
+    // variable para almacenar el equipo encontrado (inicia en null por si no existe)
+    Equipo equipoEncontrado = null;
+
+    //calculamos la posición (indice) del arreglo con la funcion Hash
+    int pos = funcionHash(nombreEquipo);
+
+    // apuntamos al primer nodo de la lista encadenada en la posición 'pos'
+    NodoHash aux = tabla[pos];
+
+    //recorremos la lista buscando la coincidencia por nombre
+    //el bucle frena si llegamos al final de la lista (null) o si ya encontramos el equipo
+    while (aux != null && equipoEncontrado == null) {
+        // comparamos el nombre ingresado con el del equipo guardado en el nodo actual
+        if (aux.getEquipo().getNombre().equalsIgnoreCase(nombreEquipo)) {
+            equipoEncontrado = aux.getEquipo(); // guardamos el equipo encontrado para detener el bucle
+        } else {
+            aux = aux.getSiguiente(); // avanzamos al siguiente nodo de la lista
+        }
+    }
+
+    return equipoEncontrado;
+}
+}

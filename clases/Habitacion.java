@@ -6,7 +6,7 @@ public class Habitacion implements Comparable<Habitacion> {
     private int planta;
     private int metros;
     private boolean tieneSalida;
-    private ArbolAVL desafios; // cada habitacion conoce sus desafios 
+    private ArbolAVL desafios; // cada habitacion conoce sus desafios
 
     //constructores
     public Habitacion(int unCodigo) {
