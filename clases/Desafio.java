@@ -45,9 +45,22 @@ public class Desafio implements Comparable<Desafio> {
         return comparTo;
     }
 
-    //compara si dos desafios son iguales
-    public boolean equals(Desafio otro) {
-        return this.puntaje==otro.puntaje;
+        // compara si dos desafios son iguales
+    @Override
+    public boolean equals(Object obj) {
+        boolean iguales = false;
+        if (obj != null && obj instanceof Desafio) {
+            Desafio otro = (Desafio) obj;
+            if (this.puntaje == otro.puntaje) {
+                iguales = true;
+            }
+        }
+        return iguales;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(this.puntaje);
     }
 
     public String toString() {
