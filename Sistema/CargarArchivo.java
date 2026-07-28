@@ -96,7 +96,7 @@ public class CargarArchivo {
                                         for (int i = 0; i < puntajes.length; i++) {
                                             int puntaje = Integer.parseInt(puntajes[i]);
                                             //busco el desafio resuelto dentro de la habitacion
-                                            Desafio desafioResuelto = (Desafio) habDesafio.getDesafios().buscar(new Desafio(puntaje)); //hacer cuando terminen desafios
+                                            Desafio desafioResuelto = (Desafio) habDesafio.getDesafios().recuperar(new Desafio(puntaje)); //hacer cuando terminen desafios
     
                                             if (desafioResuelto != null) {
                                                 desResueltos.agregar(nombreEquipo, desafioResuelto);
