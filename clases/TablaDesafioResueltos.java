@@ -15,13 +15,12 @@ public class TablaDesafioResueltos {
         return hash % TAMANIO_INICIAL;
     }
 
-    // se llama cuando un equipo resuelve un desafío
-    public boolean registrar(String nombreEquipo, int codHabitacion, int puntaje) {
+    public boolean agregar(String nombreEquipo, Desafio desafio) {
+
         int pos = funcionHash(nombreEquipo);
         NodoHashResueltos aux = tabla[pos];
         boolean encontrado = false;
 
-        // buscamos si el equipo ya tiene una lista cargada
         while (aux != null && !encontrado) {
             if (aux.getNombreEquipo().equalsIgnoreCase(nombreEquipo)) {
                 encontrado = true;
@@ -30,27 +29,35 @@ public class TablaDesafioResueltos {
             }
         }
 
-        DesafioResuelto nuevo = new DesafioResuelto(codHabitacion, puntaje);
         boolean exito = false;
 
         if (encontrado) {
-            // ya existe la entrada del equipo, evitamos duplicados
-            if (aux.getDesafiosResueltos().localizar(nuevo) < 0) {
-                aux.getDesafiosResueltos().insertar(nuevo, aux.getDesafiosResueltos().longitud() + 1);
+            // ya existe el equipo en la tabla, reviso si ya tiene ese desafio
+            boolean yaEsta = false;
+            Lista lista = aux.getDesafiosResueltos();
+            for (int i = 1; i <= lista.longitud() && !yaEsta; i++) {
+                Desafio d = (Desafio) lista.recuperar(i);
+                if (d == desafio) {
+                    yaEsta = true;
+                }
+            }
+            if (!yaEsta) {
+                lista.insertar(desafio, lista.longitud() + 1);
                 exito = true;
             }
         } else {
-            // primera vez que este equipo resuelve algo, creamos su entrada
+            // primera vez que este equipo resuelve un desafio
             Lista nuevaLista = new Lista();
-            nuevaLista.insertar(nuevo, 1);
+            nuevaLista.insertar(desafio, 1);
             tabla[pos] = new NodoHashResueltos(nombreEquipo, nuevaLista, tabla[pos]);
             exito = true;
         }
+
         return exito;
     }
 
-    // para mostrarDesafiosResueltos(equipo)
     public Lista obtenerResueltos(String nombreEquipo) {
+
         int pos = funcionHash(nombreEquipo);
         NodoHashResueltos aux = tabla[pos];
         Lista resultado = null;
@@ -62,26 +69,41 @@ public class TablaDesafioResueltos {
                 aux = aux.getSiguiente();
             }
         }
-        return (resultado != null) ? resultado : new Lista();
+
+        if (resultado == null) {
+            resultado = new Lista();
+        }
+
+        return resultado;
     }
 
-    // para verificarDesafioResuelto(equipo, desafio, habitacion)
-    public boolean yaResuelto(String nombreEquipo, int codHabitacion, int puntaje) {
+    public boolean yaResuelto(String nombreEquipo, Desafio desafio) {
+
         Lista lista = obtenerResueltos(nombreEquipo);
-        return lista.localizar(new DesafioResuelto(codHabitacion, puntaje)) > 0;
+        boolean encontrado = false;
+
+        for (int i = 1; i <= lista.longitud() && !encontrado; i++) {
+            Desafio d = (Desafio) lista.recuperar(i);
+            if (d == desafio) {
+                encontrado = true;
+            }
+        }
+
+        return encontrado;
     }
 
-    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("--- Desafios Resueltos por Equipo ---\n");
+
+        String texto = "--- Desafios Resueltos por Equipo ---\n";
+
         for (int i = 0; i < TAMANIO_INICIAL; i++) {
             NodoHashResueltos aux = tabla[i];
             while (aux != null) {
-                sb.append(aux.getNombreEquipo()).append(": ").append(aux.getDesafiosResueltos()).append("\n");
+                texto += aux.getNombreEquipo() + ": " + aux.getDesafiosResueltos() + "\n";
                 aux = aux.getSiguiente();
             }
         }
-        return sb.toString();
+
+        return texto;
     }
 }

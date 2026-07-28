@@ -4,7 +4,7 @@ import GrafoHabitaciones.estructurasAuxiliares.Lista;
 
 public class NodoHashResueltos {
     private String nombreEquipo;
-    private Lista desafiosResueltos;
+    private Lista desafiosResueltos; // Lista de objetos 
     private NodoHashResueltos siguiente;
 
     public NodoHashResueltos(String nombreEquipo, Lista desafiosResueltos, NodoHashResueltos siguiente) {

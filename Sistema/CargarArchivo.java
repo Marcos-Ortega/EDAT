@@ -5,6 +5,7 @@ import clases.Desafio;
 import clases.Equipo;
 import clases.Habitacion;
 import clases.TablaHashEquipos;
+import clases.TablaDesafioResueltos;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
