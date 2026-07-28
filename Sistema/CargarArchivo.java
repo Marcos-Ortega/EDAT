@@ -16,7 +16,7 @@ import java.io.BufferedWriter;
 public class CargarArchivo {
 
 
-    public static void cargarArchivo(ArbolAVL avlHabitaciones, Grafo grafo, TablaHashEquipos tablaEquipos, DesafiosResueltos desResueltos) {
+    public static void cargarArchivo(ArbolAVL avlHabitaciones, Grafo grafo, TablaHashEquipos tablaEquipos, TablaDesafioResueltos desResueltos) {
 
         String nombreArchivoEntrada = "Sistema.txt";// guardo el nombre del archivo en un string
         // gestion de errores
