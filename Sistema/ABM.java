@@ -5,7 +5,6 @@ import java.util.Scanner;
 import GrafoHabitaciones.estructurasAuxiliares.*;
 import GrafoHabitaciones.Grafo;
 import clases.*;
-import clases.TablaHashEquipos;
 
 public class ABM {
 
@@ -83,11 +82,6 @@ public class ABM {
     public static void menuHabitaciones(Scanner sc, ArbolAVL avl, Grafo grafo) {
 
         int op;
-        int codigoBuscar;
-        Habitacion habActual;
-        int codigo, planta, metros;
-        String nombre, tiene;
-        boolean tieneSalida;
         do {
 
             System.out.println("\n- ABM HABITACIONES -");
@@ -482,11 +476,11 @@ public class ABM {
     }
 
     public static void altaEquipo(Scanner sc, TablaHashEquipos tabla, ArbolAVL avl) {
-
+        
         String nombre;
         int puntajeExigido;
         int codigoHabInicial;
-
+        sc.nextLine();
         System.out.println("Ingrese el nombre del equipo: ");
         nombre = sc.nextLine();
 
@@ -518,7 +512,7 @@ public class ABM {
     public static void bajaEquipo(Scanner sc, TablaHashEquipos tabla) {
 
         String nombreBuscar;
-
+        sc.nextLine();
         System.out.println("Ingrese el nombre del equipo a eliminar: ");
         nombreBuscar = sc.nextLine();
 
@@ -535,7 +529,7 @@ public class ABM {
     public static void modificarEquipo(Scanner sc, TablaHashEquipos tabla, ArbolAVL avl) {
 
         String nombreBuscar;
-
+        sc.nextLine();
         System.out.println("Ingrese el nombre del equipo: ");
         nombreBuscar = sc.nextLine();
 
