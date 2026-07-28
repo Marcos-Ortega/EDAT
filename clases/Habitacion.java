@@ -95,21 +95,19 @@ public class Habitacion implements Comparable<Habitacion> {
     }
     // metodos de desafio
 
-    //inserta un nuevo desafio en el avl 
+    // inserta un nuevo desafio en el avl
     public boolean altaDesafio(Desafio d) {
         return this.desafios.insertar(d);
     }
 
-    //elimina un desafio del avl
+    // elimina un desafio del avl
     public boolean bajaDesafio(int puntaje) {
         return this.desafios.eliminar(new Desafio(puntaje));
     }
 
-    //da la informacion de un desafio indicado
+    // da la informacion de un desafio indicado
     public Desafio buscarDesafio(int puntaje) {
         return (Desafio) this.desafios.recuperar(new Desafio(puntaje));
     }
-
-    
 
 }

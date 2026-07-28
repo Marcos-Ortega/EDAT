@@ -15,7 +15,7 @@ public class ABM {
         ArbolAVL avlHabitaciones = new ArbolAVL();
         Grafo grafo = new Grafo();
         TablaHashEquipos tablaEquipos = new TablaHashEquipos();
-        DesafiosResueltos desResueltos = new DesafiosResueltos(); //hacer cuando terminen desafios
+        TablaDesafioResueltos desResueltos = new TablaDesafioResueltos(); //hacer cuando terminen desafios
 
         int opc;
         CargarArchivo.cargarArchivo(avlHabitaciones, grafo, tablaEquipos, desResueltos);
@@ -433,6 +433,11 @@ public class ABM {
             System.out.println("La habitacion no existe.");
         }
     }
+
+    //operaciones desafio Punto 4
+
+
+    
 
     // MENU EQUIPOS
     public static void menuEquipos(Scanner sc, TablaHashEquipos tabla, ArbolAVL avl) {
