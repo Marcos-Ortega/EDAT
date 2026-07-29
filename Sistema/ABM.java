@@ -50,7 +50,7 @@ public class ABM {
                     break;
 
                 case 5:
-                    //Consulta desafíos
+                    //Consulta desafios
                     break;
 
                 case 6:
@@ -85,9 +85,9 @@ public class ABM {
         do {
 
             System.out.println("\n- ABM HABITACIONES -");
-            System.out.println("1. Alta habitacion");
-            System.out.println("2. Baja habitacion");
-            System.out.println("3. Modificacion habitacion");
+            System.out.println("1. Alta Habitacion");
+            System.out.println("2. Baja Habitacion");
+            System.out.println("3. Modificacion Habitacion");
             System.out.println("0. Volver");
             System.out.print("Opcion: ");
 
@@ -151,8 +151,10 @@ public class ABM {
         if (avl.insertar(nuevaHabitacion)) {
             grafo.insertarHabitacion(codigo);
             System.out.println("Habitacion agregada exitosamente.");
+            log.registrar("Se crea la habitacion "+ codigo);
         } else {
             System.out.println("Ya existe una habitacion con ese codigo.");
+            log.registrar("Error al crear habitacion, ya existe "+codigo);
         }
     }
 
@@ -168,14 +170,17 @@ public class ABM {
         if (habActual != null) {
             if (habActual.tieneSalida()) {// preguntar con el grupo que pasa ocn una habitacion de entrada
                 System.out.println("No se puede eliminar esta habitacion.");
+                log.registrar("Error al eliminar habitacion "+ codigoBuscar);
             } else {
                 avl.eliminar(habActual);
                 grafo.eliminarHabitacion(codigoBuscar);
+                log.registrar("Se borro la habitacion "+codigoBuscar);
                 System.out.println("Habitacion eliminada correctamente.");
             }
 
         } else {
             System.out.println("La habitacion no existe.");
+            log.registrar("No se encontro la habitacion "+codigoBuscar);
         }
     }
 
@@ -212,6 +217,7 @@ public class ABM {
                         String nuevoNombre = sc.nextLine();
                         habActual.setNombre(nuevoNombre);
                         System.out.println("Nombre modificado.");
+                        log.registrar("Se modifico el nombre de la habitacion "+codigoBuscar);
                         break;
 
                     case 2:
@@ -219,6 +225,7 @@ public class ABM {
                         int nuevaPlanta = sc.nextInt();
                         habActual.setPlanta(nuevaPlanta);
                         System.out.println("Planta modificada.");
+                        log.registrar("Se modifico la planta de la habitacion "+codigoBuscar);
                         break;
 
                     case 3:
@@ -226,6 +233,7 @@ public class ABM {
                         int nuevosMetros = sc.nextInt();
                         habActual.setMetros(nuevosMetros);
                         System.out.println("Metros modificados.");
+                        log.registrar("Se modificaron los metros de la habitacion "+codigoBuscar);
                         break;
 
                     case 4:
@@ -235,11 +243,14 @@ public class ABM {
                         if (tiene.equalsIgnoreCase("si")) {
                             habActual.setTieneSalida(true);
                             System.out.println("Se cambio tiene salida.");
+                            log.registrar("Se modifico la salida de la habitacion "+codigoBuscar);
                         } else if (tiene.equalsIgnoreCase("no")) {
                             habActual.setTieneSalida(false);
                             System.out.println("Se cambio tiene salida.");
+                            log.registrar("Se modifico la salida de la habitacion "+codigoBuscar);
                         } else {
                             System.out.println("No se pudo determinar si tiene salida.");
+                            log.registrar("No se pudo modificar la salida de la habitacion "+codigoBuscar);
                         }
 
                         break;
@@ -249,12 +260,14 @@ public class ABM {
 
                     default:
                         System.out.println("Opcion incorrecta.");
+                        log.registrar("Inserto opcion invalida en modificar habitacion.");
                 }
 
             } while (opcMod != 0);
 
         } else {
             System.out.println("La habitacion no existe.");
+            log.registrar("No se puede modificar habitacion "+codigoBuscar+", no existe la habitacion.");
         }
     }
 
@@ -266,9 +279,9 @@ public class ABM {
         do {
 
             System.out.println("\n----- ABM DESAFIOS -----");
-            System.out.println("1. Alta");
-            System.out.println("2. Baja");
-            System.out.println("3. Modificacion");
+            System.out.println("1. Alta Desafio");
+            System.out.println("2. Baja Desafio");
+            System.out.println("3. Modificacion Desafio");
             System.out.println("0. Volver");
             System.out.print("Opcion: ");
 
@@ -329,12 +342,15 @@ public class ABM {
 
             if (habActual.getDesafios().insertar(nuevoDesafio)) {
                 System.out.println("Desafio agregado exitosamente.");
+                log.registrar("Se creo el Desafio "+ nombre + " en habitacion " + codigoHab);
             } else {
                 System.out.println("Ya existe un desafio con ese puntaje en esta habitacion.");
+                log.registrar("Ya existe un desafio con puntaje "+ puntaje + " en habitacion " + codigoHab);
             }
 
         } else {
             System.out.println("La habitacion no existe.");
+            log.registrar("La habitacion "+ codigoHab+" no existe");
         }
     }
 
@@ -358,12 +374,15 @@ public class ABM {
             if (desafioActual != null) {
                 habActual.getDesafios().eliminar(desafioActual);
                 System.out.println("Desafio eliminado correctamente.");
+                log.registrar("Se elimino el desafio con puntaje de "+ puntajeBuscar +" de la habitacion "+codigoHab );
             } else {
                 System.out.println("El desafio no existe en esta habitacion.");
+                log.registrar("Desafio con puntaje "+puntajeBuscar+" no existe en la habitacion "+codigoHab);
             }
 
         } else {
             System.out.println("La habitacion no existe.");
+            log.registrar("La habitacion "+ codigoHab+" no existe");
         }
     }
 
@@ -407,6 +426,7 @@ public class ABM {
                             String nuevoNombre = sc.nextLine();
                             desafioActual.setNombre(nuevoNombre);
                             System.out.println("Nombre modificado.");
+                            log.registrar("Se cambio el nombre del Desafio con puntaje "+ puntajeBuscar + " de la habitacion "+codigoHab);
                             break;
 
                         case 2:
@@ -414,6 +434,7 @@ public class ABM {
                             String nuevoTipo = sc.nextLine();
                             desafioActual.setTipo(nuevoTipo);
                             System.out.println("Tipo modificado.");
+                            log.registrar("Se cambio el tipo del Desafio con puntaje "+ puntajeBuscar + " de la habitacion "+codigoHab);
                             break;
 
                         case 0:
@@ -421,16 +442,19 @@ public class ABM {
 
                         default:
                             System.out.println("Opcion incorrecta.");
+                            log.registrar("Opcion incorrecta en modificar desafio");
                     }
 
                 } while (opcMod != 0);
 
             } else {
                 System.out.println("El desafio no existe en esta habitacion.");
+                log.registrar("Desafio con puntaje "+puntajeBuscar+" no existe en la habitacion "+codigoHab);
             }
 
         } else {
             System.out.println("La habitacion no existe.");
+            log.registrar("La habitacion "+ codigoHab+" no existe");
         }
     }
 
@@ -447,11 +471,11 @@ public class ABM {
         do {
 
             System.out.println("\n----- ABM EQUIPOS -----");
-            System.out.println("1. Alta");
-            System.out.println("2. Baja");
-            System.out.println("3. Modificacion");
+            System.out.println("1. Alta Equipos");
+            System.out.println("2. Baja Equipos");
+            System.out.println("3. Modificacion Equipos");
             System.out.println("0. Volver");
-            System.out.print("Opción: ");
+            System.out.print("Opcion: ");
 
             op = sc.nextInt();
 
@@ -505,8 +529,10 @@ public class ABM {
 
             if (tabla.insertar(nuevoEquipo)) {
                 System.out.println("Equipo agregado exitosamente.");
+                log.registrar("Se creo correctamente el equipo "+nombre);
             } else {
                 System.out.println("Ya existe un equipo con ese nombre.");
+                log.registrar("Error al crear equipo "+nombre+". Ya existe equipo con ese nombre");
             }
 
         } else {
@@ -524,10 +550,12 @@ public class ABM {
         Equipo equipoActual = (Equipo) tabla.buscar(nombreBuscar);
 
         if (equipoActual != null) {
-            //tabla.eliminar(equipoActual);//hacer este metodo
+            tabla.eliminar(equipoActual);//hacer este metodo
             System.out.println("Equipo eliminado correctamente.");
+            log.registrar("Se elimino el equipo "+nombreBuscar);
         } else {
             System.out.println("El equipo no existe.");
+            log.registrar("No existe el equipo "+nombreBuscar+" para eliminar");
         }
     }
 
@@ -561,6 +589,7 @@ public class ABM {
                         int nuevoPuntajeExigido = sc.nextInt();
                         equipoActual.setPuntajeExigido(nuevoPuntajeExigido);
                         System.out.println("Puntaje exigido modificado.");
+                        log.registrar("Cambio el puntaje exigido del equipo "+nombreBuscar);
                         break;
 
                     case 2:
@@ -572,8 +601,10 @@ public class ABM {
                         if (nuevaHab != null) {
                             equipoActual.setHabitacionActual(nuevaHab);
                             System.out.println("Habitacion actual modificada.");
+                            log.registrar("Se cambio la Habitacion actual del equipo "+nombreBuscar);
                         } else {
                             System.out.println("La habitacion no existe.");
+                            log.registrar("Error al cambiar habitacion actual del equipo "+nombreBuscar+". Habitacion no existe");
                         }
                         break;
 
@@ -588,6 +619,7 @@ public class ABM {
 
         } else {
             System.out.println("El equipo no existe.");
+            log.registrar("El equipo "+nombreBuscar+" a modificar no existe.");
         }
     }
 
