@@ -15,7 +15,7 @@ public class ABM {
         ArbolAVL avlHabitaciones = new ArbolAVL();
         Grafo grafo = new Grafo();
         TablaHashEquipos tablaEquipos = new TablaHashEquipos();
-        TablaDesafioResueltos desResueltos = new TablaDesafioResueltos(); //hacer cuando terminen desafios
+        TablaDesafioResueltos desResueltos = new TablaDesafioResueltos(); // hacer cuando terminen desafios
 
         int opc;
         CargarArchivo.cargarArchivo(avlHabitaciones, grafo, tablaEquipos, desResueltos);
@@ -46,15 +46,15 @@ public class ABM {
                     break;
 
                 case 4:
-                    //Consulta habitaciones
+                    // Consulta habitaciones
                     break;
 
                 case 5:
-                    //Consulta desafios
+                    menuConsultasDesafios(sc, avlHabitaciones, tablaEquipos, desResueltos);
                     break;
 
                 case 6:
-                    //Consulta equipos
+                    // Consulta equipos
                     break;
 
                 case 7:
@@ -458,10 +458,172 @@ public class ABM {
         }
     }
 
-    //operaciones desafio Punto 4
+    // operaciones desafio Punto 4
 
+    // MENU CONSULTAS DESAFIOS
+    public static void menuConsultasDesafios(Scanner sc, ArbolAVL avl, TablaHashEquipos tablaEquipos,
+            TablaDesafioResueltos desResueltos) {
 
-    
+        int op;
+
+        do {
+            System.out.println("\n----- CONSULTAS DESAFIOS -----");
+            System.out.println("1. Mostrar Desafio");
+            System.out.println("2. Mostrar Desafios Resueltos de un Equipo");
+            System.out.println("3. Verificar si un Equipo resolvio un Desafio");
+            System.out.println("4. Mostrar Desafios por Tipo y Rango");
+            System.out.println("0. Volver");
+            System.out.print("Opcion: ");
+
+            op = sc.nextInt();
+
+            switch (op) {
+                case 1:
+                    mostrarDesafio(sc, avl);
+                    break;
+                case 2:
+                    mostrarDesafiosResueltos(sc, desResueltos);
+                    break;
+                case 3:
+                    verificarDesafioResuelto(sc,avl, desResueltos);
+                    break;
+                case 4:
+                    mostrarDesafiosTipo(sc, avl);
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opcion incorrecta.");
+            }
+
+        } while (op != 0);
+    }
+
+    // punto a
+    public static void mostrarDesafio(Scanner sc, ArbolAVL avl) {
+
+        int codigoHab;
+        int puntajeBuscar;
+
+        System.out.println("Ingrese el codigo de la habitacion del desafio: ");
+        codigoHab = sc.nextInt();
+
+        Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigoHab));
+
+        if (habActual != null) {
+
+            System.out.println("Ingrese el puntaje del desafio a mostrar: ");
+            puntajeBuscar = sc.nextInt();
+
+            Desafio desafioActual = (Desafio) habActual.getDesafios().recuperar(new Desafio(puntajeBuscar));
+
+            if (desafioActual != null) {
+                System.out.println(desafioActual);
+            } else {
+                System.out.println("El desafio no existe en esta habitacion.");
+            }
+
+        } else {
+            System.out.println("La habitacion no existe.");
+        }
+    }
+
+    // punto b
+    public static void mostrarDesafiosResueltos(Scanner sc, TablaDesafioResueltos desResueltos) {
+
+        String nombreEquipo;
+        sc.nextLine();
+        System.out.println("Ingrese el nombre del equipo: ");
+        nombreEquipo = sc.nextLine();
+
+        Lista resueltos = desResueltos.obtenerResueltos(nombreEquipo);
+
+        if (resueltos.esVacia()) {
+            System.out.println("El equipo " + nombreEquipo + " todavia no resolvio ningun desafio.");
+        } else {
+            System.out.println(resueltos);
+        }
+    }
+
+    // punto c
+    public static void verificarDesafioResuelto(Scanner sc, ArbolAVL avl, TablaDesafioResueltos desResueltos) {
+
+        String nombreEquipo;
+        int codigoHab, puntaje;
+        sc.nextLine();
+        System.out.println("Ingrese el nombre del equipo: ");
+        nombreEquipo = sc.nextLine();
+
+        System.out.println("Ingrese el codigo de la habitacion del desafio: ");
+        codigoHab = sc.nextInt();
+
+        System.out.println("Ingrese el puntaje del desafio: ");
+        puntaje = sc.nextInt();
+
+        Habitacion hab = (Habitacion) avl.recuperar(new Habitacion(codigoHab));
+
+        if (hab == null) {
+            System.out.println("La habitacion no existe.");
+        } else {
+
+            Desafio desafio = (Desafio) hab.getDesafios().recuperar(new Desafio(puntaje));
+
+            if (desafio == null) {
+                System.out.println("Ese desafio no existe en esa habitacion.");
+            } else {
+
+                boolean resuelto = desResueltos.yaResuelto(nombreEquipo, desafio);
+
+                if (resuelto) {
+                    System.out.println("El equipo " + nombreEquipo + " YA resolvio ese desafio.");
+                } else {
+                    System.out.println("El equipo " + nombreEquipo + " NO resolvio ese desafio.");
+                }
+            }
+        }
+    }
+
+    // punto d
+    public static void mostrarDesafiosTipo(Scanner sc, ArbolAVL avl) {
+
+        int codigoHab, a, b;
+        String tipo;
+
+        System.out.println("Ingrese el codigo de la habitacion: ");
+        codigoHab = sc.nextInt();
+
+        Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigoHab));
+
+        if (habActual != null) {
+
+            System.out.println("Ingrese el puntaje minimo (a): ");
+            a = sc.nextInt();
+
+            System.out.println("Ingrese el puntaje maximo (b): ");
+            b = sc.nextInt();
+            sc.nextLine();
+
+            System.out.println("Ingrese el tipo de desafio a buscar: ");
+            tipo = sc.nextLine();
+
+            Lista enRango = habActual.getDesafios().listarRango(new Desafio(a), new Desafio(b));
+
+            boolean encontroAlguno = false;
+            for (int i = 1; i <= enRango.longitud(); i++) {
+                Desafio d = (Desafio) enRango.recuperar(i);
+                if (d.getTipo().equalsIgnoreCase(tipo)) {
+                    System.out.println(d);
+                    encontroAlguno = true;
+                }
+            }
+            if (!encontroAlguno) {
+                System.out.println("No hay desafios de tipo " + tipo + " en ese rango.");
+            }
+
+        } else {
+            System.out.println("La habitacion no existe.");
+        }
+    }
 
     // MENU EQUIPOS
     public static void menuEquipos(Scanner sc, TablaHashEquipos tabla, ArbolAVL avl) {
@@ -505,7 +667,7 @@ public class ABM {
     }
 
     public static void altaEquipo(Scanner sc, TablaHashEquipos tabla, ArbolAVL avl) {
-        
+
         String nombre;
         int puntajeExigido;
         int codigoHabInicial;
@@ -550,7 +712,7 @@ public class ABM {
         Equipo equipoActual = (Equipo) tabla.buscar(nombreBuscar);
 
         if (equipoActual != null) {
-            tabla.eliminar(equipoActual);//hacer este metodo
+            //tabla.eliminar(equipoActual);//hacer este metodo
             System.out.println("Equipo eliminado correctamente.");
             log.registrar("Se elimino el equipo "+nombreBuscar);
         } else {
