@@ -519,12 +519,15 @@ public class ABM {
 
             if (desafioActual != null) {
                 System.out.println(desafioActual);
+                log.registrar("Se mostro el desafio "+desafioActual);
             } else {
                 System.out.println("El desafio no existe en esta habitacion.");
+                log.registrar("El desafio "+desafioActual+"no existe en la habitacion "+habActual);
             }
 
         } else {
             System.out.println("La habitacion no existe.");
+            log.registrar("No existe en la habitacion ingresada por el usuario");
         }
     }
 
@@ -540,8 +543,10 @@ public class ABM {
 
         if (resueltos.esVacia()) {
             System.out.println("El equipo " + nombreEquipo + " todavia no resolvio ningun desafio.");
+            log.registrar("El equipo"+nombreEquipo+"no resolvio desafios");
         } else {
             System.out.println(resueltos);
+            log.registrar("Se mostro los desafios resuletos por el equipo"+nombreEquipo); 
         }
     }
 
@@ -564,20 +569,24 @@ public class ABM {
 
         if (hab == null) {
             System.out.println("La habitacion no existe.");
+            log.registrar("La habitaccion ingresada por el ususario no existe");
         } else {
 
             Desafio desafio = (Desafio) hab.getDesafios().recuperar(new Desafio(puntaje));
 
             if (desafio == null) {
                 System.out.println("Ese desafio no existe en esa habitacion.");
+                log.registrar("El desafip ingresado por el ususario no existe en la habitacion"+hab);
             } else {
 
                 boolean resuelto = desResueltos.yaResuelto(nombreEquipo, desafio);
 
                 if (resuelto) {
                     System.out.println("El equipo " + nombreEquipo + " YA resolvio ese desafio.");
+                    log.registrar("Se indica que el equipo ya resolvio el desafio");
                 } else {
                     System.out.println("El equipo " + nombreEquipo + " NO resolvio ese desafio.");
+                    log.registrar("Se indica que el equipo no resolvio el desafio");
                 }
             }
         }
@@ -614,14 +623,17 @@ public class ABM {
                 if (d.getTipo().equalsIgnoreCase(tipo)) {
                     System.out.println(d);
                     encontroAlguno = true;
+                    log.registrar("Se muestran los desafios del tipo ingresado que estan dentro del rango ingresado");
                 }
             }
             if (!encontroAlguno) {
                 System.out.println("No hay desafios de tipo " + tipo + " en ese rango.");
+                log.registrar("No hay desafios del tipo "+tipo+"en el rango ingresado");
             }
 
         } else {
             System.out.println("La habitacion no existe.");
+            log.registrar("La habitacion ingresada por el usuario no existe");
         }
     }
 
