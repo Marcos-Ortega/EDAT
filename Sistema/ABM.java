@@ -712,7 +712,7 @@ public class ABM {
         Equipo equipoActual = (Equipo) tabla.buscar(nombreBuscar);
 
         if (equipoActual != null) {
-            //tabla.eliminar(equipoActual);//hacer este metodo
+            tabla.eliminar(equipoActual);//hacer este metodo
             System.out.println("Equipo eliminado correctamente.");
             log.registrar("Se elimino el equipo "+nombreBuscar);
         } else {
