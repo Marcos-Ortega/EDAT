@@ -3,7 +3,7 @@ package clases;
 import GrafoHabitaciones.estructurasAuxiliares.Lista;
 
 public class TablaDesafioResueltos {
-    private static final int TAMANIO_INICIAL = 31;
+    private static final int TAMANIO_INICIAL = 40;
     private NodoHashResueltos[] tabla;
 
     public TablaDesafioResueltos() {

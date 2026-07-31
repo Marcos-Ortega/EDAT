@@ -1,7 +1,7 @@
 package clases;
 
 public class TablaHashEquipos {
-    private static final int TAMANIO_INICIAL = 31;
+    private static final int TAMANIO_INICIAL = 40;
     private NodoHash[] tabla;
 
     public TablaHashEquipos() {
@@ -9,7 +9,7 @@ public class TablaHashEquipos {
     }
 
     // Función de dispersión (Hash) basada en la clave (Nombre del equipo)
-    //Java toma la cadena de texto y calcula un número entero a partir de las letras de la clave
+    //java toma la cadena de texto y calcula un número entero a partir de las letras de la clave
     private int funcionHash(String clave) {
         int hash = Math.abs(clave.hashCode());
         return hash % TAMANIO_INICIAL;
@@ -65,4 +65,36 @@ public class TablaHashEquipos {
 
     return equipoEncontrado;
 }
+
+    public boolean eliminar(String nombreEquipo) {
+        boolean eliminado = false;
+
+        // calculamos la posicion (indice) del arreglo con la funcion Hash
+        int pos = funcionHash(nombreEquipo);
+
+        // apuntamos al primer nodo de la lista encadenada
+        NodoHash aux = tabla[pos];
+        NodoHash ant = null;
+
+        // recorremos la lista buscando el equipo a eliminar
+        while (aux != null && !eliminado) {
+            if (aux.getEquipo().getNombre().equalsIgnoreCase(nombreEquipo)) {
+                
+                // caso 1: el elemento a eliminar es el primero de la lista
+                if (ant == null) {
+                    tabla[pos] = aux.getSiguiente();
+                } else {
+                // caso 2: el elemento a eliminar esta en el medio o al final
+                    ant.setSiguiente(aux.getSiguiente());
+                }
+
+                eliminado = true; // marcamos la eliminacion para frenar el bucle
+            } else {
+                ant = aux; // guardamos el nodo actual como anterior
+                aux = aux.getSiguiente(); // avanzamos al siguiente nodo
+            }
+        }
+
+        return eliminado;
+    }
 }

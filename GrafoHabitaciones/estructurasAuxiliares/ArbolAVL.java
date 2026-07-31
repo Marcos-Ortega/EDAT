@@ -10,31 +10,27 @@ public class ArbolAVL {
     }
 
     private NodoAVL insertarAux(NodoAVL n, Comparable elem, boolean[] exito) {
-        // Caso base si llega a un lugar vacío, se crea el nuevo nodo
         if (n == null) {
+            // si es nulo crea el nodo
             n = new NodoAVL(elem);
         } else {
-            // compara el elemento a insertar con el elemento del nodo actual
             int comparacion = elem.compareTo(n.getElemento());
 
-            // el elemento ya existe en el árbol
             if (comparacion == 0) {
+                // elemento duplicado
                 exito[0] = false;
             } else {
-                // el elemento es menor, se inserta en el subárbol izquierdo
                 if (comparacion < 0) {
+                    // inserta a la izquierda
                     n.setIzquierdo(insertarAux(n.getIzquierdo(), elem, exito));
-
-                    // el elemento es mayor, se inserta en el subárbol derecho
                 } else {
+                    // inserta a la derecha
                     n.setDerecho(insertarAux(n.getDerecho(), elem, exito));
                 }
 
-                // si se pudo insertar se actualiza la altura
                 if (exito[0]) {
-                    actualizarAltura(n);
-
-                    // verifica si el nodo quedó desbalanceado y si es necesario hace las rotaciones
+                    // recalcula altura y balancea
+                    n.recalcularAltura();
                     n = balancear(n);
                 }
             }
@@ -57,38 +53,33 @@ public class ArbolAVL {
                 n.setDerecho(eliminarAux(n.getDerecho(), elem, exito));
             } else {
                 exito[0] = true;
-                // caso 1: hoja
+                // caso hoja
                 if (n.getIzquierdo() == null && n.getDerecho() == null) {
                     n = null;
-
-                    // caso 2: solo hijo derecho
+                // caso un solo hijo derecho
                 } else if (n.getIzquierdo() == null) {
                     n = n.getDerecho();
-
-                    // caso 2: solo hijo izquierdo
+                // caso un solo hijo izquierdo
                 } else if (n.getDerecho() == null) {
                     n = n.getIzquierdo();
-
-                    // caso 3: dos hijos
+                // caso dos hijos
                 } else {
-                    // busco el sucesor (mínimo del subárbol derecho)
                     Comparable sucesor = obtenerMinimo(n.getDerecho());
                     n.setElemento(sucesor);
-                    // elimino el sucesor de forma recursiva, para que la
-                    // recursion actualice altura y balancee todos los nodos
-                    // del camino al volver
                     boolean[] exitoAux = { false };
                     n.setDerecho(eliminarAux(n.getDerecho(), sucesor, exitoAux));
                 }
             }
             if (n != null && exito[0]) {
-                actualizarAltura(n);
+                // recalcula altura y balancea al volver de la recursion
+                n.recalcularAltura();
                 n = balancear(n);
             }
         }
         return n;
     }
 
+    // busca el menor elemento del subarbol
     private Comparable obtenerMinimo(NodoAVL n) {
         while (n.getIzquierdo() != null) {
             n = n.getIzquierdo();
@@ -96,99 +87,71 @@ public class ArbolAVL {
         return n.getElemento();
     }
 
+    // calcula el balance del nodo actual
     public int getBalance(NodoAVL n) {
         int balance = 0;
         if (n != null) {
             int altIzq;
-            int altDer;
-            // Controlamos el hijo izquierdo
             if (n.getIzquierdo() != null) {
                 altIzq = n.getIzquierdo().getAltura();
             } else {
                 altIzq = -1;
             }
-            // Controlamos el hijo derecho
+
+            int altDer;
             if (n.getDerecho() != null) {
                 altDer = n.getDerecho().getAltura();
             } else {
                 altDer = -1;
             }
+
             balance = altIzq - altDer;
         }
         return balance;
     }
 
+    // rotacion simple a la derecha
     public NodoAVL rotarDerecha(NodoAVL n) {
         NodoAVL h = n.getIzquierdo();
         NodoAVL temp = h.getDerecho();
         n.setIzquierdo(temp);
         h.setDerecho(n);
-
-        actualizarAltura(n);
-        actualizarAltura(h);
+        n.recalcularAltura();
+        h.recalcularAltura();
         return h;
     }
 
+    // rotacion simple a la izquierda
     public NodoAVL rotarIzquierda(NodoAVL n) {
         NodoAVL h = n.getDerecho();
         NodoAVL temp = h.getIzquierdo();
         n.setDerecho(temp);
         h.setIzquierdo(n);
-
-        actualizarAltura(n);
-        actualizarAltura(h);
+        n.recalcularAltura();
+        h.recalcularAltura();
         return h;
     }
 
-    private void actualizarAltura(NodoAVL n) {
-        if (n != null) {
-            int altIzq;
-            if (n.getIzquierdo() != null) {
-                altIzq = n.getIzquierdo().getAltura();
-            } else {
-                altIzq = -1;
-            }
-
-            int altDer;
-            if (n.getDerecho() != null) {
-                altDer = n.getDerecho().getAltura();
-            } else {
-                altDer = -1;
-            }
-
-            // Seteamos 1 más el máximo entre las dos alturas
-            if (altIzq > altDer) {
-                n.setAltura(1 + altIzq);
-            } else {
-                n.setAltura(1 + altDer);
-            }
-        }
-    }
-
+    // aplica rotaciones si el nodo esta desbalanceado
     private NodoAVL balancear(NodoAVL n) {
-        NodoAVL resultado = n; // si esta balanceado devolvemos el mismo nodo
+        NodoAVL resultado = n;
 
         if (n != null) {
             int balance = getBalance(n);
 
-            // caso 1 desbalanceado a la izquierda
+            // desbalance a la izquierda
             if (balance > 1) {
                 if (getBalance(n.getIzquierdo()) >= 0) {
-                    // Caso Izquierda - Izquierda
                     resultado = rotarDerecha(n);
                 } else {
-                    // caso Izquierda - Derecha
                     n.setIzquierdo(rotarIzquierda(n.getIzquierdo()));
                     resultado = rotarDerecha(n);
                 }
-            }
-            // Caso 2 desbalanceado a la derecha
-            else if (balance < -1) {
+            // desbalance a la derecha
+            } else if (balance < -1) {
                 if (getBalance(n.getDerecho()) <= 0) {
-                    // caso Derecha - Derecha
                     resultado = rotarIzquierda(n);
                 } else {
-                    // caso Derecha - Izquierda
                     n.setDerecho(rotarDerecha(n.getDerecho()));
                     resultado = rotarIzquierda(n);
                 }
@@ -207,14 +170,13 @@ public class ArbolAVL {
             int comparacion = elem.compareTo(n.getElemento());
 
             if (comparacion == 0) {
-                pertenece = true; // Lo encontramos
+                pertenece = true;
             } else if (comparacion < 0) {
                 pertenece = perteneceAux(elem, n.getIzquierdo());
             } else {
                 pertenece = perteneceAux(elem, n.getDerecho());
             }
         }
-
         return pertenece;
     }
 
@@ -226,6 +188,7 @@ public class ArbolAVL {
         this.raiz = null;
     }
 
+    // devuelve el menor elemento del arbol
     public Comparable minimo() {
         Comparable resultado = null;
         if (this.raiz != null) {
@@ -238,6 +201,7 @@ public class ArbolAVL {
         return resultado;
     }
 
+    // devuelve el mayor elemento del arbol
     public Comparable maximo() {
         Comparable resultado = null;
         if (this.raiz != null) {
@@ -250,6 +214,7 @@ public class ArbolAVL {
         return resultado;
     }
 
+    // devuelve una lista con todos los elementos ordenados
     public Lista listar() {
         Lista unaLista = new Lista();
         listarAux(this.raiz, unaLista);
@@ -264,6 +229,7 @@ public class ArbolAVL {
         }
     }
 
+    // devuelve una lista con elementos dentro del rango indicado
     public Lista listarRango(Comparable min, Comparable max) {
         Lista unaLista = new Lista();
         listarRangoAux(this.raiz, min, max, unaLista);
@@ -295,9 +261,7 @@ public class ArbolAVL {
     private NodoAVL cloneAux(NodoAVL n) {
         NodoAVL nuevoNodo = null;
         if (n != null) {
-            // Creamos el nuevo nodo con el mismo elemento
             nuevoNodo = new NodoAVL(n.getElemento());
-            // Seteamos la altura que ya tenía
             nuevoNodo.setAltura(n.getAltura());
             nuevoNodo.setIzquierdo(cloneAux(n.getIzquierdo()));
             nuevoNodo.setDerecho(cloneAux(n.getDerecho()));
@@ -327,4 +291,38 @@ public class ArbolAVL {
         return resultado;
     }
 
+    //para pruebass
+    @Override
+    public String toString() {
+        String res;
+        if (this.raiz == null) {
+            res = "arbol avl vacio";
+        } else {
+            res = toStringAux(this.raiz);
+        }
+        return res;
+    }
+
+    private String toStringAux(NodoAVL n) {
+        String s = "";
+        if (n != null) {
+            s = s + "Nodo: " + n.getElemento() + " (Altura: " + n.getAltura() + ")\n";
+            
+            if (n.getIzquierdo() != null) {
+                s = s + "   HI: " + n.getIzquierdo().getElemento() + "\n";
+            } else {
+                s = s + "   HI: -\n";
+            }
+            
+            if (n.getDerecho() != null) {
+                s = s + "   HD: " + n.getDerecho().getElemento() + "\n";
+            } else {
+                s = s + "   HD: -\n";
+            }
+
+            s = s + toStringAux(n.getIzquierdo());
+            s = s + toStringAux(n.getDerecho());
+        }
+        return s;
+    }
 }

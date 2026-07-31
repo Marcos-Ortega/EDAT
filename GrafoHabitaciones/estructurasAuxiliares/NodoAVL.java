@@ -32,9 +32,24 @@ public class NodoAVL {
         this.elem = elem;
     }
 
-    public void recalcularAltura() {
-
+   public void recalcularAltura() {
+    int altIzq,altDer;
+    if (this.izquierdo != null) {
+        altIzq = this.izquierdo.getAltura();
+    } else {
+        altIzq = -1;
     }
+    if (this.derecho != null) {
+        altDer = this.derecho.getAltura();
+    } else {
+        altDer = -1;
+    }
+    if (altIzq > altDer) {
+        this.altura = 1 + altIzq;
+    } else {
+        this.altura = 1 + altDer;
+    }
+}
 
     public void setIzquierdo(NodoAVL n) {
         this.izquierdo = n;
