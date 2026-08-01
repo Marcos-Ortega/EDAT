@@ -149,7 +149,7 @@ public class ABM {
         Habitacion nuevaHabitacion = new Habitacion(codigo, nombre, planta, metros, tieneSalida);
 
         if (avl.insertar(nuevaHabitacion)) {
-            grafo.insertarHabitacion(codigo);
+            grafo.insertarVertice(codigo);
             System.out.println("Habitacion agregada exitosamente.");
             log.registrar("Se crea la habitacion "+ codigo);
         } else {
@@ -173,7 +173,7 @@ public class ABM {
                 log.registrar("Error al eliminar habitacion "+ codigoBuscar);
             } else {
                 avl.eliminar(habActual);
-                grafo.eliminarHabitacion(codigoBuscar);
+                grafo.eliminarVertice(codigoBuscar);
                 log.registrar("Se borro la habitacion "+codigoBuscar);
                 System.out.println("Habitacion eliminada correctamente.");
             }

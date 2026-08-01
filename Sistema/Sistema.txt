@@ -1,0 +1,75 @@
+H;1;Recibidor;0;25;true
+H;2;Sala de Estar;0;35;false
+H;3;Comedor;0;30;false
+H;4;Cocina;0;20;true
+H;5;Pasillo;0;15;false
+H;6;Baño;0;10;false
+H;7;Biblioteca;1;25;false
+H;8;Escritorio;1;18;false
+H;9;Dormitorio principal;1;30;false
+H;10;Dormitorio de huéspedes;1;22;false
+H;11;Escalera;0;12;false
+H;12;Sótano;-1;40;false
+H;13;Bodega;-1;25;false
+H;14;Altillo;2;20;false
+H;15;Invernadero;0;28;true
+H;16;Cochera;0;35;true
+H;17;Gimnasio;1;25;false
+H;18;Sala de Juegos;1;30;false
+H;19;Sala de Música;1;20;false
+H;20;Quincho;0;45;true
+P:1:2:10
+P:1:11:5
+P:1:16:15
+P:2:3:12
+P:2:5:8
+P:3:4:10
+P:4:5:7
+P:4:15:20
+P:4:20:25
+P:5:6:5
+P:11:7:10
+P:11:12:15
+P:7:8:8
+P:7:9:12
+P:8:10:10
+P:9:10:15
+P:9:17:18
+P:10:18:12
+P:18:19:10
+P:12:13:10
+P:11:14:25
+P:15:20:15
+P:16:20:30
+P:17:18:8
+P:19:14:12
+D;50;1;Acertijo Inicial;Lógico
+D;30;1;Busqueda de Llave;Búsqueda
+D;20;2;Sudoku Estar;Matemático
+D;80;2;Ecuacion Secreta;Matemático
+D;40;3;Anagrama Cena;Letras
+D;60;4;Cabalas Cocina;Ingenio
+D;35;5;Laberinto Sombras;Lógico
+D;25;6;Espejo Oculto;Búsqueda
+D;75;7;Mapa Antiguo;Ingenio
+D;45;8;Clave Encriptada;Matemático
+D;55;9;Candado Numerico;Lógico
+D;65;10;Sopa de Letras;Letras
+D;90;12;Enigma del Sotano;Lógico
+D;70;13;Contraseña Barrica;Ingenio
+D;85;14;Adivinanza Polvorienta;Lógico
+D;40;15;Prueba de Agilidad;Destreza
+D;50;16;Mecanismo Herramientas;Destreza
+D;60;17;Fuerza y Equilibrio;Destreza
+D;30;18;Triviador Secreto;Ingenio
+D;95;19;Partitura Incompleta;Letras
+E;Los Valientes;400;130;4;0;(1:30,50)(2:20,30)
+E;Los Locos Adams;400;50;2;10;(1:30,20)
+E;Misterio Inc;450;210;7;0;(1:50)(2:80)(3:40)(5:35)(6:25)
+E;Los Imparables;350;90;3;0;(1:30,50)(2:10)
+E;Cazadores de Pistas;500;310;12;90;(1:50)(2:80)(7:75)(8:45)(9:55)
+E;Escapistas Pro;400;185;10;0;(1:50)(7:75)(8:60)
+E;Los Búhos;300;60;5;0;(1:30)(2:30)
+E;Masterminds;500;270;14;85;(1:50)(11:45)(12:90)(13:70)
+E;Navegantes;350;105;8;0;(1:50)(2:20)(7:35)
+E;Estrategas;400;170;9;55;(1:30,20)(2:65)(3:0)

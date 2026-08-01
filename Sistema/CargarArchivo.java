@@ -40,7 +40,7 @@ public class CargarArchivo {
     
                             // Almaceno la habitacion
                             avlHabitaciones.insertar(new Habitacion(codigo, nombre, planta, metros, tieneSalida));
-                            grafo.insertarHabitacion(codigo);
+                            grafo.insertarVertice(codigo);
                         }
                     } else if (primerCaracter.equals("D")) {
                         if (bloque.length == 5) {
