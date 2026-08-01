@@ -50,13 +50,13 @@ public class Grafo {
             }
             if (encontrado) {
 
-                    NodoAdy auxAdy = aux.getPrimerAdy();
+                NodoAdy auxAdy = aux.getPrimerAdy();
 
-                    while (auxAdy != null) {
-                        eliminarArcoVerticeAux(auxAdy.getVertice(),aux);
-                        auxAdy=auxAdy.getSigAdyacente();
-                    }
-                
+                while (auxAdy != null) {
+                    eliminarArcoVerticeAux(auxAdy.getVertice(), aux);
+                    auxAdy = auxAdy.getSigAdyacente();
+                }
+
                 // despues de elimminar los nodos adyacentes q se vinculan a el, elimino la
                 // habitacion
                 if (anterior != null) {
@@ -68,25 +68,26 @@ public class Grafo {
         }
         return encontrado;
     }
-    private void eliminarArcoVerticeAux(NodoVert vert, NodoVert eliminado){
+
+    private void eliminarArcoVerticeAux(NodoVert vert, NodoVert eliminado) {
         NodoAdy actual = vert.getPrimerAdy();
-        NodoAdy anterior=null;
-        boolean encontrado=false;
-        while(actual != null && !encontrado){
-            if(actual.getVertice() == eliminado){
-                encontrado=true;
-                if(anterior == null){
+        NodoAdy anterior = null;
+        boolean encontrado = false;
+        while (actual != null && !encontrado) {
+            if (actual.getVertice() == eliminado) {
+                encontrado = true;
+                if (anterior == null) {
                     vert.setPrimerAdy(actual.getSigAdyacente());
-                }else{
+                } else {
                     anterior.setSigAdyacente(actual.getSigAdyacente());
                 }
-            }
-            else{
-                anterior=actual;
-                actual=actual.getSigAdyacente();
+            } else {
+                anterior = actual;
+                actual = actual.getSigAdyacente();
             }
         }
     }
+
     public boolean existeVertice(Object vert) {
         boolean exito = false;
         NodoVert aux = this.inicio;
@@ -133,7 +134,7 @@ public class Grafo {
                 // caminos todavia) vuelve a llamar al metodo
                 if (visitados.localizar(aux2.getVertice().getElem()) < 0) {
                     existe = profundidadDesde(aux2.getVertice(), v2, visitados);
-                }   
+                }
                 aux2 = aux2.getSigAdyacente();
 
             }
@@ -180,7 +181,7 @@ public class Grafo {
             if ((v1 != null) && (v2 != null)) {
                 // llamamos al metodo para buscar y elminar dos veces porque es no dirigido
                 eliminado = eliminarAdy(v1, v2);
-                //si se elimino para un lado del grafo elimino para el otro
+                // si se elimino para un lado del grafo elimino para el otro
                 if (eliminado) {
                     eliminado = eliminarAdy(v2, v1);
                 }
@@ -193,7 +194,8 @@ public class Grafo {
         boolean eliminado = false;
         NodoAdy anterior = null;
         NodoAdy aux2 = v1.getPrimerAdy();
-        // recorremos hasta que encontremos la habitacion a eliminar o no queden mas habitaciones
+        // recorremos hasta que encontremos la habitacion a eliminar o no queden mas
+        // habitaciones
         while ((aux2 != null) && (!eliminado)) {
             if (aux2.getVertice().getElem().equals(v2.getElem())) {
                 // verificamos si el que se tiene que eliminar es el primer adyacente
@@ -204,7 +206,7 @@ public class Grafo {
                 }
                 eliminado = true;
             } else {
-                //avanzamos si no es la habitacion que queremos
+                // avanzamos si no es la habitacion que queremos
                 anterior = aux2;
                 aux2 = aux2.getSigAdyacente();
             }
@@ -219,16 +221,17 @@ public class Grafo {
         boolean exito = false;
         if (v1 != null && v2 != null) {
             boolean verificarArco = verificarArcoAux(v1, v2);
-            //busco si existe un arco entre las habitaciones
+            // busco si existe un arco entre las habitaciones
             if (!verificarArco) {
-                //si no existe el arco, lo creo
+                // si no existe el arco, lo creo
                 NodoAdy nuevoAdy1 = new NodoAdy(v2, v1.getPrimerAdy(), etiqueta);
                 NodoAdy nuevoAdy2 = new NodoAdy(v1, v2.getPrimerAdy(), etiqueta);
                 v1.setPrimerAdy(nuevoAdy1);
                 v2.setPrimerAdy(nuevoAdy2);
-                exito=true;
+                exito = true;
             }
-            //si el arco ya existe, no creo uno nuevo y retorno falso, ya que no tiene sentido crear arcos paralelos
+            // si el arco ya existe, no creo uno nuevo y retorno falso, ya que no tiene
+            // sentido crear arcos paralelos
         }
         return exito;
     }
@@ -237,7 +240,7 @@ public class Grafo {
         NodoAdy auxAdy = vert1.getPrimerAdy();
         boolean encontrado = false;
         while (auxAdy != null && !encontrado) {
-            //busco si existe un arco entre las habitaciones
+            // busco si existe un arco entre las habitaciones
             if (auxAdy.getVertice().getElem().equals(vert2.getElem())) {
                 encontrado = true;
             } else {
@@ -246,37 +249,47 @@ public class Grafo {
         }
         return encontrado;
     }
+
+    public NodoAdy getAdyacentes(Object codigoHabitacion) {
+        NodoVert vertice = buscarVertice(codigoHabitacion);
+        NodoAdy resultado = null;
+        if (vertice != null) {
+            resultado = vertice.getPrimerAdy();
+        }
+        return resultado;
+    }
     /*
-    //metodo si se puede llegar a modificar el puntaje entre algunas habitaciones
-    public boolean modificarPuntajeArco(Object vert1, Object vert2, int nuevoPuntaje) {
-        NodoVert v1 = buscarVertice(vert1);
-        NodoVert v2 = buscarVertice(vert2);
-        boolean exito = false;
-        if (v1 != null && v2 != null) {
-            NodoAdy ady1 = buscarAdyacente(v1, v2);
-            NodoAdy ady2 = buscarAdyacente(v2, v1);
-            if (ady1 != null && ady2 != null) {
-                ady1.setEtiqueta(nuevoPuntaje);
-                ady2.setEtiqueta(nuevoPuntaje);
-                exito = true;
-            }
-        }
-        return exito;
-    }
-    private NodoAdy buscarAdyacente(NodoVert v1, NodoVert v2){
-        NodoAdy ady=null;
-        NodoAdy auxAdy=v1.getPrimerAdy();
-        boolean encontrado = false;
-        while (auxAdy != null && !encontrado) {
-            if (auxAdy.getVertice().getElem().equals(v2.getElem())) {
-                ady=auxAdy;
-                encontrado = true;
-            } else {
-                auxAdy = auxAdy.getSigAdyacente();
-            }
-        }
-        return ady;
-    }
-    */
+     * //metodo si se puede llegar a modificar el puntaje entre algunas habitaciones
+     * public boolean modificarPuntajeArco(Object vert1, Object vert2, int
+     * nuevoPuntaje) {
+     * NodoVert v1 = buscarVertice(vert1);
+     * NodoVert v2 = buscarVertice(vert2);
+     * boolean exito = false;
+     * if (v1 != null && v2 != null) {
+     * NodoAdy ady1 = buscarAdyacente(v1, v2);
+     * NodoAdy ady2 = buscarAdyacente(v2, v1);
+     * if (ady1 != null && ady2 != null) {
+     * ady1.setEtiqueta(nuevoPuntaje);
+     * ady2.setEtiqueta(nuevoPuntaje);
+     * exito = true;
+     * }
+     * }
+     * return exito;
+     * }
+     * private NodoAdy buscarAdyacente(NodoVert v1, NodoVert v2){
+     * NodoAdy ady=null;
+     * NodoAdy auxAdy=v1.getPrimerAdy();
+     * boolean encontrado = false;
+     * while (auxAdy != null && !encontrado) {
+     * if (auxAdy.getVertice().getElem().equals(v2.getElem())) {
+     * ady=auxAdy;
+     * encontrado = true;
+     * } else {
+     * auxAdy = auxAdy.getSigAdyacente();
+     * }
+     * }
+     * return ady;
+     * }
+     */
 
 }
