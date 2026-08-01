@@ -51,7 +51,7 @@ public class ABM {
                     break;
 
                 case 4:
-                    // Consulta habitaciones
+                    menuConsultasHabitaciones(sc, avlHabitaciones, grafo);
                     break;
 
                 case 5:
