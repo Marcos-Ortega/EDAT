@@ -1,4 +1,5 @@
-package GrafoHabitaciones;
+package estructurasAuxiliares.Grafo;
+
 public class NodoVert {
     private Object elem;
     private NodoVert sigVert;

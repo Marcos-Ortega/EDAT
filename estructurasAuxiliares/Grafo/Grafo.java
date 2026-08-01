@@ -1,6 +1,6 @@
-package GrafoHabitaciones;
+package estructurasAuxiliares.Grafo;
 
-import GrafoHabitaciones.estructurasAuxiliares.Lista;
+import estructurasAuxiliares.Lineales.Lista;
 
 public class Grafo {
     private NodoVert inicio;

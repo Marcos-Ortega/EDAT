@@ -2,10 +2,14 @@ package Sistema;
 
 import java.util.Scanner;
 
-import GrafoHabitaciones.estructurasAuxiliares.*;
-import GrafoHabitaciones.Grafo;
-import GrafoHabitaciones.NodoAdy;
 import clases.*;
+import estructurasAuxiliares.*;
+import estructurasAuxiliares.Conjuntista.ArbolAVL;
+import estructurasAuxiliares.Conjuntista.TablaDesafioResueltos;
+import estructurasAuxiliares.Conjuntista.TablaHashEquipos;
+import estructurasAuxiliares.Grafo.Grafo;
+import estructurasAuxiliares.Grafo.NodoAdy;
+import estructurasAuxiliares.Lineales.Lista;
 
 public class ABM {
 

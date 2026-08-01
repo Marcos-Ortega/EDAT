@@ -1,11 +1,11 @@
 package Sistema;
-import GrafoHabitaciones.Grafo;
-import GrafoHabitaciones.estructurasAuxiliares.ArbolAVL;
 import clases.Desafio;
 import clases.Equipo;
 import clases.Habitacion;
-import clases.TablaHashEquipos;
-import clases.TablaDesafioResueltos;
+import estructurasAuxiliares.Conjuntista.ArbolAVL;
+import estructurasAuxiliares.Conjuntista.TablaDesafioResueltos;
+import estructurasAuxiliares.Conjuntista.TablaHashEquipos;
+import estructurasAuxiliares.Grafo.Grafo;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

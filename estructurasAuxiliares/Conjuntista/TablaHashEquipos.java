@@ -1,4 +1,6 @@
-package clases;
+package estructurasAuxiliares.Conjuntista;
+
+import clases.Equipo;
 
 public class TablaHashEquipos {
     private static final int TAMANIO_INICIAL = 40;

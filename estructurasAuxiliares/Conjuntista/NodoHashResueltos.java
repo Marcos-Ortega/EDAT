@@ -1,6 +1,6 @@
-package clases;
+package estructurasAuxiliares.Conjuntista;
 
-import GrafoHabitaciones.estructurasAuxiliares.Lista;
+import estructurasAuxiliares.Lineales.Lista;
 
 public class NodoHashResueltos {
     private String nombreEquipo;

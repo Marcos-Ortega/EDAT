@@ -1,4 +1,5 @@
-package GrafoHabitaciones;
+package estructurasAuxiliares.Grafo;
+
 public class NodoAdy {
     private NodoVert vertice;
     private NodoAdy sigAdyacente;

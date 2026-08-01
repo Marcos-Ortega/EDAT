@@ -1,6 +1,7 @@
 package clases;
 
-import GrafoHabitaciones.estructurasAuxiliares.*;
+import estructurasAuxiliares.*;
+import estructurasAuxiliares.Conjuntista.ArbolAVL;
 
 public class Habitacion implements Comparable<Habitacion> {
     private int codigo;

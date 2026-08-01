@@ -1,4 +1,4 @@
-package GrafoHabitaciones.estructurasAuxiliares;
+package estructurasAuxiliares.Lineales;
 
 public class Nodo {
     private Object elem;

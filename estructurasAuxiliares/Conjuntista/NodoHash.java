@@ -1,5 +1,6 @@
-package clases;
+package estructurasAuxiliares.Conjuntista;
 
+import clases.Equipo;
 
 public class NodoHash {
     private Equipo equipo;

@@ -1,4 +1,4 @@
-package GrafoHabitaciones.estructurasAuxiliares;
+package estructurasAuxiliares.Conjuntista;
 public class NodoAVL {
     private Comparable elem;
     private int altura;

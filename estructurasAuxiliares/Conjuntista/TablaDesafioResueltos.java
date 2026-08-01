@@ -1,6 +1,7 @@
-package clases;
+package estructurasAuxiliares.Conjuntista;
 
-import GrafoHabitaciones.estructurasAuxiliares.Lista;
+import clases.Desafio;
+import estructurasAuxiliares.Lineales.Lista;
 
 public class TablaDesafioResueltos {
     private static final int TAMANIO_INICIAL = 40;

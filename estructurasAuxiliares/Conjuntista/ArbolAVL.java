@@ -1,4 +1,6 @@
-package GrafoHabitaciones.estructurasAuxiliares;
+package estructurasAuxiliares.Conjuntista;
+
+import estructurasAuxiliares.Lineales.Lista;
 
 public class ArbolAVL {
     private NodoAVL raiz;
