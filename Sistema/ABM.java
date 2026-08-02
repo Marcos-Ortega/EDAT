@@ -39,7 +39,7 @@ public class ABM {
 
             switch (opc) {
                 case 1:
-                    menuHabitaciones(sc, avlHabitaciones, grafo);
+                    menuHabitaciones(sc, avlHabitaciones, grafo, tablaEquipos);
                     break;
 
                 case 2:
@@ -84,7 +84,7 @@ public class ABM {
     }
 
     // Menu Habitaciones
-    public static void menuHabitaciones(Scanner sc, ArbolAVL avl, Grafo grafo) {
+    public static void menuHabitaciones(Scanner sc, ArbolAVL avl, Grafo grafo, TablaHashEquipos eq) {
 
         int op;
         do {
@@ -105,7 +105,7 @@ public class ABM {
                     break;
 
                 case 2:
-                    bajaHabitacion(sc, avl, grafo);
+                    bajaHabitacion(sc, avl, grafo, eq);
                     break;
 
                 case 3:
@@ -163,7 +163,7 @@ public class ABM {
         }
     }
 
-    public static void bajaHabitacion(Scanner sc, ArbolAVL avl, Grafo grafo) {
+    public static void bajaHabitacion(Scanner sc, ArbolAVL avl, Grafo grafo, TablaHashEquipos eq) {
 
         int codigoBuscar;
 
@@ -173,7 +173,11 @@ public class ABM {
         Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigoBuscar));
 
         if (habActual != null) {
-            if (habActual.tieneSalida()) {// preguntar con el grupo que pasa ocn una habitacion de entrada
+            if (eq.existeEquipoEnHabitacion(codigoBuscar)) {
+                System.out.println("No se puede eliminar: hay equipos ubicados en esta habitacion.");
+                log.registrar("Error al eliminar habitacion " + codigoBuscar + ", hay equipos dentro");
+            }
+            else if (habActual.tieneSalida()) {// preguntar con el grupo que pasa ocn una habitacion de entrada
                 System.out.println("No se puede eliminar esta habitacion.");
                 log.registrar("Error al eliminar habitacion " + codigoBuscar);
             } else {
