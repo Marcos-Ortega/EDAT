@@ -295,7 +295,7 @@ public class Grafo {
                 // va a entrar si todavia hay el suficiente puntaje que requiere el vertice
                 if (visitados.localizar(auxAdy.getVertice().getElem()) < 0
                         && puntajeDisponible >= auxAdy.getEtiqueta()) {
-                    //llamamos recursivamente restando el puntaje que saco ese vertice
+                    // llamamos recursivamente restando el puntaje que saco ese vertice
                     exito = sePuedeLlegarAux(auxAdy.getVertice().getElem(), destino,
                             puntajeDisponible - auxAdy.getEtiqueta(), visitados);
                 }
@@ -311,7 +311,7 @@ public class Grafo {
         if (existeVertice(origen) && existeVertice(destino)) {
             Lista visitados = new Lista();
             Lista caminoActual = new Lista();
-            //guarda el valor mas alto que java puede asignar 
+            // guarda el valor mas alto que java puede asignar
             mejorPuntaje[0] = Integer.MAX_VALUE;
 
             minimoPuntajeAux(origen, destino, 0, visitados, caminoActual, mejorPuntaje, mejorCamino);
@@ -332,7 +332,7 @@ public class Grafo {
         if (actual.equals(destino)) {
             if (acumulado < mejorPuntaje[0]) {
                 mejorPuntaje[0] = acumulado;
-                //clona el camino actual para asignarlo como el mejor
+                // clona el camino actual para asignarlo como el mejor
                 mejorCamino[0] = caminoActual.clone();
             }
         } else {
@@ -384,6 +384,7 @@ public class Grafo {
         visitados.eliminar(visitados.localizar(actual));
         caminoActual.eliminar(caminoActual.localizar(actual));
     }
+
     /*
      * //metodo si se puede llegar a modificar el puntaje entre algunas habitaciones
      * public boolean modificarPuntajeArco(Object vert1, Object vert2, int
@@ -417,5 +418,35 @@ public class Grafo {
      * return ady;
      * }
      */
+    @Override
+    public String toString() {
+        String res;
+        if (this.inicio == null) {
+            res = "grafo vacio";
+        } else {
+            res = toStringAux(this.inicio);
+        }
+        return res;
+    }
 
+    private String toStringAux(NodoVert vert) {
+        String s = "";
+        if (vert != null) {
+            s = s + "Vertice: " + vert.getElem() + "\n";
+
+            NodoAdy auxAdy = vert.getPrimerAdy();
+            if (auxAdy == null) {
+                s = s + "   Sin adyacentes\n";
+            } else {
+                while (auxAdy != null) {
+                    s = s + "   ADY: " + auxAdy.getVertice().getElem() +
+                            " (Puntaje: " + auxAdy.getEtiqueta() + ")\n";
+                    auxAdy = auxAdy.getSigAdyacente();
+                }
+            }
+
+            s = s + toStringAux(vert.getSigVert());
+        }
+        return s;
+    }
 }

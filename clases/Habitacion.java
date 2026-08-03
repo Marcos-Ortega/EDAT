@@ -1,6 +1,5 @@
 package clases;
 
-import estructurasAuxiliares.*;
 import estructurasAuxiliares.Conjuntista.ArbolAVL;
 
 public class Habitacion implements Comparable<Habitacion> {

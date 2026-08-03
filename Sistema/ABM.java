@@ -3,7 +3,6 @@ package Sistema;
 import java.util.Scanner;
 
 import clases.*;
-import estructurasAuxiliares.*;
 import estructurasAuxiliares.Conjuntista.ArbolAVL;
 import estructurasAuxiliares.Conjuntista.TablaDesafioResueltos;
 import estructurasAuxiliares.Conjuntista.TablaHashEquipos;
@@ -1029,7 +1028,7 @@ public class ABM {
                 int codHabActual = habActual.getCodigo();
 
                 // verificamos la conexion en el grafo pasando los codigos de las habitaciones
-                if (!grafoMapa.existeCamino(codHabActual, codHabitacionDestino)) {
+                if (!grafoMapa.existeArco(codHabActual, codHabitacionDestino)) {
                     System.out.println(" La habitación " + codHabitacionDestino +
                             " no es adyacente a la ubicación actual (" + codHabActual + ").");
                     log.registrar("Consulta posiblesDesafios: La habitación " + codHabitacionDestino +
@@ -1143,7 +1142,7 @@ public class ABM {
                 int codDestino = habDestino.getCodigo();
 
                 // verificamos si la habitacion destino es contigua
-                boolean esContigua = grafoMapa.existeCamino(codOrigen, codDestino);
+                boolean esContigua = grafoMapa.existeArco(codOrigen, codDestino);
 
                 // verificamos si el puntaje acumulado en la habitación actual alcanza
                 boolean puntajeSuficiente = (eq.getPuntajeActualHab() >= puntajeRequerido);
