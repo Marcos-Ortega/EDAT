@@ -258,6 +258,132 @@ public class Grafo {
         }
         return resultado;
     }
+
+    public boolean existeArco(Object vert1, Object vert2) {
+        boolean existe = false;
+        NodoVert v1 = buscarVertice(vert1);
+        NodoVert v2 = buscarVertice(vert2);
+        if (v1 != null && v2 != null) {
+            // reutilizo mi metodo privado que verifica la existencia de arcos
+            existe = verificarArcoAux(v1, v2);
+        }
+        return existe;
+    }
+
+    // metodos para el menu
+
+    public boolean sePuedeLlegar(Object origen, Object destino, int puntajeDisponible) {
+        boolean exito = false;
+        // va a entrar solo si existe ese codigo en el grafo
+        if (existeVertice(origen) && existeVertice(destino)) {
+            Lista visitados = new Lista();
+            exito = sePuedeLlegarAux(origen, destino, puntajeDisponible, visitados);
+        }
+        return exito;
+    }
+
+    private boolean sePuedeLlegarAux(Object actual, Object destino, int puntajeDisponible, Lista visitados) {
+        boolean exito = false;
+        // ya estamos parados en el destino
+        if (actual.equals(destino)) {
+            exito = true;
+        } else {
+            visitados.insertar(actual, visitados.longitud() + 1);
+            NodoAdy auxAdy = getAdyacentes(actual);
+
+            while (auxAdy != null && !exito) {
+                // va a entrar si todavia hay el suficiente puntaje que requiere el vertice
+                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0
+                        && puntajeDisponible >= auxAdy.getEtiqueta()) {
+                    //llamamos recursivamente restando el puntaje que saco ese vertice
+                    exito = sePuedeLlegarAux(auxAdy.getVertice().getElem(), destino,
+                            puntajeDisponible - auxAdy.getEtiqueta(), visitados);
+                }
+                auxAdy = auxAdy.getSigAdyacente();
+            }
+        }
+        return exito;
+    }
+
+    public boolean minimoPuntaje(Object origen, Object destino, int[] mejorPuntaje, Lista[] mejorCamino) {
+        boolean exito = false;
+        // va a entrar solo si existe ese codigo en el grafo
+        if (existeVertice(origen) && existeVertice(destino)) {
+            Lista visitados = new Lista();
+            Lista caminoActual = new Lista();
+            //guarda el valor mas alto que java puede asignar 
+            mejorPuntaje[0] = Integer.MAX_VALUE;
+
+            minimoPuntajeAux(origen, destino, 0, visitados, caminoActual, mejorPuntaje, mejorCamino);
+
+            if (mejorCamino[0] != null) {
+                exito = true;
+            }
+        }
+        return exito;
+    }
+
+    private void minimoPuntajeAux(Object actual, Object destino, int acumulado, Lista visitados,
+            Lista caminoActual, int[] mejorPuntaje, Lista[] mejorCamino) {
+
+        visitados.insertar(actual, visitados.longitud() + 1);
+        caminoActual.insertar(actual, caminoActual.longitud() + 1);
+
+        if (actual.equals(destino)) {
+            if (acumulado < mejorPuntaje[0]) {
+                mejorPuntaje[0] = acumulado;
+                //clona el camino actual para asignarlo como el mejor
+                mejorCamino[0] = caminoActual.clone();
+            }
+        } else {
+            NodoAdy auxAdy = getAdyacentes(actual);
+            while (auxAdy != null) {
+                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0) {
+                    minimoPuntajeAux(auxAdy.getVertice().getElem(), destino,
+                            acumulado + auxAdy.getEtiqueta(), visitados, caminoActual,
+                            mejorPuntaje, mejorCamino);
+                }
+                auxAdy = auxAdy.getSigAdyacente();
+            }
+        }
+
+        visitados.eliminar(visitados.localizar(actual));
+        caminoActual.eliminar(caminoActual.localizar(actual));
+    }
+
+    public Lista sinPasarPor(Object origen, Object destino, Object evitar, int limitePuntos) {
+        Lista caminos = new Lista();
+        if (existeVertice(origen) && existeVertice(destino) && existeVertice(evitar) && !destino.equals(evitar)) {
+            Lista visitados = new Lista();
+            Lista caminoActual = new Lista();
+            visitados.insertar(evitar, visitados.longitud() + 1);
+            sinPasarPorAux(origen, destino, 0, limitePuntos, visitados, caminoActual, caminos);
+        }
+        return caminos;
+    }
+
+    private void sinPasarPorAux(Object actual, Object destino, int acumulado, int limitePuntos,
+            Lista visitados, Lista caminoActual, Lista caminos) {
+
+        visitados.insertar(actual, visitados.longitud() + 1);
+        caminoActual.insertar(actual, caminoActual.longitud() + 1);
+
+        if (actual.equals(destino)) {
+            caminos.insertar(caminoActual.clone(), caminos.longitud() + 1);
+        } else {
+            NodoAdy auxAdy = getAdyacentes(actual);
+            while (auxAdy != null) {
+                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0
+                        && acumulado + auxAdy.getEtiqueta() <= limitePuntos) {
+                    sinPasarPorAux(auxAdy.getVertice().getElem(), destino,
+                            acumulado + auxAdy.getEtiqueta(), limitePuntos, visitados, caminoActual, caminos);
+                }
+                auxAdy = auxAdy.getSigAdyacente();
+            }
+        }
+        visitados.eliminar(visitados.localizar(actual));
+        caminoActual.eliminar(caminoActual.localizar(actual));
+    }
     /*
      * //metodo si se puede llegar a modificar el puntaje entre algunas habitaciones
      * public boolean modificarPuntajeArco(Object vert1, Object vert2, int

@@ -176,8 +176,7 @@ public class ABM {
             if (eq.existeEquipoEnHabitacion(codigoBuscar)) {
                 System.out.println("No se puede eliminar: hay equipos ubicados en esta habitacion.");
                 log.registrar("Error al eliminar habitacion " + codigoBuscar + ", hay equipos dentro");
-            }
-            else if (habActual.tieneSalida()) {// preguntar con el grupo que pasa ocn una habitacion de entrada
+            } else if (habActual.tieneSalida()) {// preguntar con el grupo que pasa ocn una habitacion de entrada
                 System.out.println("No se puede eliminar esta habitacion.");
                 log.registrar("Error al eliminar habitacion " + codigoBuscar);
             } else {
@@ -382,8 +381,7 @@ public class ABM {
         Habitacion hab2 = (Habitacion) avl.recuperar(new Habitacion(cod2));
 
         if (hab1 != null && hab2 != null) {
-            Lista visitados = new Lista();
-            boolean existe = puedeLlegarAux(cod1, cod2, k, grafo, visitados);
+            boolean existe = grafo.sePuedeLlegar(cod1, cod2, k);
             if (existe) {
                 System.out.println("es posible llegar de la habitacion de origen a la habitacion de destino.");
                 log.registrar("es posible llegar de la habitacion: " + cod1 + " a la habitacion: " + cod2);
@@ -395,24 +393,6 @@ public class ABM {
             System.out.println("Una de las dos habitaciones no existe.");
             log.registrar("No se pudo evaluar esPosibleLlegar, alguna habitacion no existe");
         }
-    }
-
-    private static boolean puedeLlegarAux(int actual, int destino, int puntajeDis, Grafo grafo, Lista visitados) {
-        boolean exito = false;
-        if (actual == destino) {
-            exito = true;
-        } else {
-            visitados.insertar(actual, visitados.longitud() + 1);
-            NodoAdy auxAdy = grafo.getAdyacentes(actual);
-            while (auxAdy != null && !exito) {
-                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0 && puntajeDis >= auxAdy.getEtiqueta()) {
-                    exito = puedeLlegarAux((Integer) auxAdy.getVertice().getElem(), destino,
-                            puntajeDis - auxAdy.getEtiqueta(), grafo, visitados);
-                }
-                auxAdy = auxAdy.getSigAdyacente();
-            }
-        }
-        return exito;
     }
 
     // case 4
@@ -430,14 +410,12 @@ public class ABM {
 
         if (hab1 != null && hab2 != null) {
 
-            Lista visitados = new Lista();
-            Lista caminoActual = new Lista();
-            int[] mejorPuntaje = { Integer.MAX_VALUE };
-            Lista[] mejorCamino = { null };
+            int[] mejorPuntaje = new int[1];
+            Lista[] mejorCamino = new Lista[1];
 
-            buscarMinimo(cod1, cod2, 0, grafo, visitados, caminoActual, mejorPuntaje, mejorCamino);
+            boolean exito = grafo.minimoPuntaje(cod1, cod2, mejorPuntaje, mejorCamino);
 
-            if (mejorCamino[0] != null) {
+            if (exito) {
                 System.out.println("El puntaje minimo es: " + mejorPuntaje[0]);
                 System.out.println("El camino es: " + mejorCamino[0]);
                 log.registrar("Se calculo el puntaje minimo entre " + cod1 + " y " + cod2);
@@ -450,33 +428,6 @@ public class ABM {
             System.out.println("Una de las dos habitaciones no existe.");
             log.registrar("No se pudo evaluar minimoPuntaje, alguna habitacion no existe");
         }
-    }
-
-    private static void buscarMinimo(int actual, int destino, int acumulado, Grafo grafo, Lista visitados,
-            Lista caminoActual, int[] mejorPuntaje, Lista[] mejorCamino) {
-
-        visitados.insertar(actual, visitados.longitud() + 1);
-        caminoActual.insertar(actual, caminoActual.longitud() + 1);
-
-        if (actual == destino) {
-            if (acumulado < mejorPuntaje[0]) {
-                mejorPuntaje[0] = acumulado;
-                mejorCamino[0] = caminoActual.clone();
-            }
-        } else {
-            NodoAdy auxAdy = grafo.getAdyacentes(actual);
-            while (auxAdy != null) {
-                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0) {
-                    buscarMinimo((Integer) auxAdy.getVertice().getElem(), destino,
-                            acumulado + auxAdy.getEtiqueta(), grafo, visitados, caminoActual,
-                            mejorPuntaje, mejorCamino);
-                }
-                auxAdy = auxAdy.getSigAdyacente();
-            }
-        }
-
-        visitados.eliminar(visitados.localizar(actual));
-        caminoActual.eliminar(caminoActual.localizar(actual));
     }
 
     // case 5
@@ -496,12 +447,9 @@ public class ABM {
         Habitacion hab3 = (Habitacion) avl.recuperar(new Habitacion(cod3));
 
         if (hab1 != null && hab2 != null && hab3 != null && cod2 != cod3) {
-            Lista visitados = new Lista();
-            Lista caminoActual = new Lista();
 
-            visitados.insertar(cod3, visitados.longitud() + 1);
-            Lista caminos = new Lista();
-            buscarCaminos(cod1, cod2, 0, p, grafo, visitados, caminoActual, caminos);
+            Lista caminos = grafo.sinPasarPor(cod1, cod2, cod3, p);
+
             if (caminos.esVacia()) {
                 System.out.println("No hay caminos posibles con esas condiciones.");
                 log.registrar("No hay caminos de " + cod1 + " a " + cod2 + " sin pasar por " + cod3);
@@ -516,30 +464,6 @@ public class ABM {
             System.out.println("error, alguna de las habitaciones no existe.");
             log.registrar("alguna habitacion, no existe");
         }
-    }
-
-    private static void buscarCaminos(int actual, int destino, int acumulado, int p, Grafo grafo, Lista visitados,
-            Lista caminoActual, Lista caminos) {
-        visitados.insertar(actual, visitados.longitud() + 1);
-        caminoActual.insertar(actual, caminoActual.longitud() + 1);
-
-        if (actual == destino) {
-            caminos.insertar(caminoActual.clone(), caminos.longitud() + 1);
-        } else {
-            NodoAdy auxAdy = grafo.getAdyacentes(actual);
-            while (auxAdy != null) {
-                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0
-                        && acumulado + auxAdy.getEtiqueta() <= p) {
-                    buscarCaminos((Integer) auxAdy.getVertice().getElem(), destino,
-                            acumulado + auxAdy.getEtiqueta(), p, grafo, visitados, caminoActual, caminos);
-                }
-                auxAdy = auxAdy.getSigAdyacente();
-            }
-        }
-
-        visitados.eliminar(visitados.localizar(actual));
-        caminoActual.eliminar(caminoActual.localizar(actual));
-
     }
 
     // MENU DESAFIOS
