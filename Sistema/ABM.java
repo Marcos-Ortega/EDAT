@@ -58,7 +58,7 @@ public class ABM {
                     break;
 
                 case 6:
-                    // Consulta equipos
+                    menuConsultasEquipos(sc, tablaEquipos, grafo, avlHabitaciones);
                     break;
 
                 case 7:
@@ -993,6 +993,85 @@ public class ABM {
             System.out.println("El equipo no existe.");
             log.registrar("El equipo " + nombreBuscar + " a modificar no existe.");
         }
+    }
+    // MENU CONSULTAS EQUIPOS
+
+    public static void menuConsultasEquipos(Scanner sc, TablaHashEquipos tablaEquipos, Grafo grafoMapa,
+            ArbolAVL avlHabitaciones) {
+
+        int op;
+
+        do {
+
+            System.out.println("\n----- CONSULTAS EQUIPOS -----");
+            System.out.println("1. Mostrar Info Equipo");
+            System.out.println("2. Ver Posibles Desafios");
+            System.out.println("3. Jugar Desafio");
+            System.out.println("4. Cambiar de Habitacion");
+            System.out.println("5. Verificar si Puede Salir");
+            System.out.println("0. Volver");
+            System.out.print("Opcion: ");
+
+            op = sc.nextInt();
+            sc.nextLine();
+
+            switch (op) {
+
+                case 1:
+                    System.out.println("Ingrese el nombre del equipo: ");
+                    String nombreEq = sc.nextLine();
+                    mostrarInfoEquipo(tablaEquipos, nombreEq);
+                    break;
+
+                case 2:
+                    System.out.println("Ingrese el nombre del equipo: ");
+                    String eqPosibles = sc.nextLine();
+                    System.out.println("Ingrese el codigo de la habitacion destino: ");
+                    int codDestinoPosibles = sc.nextInt();
+                    posiblesDesafios(tablaEquipos, grafoMapa, eqPosibles, codDestinoPosibles);
+                    break;
+
+                case 3:
+                    System.out.println("Ingrese el nombre del equipo: ");
+                    String eqJugar = sc.nextLine();
+                    System.out.println("Ingrese el puntaje del desafio a jugar: ");
+                    int puntajeDes = sc.nextInt();
+                    jugarDesafio(tablaEquipos, eqJugar, puntajeDes);
+                    break;
+
+                case 4:
+                    System.out.println("Ingrese el nombre del equipo: ");
+                    String eqCambiar = sc.nextLine();
+                    System.out.println("Ingrese el codigo de la habitacion destino: ");
+                    int codHabDestino = sc.nextInt();
+
+                    // recuperamos el objeto habitacion desde el avl para pasarlo al metodo
+                    Habitacion habDestino = (Habitacion) avlHabitaciones.recuperar(new Habitacion(codHabDestino));
+
+                    System.out.println("Ingrese el puntaje requerido para la puerta: ");
+                    int puntajeReq = sc.nextInt();
+
+                    cambiarDeHabitacion(tablaEquipos, grafoMapa, eqCambiar, habDestino, puntajeReq);
+                    break;
+
+                case 5:
+                    System.out.println("Ingrese el nombre del equipo: ");
+                    String eqSalir = sc.nextLine();
+                    System.out.println("Ingrese el puntaje total necesario para ganar: ");
+                    int puntajeGanar = sc.nextInt();
+                    puedeSalir(tablaEquipos, eqSalir, puntajeGanar);
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    System.out.println("Opcion incorrecta.");
+                    log.registrar("Opcion incorrecta en menu consultas equipos");
+            }
+
+        } while (op != 0);
+
     }
 
     public static void mostrarInfoEquipo(TablaHashEquipos tablaEquipos, String nombreEquipo) {
