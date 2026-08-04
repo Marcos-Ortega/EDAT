@@ -23,6 +23,7 @@ public class ABM {
 
         int opc;
         CargarArchivo.cargarArchivo(avlHabitaciones, grafo, tablaEquipos, desResueltos);
+        log.registrar("Se cargo el sistema.");
         do {
             System.out.println("----- MENU -----\n");
             System.out.println("1. ABM Habitaciones");
@@ -72,6 +73,7 @@ public class ABM {
 
                 case 0:
                     System.out.println("Saliendo..");
+                    log.registrar("Se cerro el sistema.");
                     break;
 
                 default:
