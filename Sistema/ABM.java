@@ -24,6 +24,7 @@ public class ABM {
         int opc;
         CargarArchivo.cargarArchivo(avlHabitaciones, grafo, tablaEquipos, desResueltos);
         do {
+            System.out.println("----- MENU -----\n");
             System.out.println("1. ABM Habitaciones");
             System.out.println("2. ABM Desafios");
             System.out.println("3. ABM Equipos");
@@ -66,6 +67,7 @@ public class ABM {
                     System.out.println(grafo);
                     System.out.println(tablaEquipos);
                     System.out.println(desResueltos);
+                    log.registrar("Se mostro el sistema completo.");
                     break;
 
                 case 0:

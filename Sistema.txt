@@ -1,15 +1,15 @@
 H;1;Recibidor;0;25;true
 H;2;Sala de Estar;0;35;false
 H;3;Comedor;0;30;false
-H;4;Cocina;0;20;true
-H;5;Pasillo;0;15;false
-H;6;Baño;0;10;false
 H;7;Biblioteca;1;25;false
 H;8;Escritorio;1;18;false
 H;9;Dormitorio principal;1;30;false
 H;10;Dormitorio de huéspedes;1;22;false
 H;11;Escalera;0;12;false
 H;12;Sótano;-1;40;false
+H;4;Cocina;0;20;true
+H;5;Pasillo;0;15;false
+H;6;Baño;0;10;false
 H;13;Bodega;-1;25;false
 H;14;Altillo;2;20;false
 H;15;Invernadero;0;28;true
