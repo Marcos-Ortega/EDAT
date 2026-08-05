@@ -69,11 +69,15 @@ public class ABM {
                     System.out.println(tablaEquipos);
                     System.out.println(desResueltos);
                     log.registrar("Se mostro el sistema completo.");
+                    CargarArchivo.cargarArchivo(avlHabitaciones, grafo, tablaEquipos, desResueltos);
+                    log.registrar("=== ESTADO DEL SISTEMA AL FINALIZAR LA CARGA INICIAL ===\n"
+                            + avlHabitaciones + "\n" + grafo + "\n" + tablaEquipos + "\n" + desResueltos);
                     break;
 
                 case 0:
                     System.out.println("Saliendo..");
-                    log.registrar("Se cerro el sistema.");
+                    log.registrar("=== ESTADO DEL SISTEMA AL FINALIZAR LA EJECUCION ===\n"
+                            + avlHabitaciones + "\n" + grafo + "\n" + tablaEquipos + "\n" + desResueltos);
                     break;
 
                 default:
