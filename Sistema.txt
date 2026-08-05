@@ -1,23 +1,23 @@
-H;1;Recibidor;0;25;true
-H;2;Sala de Estar;0;35;false
-H;3;Comedor;0;30;false
+H;20;Quincho;0;45;true
+H;6;Baño;0;10;false
+H;15;Invernadero;0;28;true
+H;5;Pasillo;0;15;false
+H;10;Dormitorio de huéspedes;1;22;false
+H;14;Altillo;2;20;false
+H;16;Cochera;0;35;true
+H;19;Sala de Música;1;20;false
 H;7;Biblioteca;1;25;false
+H;13;Bodega;-1;25;false
+H;18;Sala de Juegos;1;30;false
+H;11;Escalera;0;12;false
+H;2;Sala de Estar;0;35;false
+H;12;Sótano;-1;40;false
+H;3;Comedor;0;30;false
+H;17;Gimnasio;1;25;false
 H;8;Escritorio;1;18;false
 H;9;Dormitorio principal;1;30;false
-H;10;Dormitorio de huéspedes;1;22;false
-H;11;Escalera;0;12;false
-H;12;Sótano;-1;40;false
+H;1;Recibidor;0;25;true
 H;4;Cocina;0;20;true
-H;5;Pasillo;0;15;false
-H;6;Baño;0;10;false
-H;13;Bodega;-1;25;false
-H;14;Altillo;2;20;false
-H;15;Invernadero;0;28;true
-H;16;Cochera;0;35;true
-H;17;Gimnasio;1;25;false
-H;18;Sala de Juegos;1;30;false
-H;19;Sala de Música;1;20;false
-H;20;Quincho;0;45;true
 P:1;2;10
 P:1;11;5
 P:1;16;15
@@ -63,13 +63,13 @@ D;50;16;Mecanismo Herramientas;Destreza
 D;60;17;Fuerza y Equilibrio;Destreza
 D;30;18;Triviador Secreto;Ingenio
 D;95;19;Partitura Incompleta;Letras
-E;Los Valientes;400;130;4;0;(1:30,50)(2:20,30)
-E;Los Locos Adams;400;50;2;10;(1:30,20)
-E;Misterio Inc;450;210;7;0;(1:50)(2:80)(3:40)(5:35)(6:25)
-E;Los Imparables;350;90;3;0;(1:30,50)(2:10)
-E;Cazadores de Pistas;500;310;12;90;(1:50)(2:80)(7:75)(8:45)(9:55)
-E;Escapistas Pro;400;185;10;0;(1:50)(7:75)(8:60)
-E;Los Búhos;300;60;5;0;(1:30)(2:30)
-E;Masterminds;500;270;14;85;(1:50)(11:45)(12:90)(13:70)
-E;Navegantes;350;105;8;0;(1:50)(2:20)(7:35)
-E;Estrategas;400;170;9;55;(1:30,20)(2:65)(3:0)
+E;Los Valientes;400;220;4;0;(1:50,30)(2:20,80)(3:40)
+E;Los Locos Adams;400;30;2;0;(1:30)
+E;Misterio Inc;450;230;7;0;(1:50)(2:80)(3:40)(5:35)(6:25)
+E;Los Imparables;350;100;3;0;(1:30,50)(2:20)
+E;Cazadores de Pistas;500;395;12;90;(1:50)(2:80)(7:75)(8:45)(9:55)(12:90)
+E;Escapistas Pro;400;170;10;0;(1:50)(7:75)(8:45)
+E;Los Búhos;300;50;5;0;(1:30)(2:20)
+E;Masterminds;500;295;14;85;(1:50)(12:90)(13:70)(14:85)
+E;Navegantes;350;145;8;0;(1:50)(2:20)(7:75)
+E;Estrategas;400;195;9;55;(1:30,50)(2:20)(3:40)(9:55)
