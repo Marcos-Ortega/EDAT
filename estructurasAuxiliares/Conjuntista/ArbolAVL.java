@@ -1,5 +1,6 @@
 package estructurasAuxiliares.Conjuntista;
 
+import clases.Habitacion;
 import estructurasAuxiliares.Lineales.Lista;
 
 public class ArbolAVL {
@@ -58,13 +59,13 @@ public class ArbolAVL {
                 // caso hoja
                 if (n.getIzquierdo() == null && n.getDerecho() == null) {
                     n = null;
-                // caso un solo hijo derecho
+                    // caso un solo hijo derecho
                 } else if (n.getIzquierdo() == null) {
                     n = n.getDerecho();
-                // caso un solo hijo izquierdo
+                    // caso un solo hijo izquierdo
                 } else if (n.getDerecho() == null) {
                     n = n.getIzquierdo();
-                // caso dos hijos
+                    // caso dos hijos
                 } else {
                     Comparable sucesor = obtenerMinimo(n.getDerecho());
                     n.setElemento(sucesor);
@@ -149,7 +150,7 @@ public class ArbolAVL {
                     n.setIzquierdo(rotarIzquierda(n.getIzquierdo()));
                     resultado = rotarDerecha(n);
                 }
-            // desbalance a la derecha
+                // desbalance a la derecha
             } else if (balance < -1) {
                 if (getBalance(n.getDerecho()) <= 0) {
                     resultado = rotarIzquierda(n);
@@ -293,8 +294,28 @@ public class ArbolAVL {
         return resultado;
     }
 
-    //para pruebass
-    @Override
+    // version visual para ver la forma real del arbol
+    public String toStringBonito() {
+        String res;
+        if (this.raiz == null) {
+            res = "arbol avl vacio";
+        } else {
+            res = toStringBonitoAux(this.raiz, "", true);
+        }
+        return res;
+    }
+
+    private String toStringBonitoAux(NodoAVL n, String prefijo, boolean esIzquierdo) {
+        String s = "";
+        if (n != null) {
+            s = s + toStringBonitoAux(n.getDerecho(), prefijo + (esIzquierdo ? "|   " : "    "), false);
+            s = s + prefijo + "+-- " + ((Habitacion) n.getElemento()).toStringCorto() + " (h=" + n.getAltura() + ")\n";
+            s = s + toStringBonitoAux(n.getIzquierdo(), prefijo + (esIzquierdo ? "    " : "|   "), true);
+        }
+        return s;
+    }
+
+    // @Override
     public String toString() {
         String res;
         if (this.raiz == null) {
@@ -309,13 +330,13 @@ public class ArbolAVL {
         String s = "";
         if (n != null) {
             s = s + "Nodo: " + n.getElemento() + " (Altura: " + n.getAltura() + ")\n";
-            
+
             if (n.getIzquierdo() != null) {
                 s = s + "   HI: " + n.getIzquierdo().getElemento() + "\n";
             } else {
                 s = s + "   HI: -\n";
             }
-            
+
             if (n.getDerecho() != null) {
                 s = s + "   HD: " + n.getDerecho().getElemento() + "\n";
             } else {

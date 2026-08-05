@@ -93,14 +93,26 @@ public class TablaDesafioResueltos {
         return encontrado;
     }
 
+    @Override
     public String toString() {
-
         String texto = "--- Desafios Resueltos por Equipo ---\n";
 
         for (int i = 0; i < TAMANIO_INICIAL; i++) {
             NodoHashResueltos aux = tabla[i];
             while (aux != null) {
-                texto += aux.getNombreEquipo() + ": " + aux.getDesafiosResueltos() + "\n";
+                texto = texto + "\nEquipo: " + aux.getNombreEquipo() + "\n";
+
+                Lista lista = aux.getDesafiosResueltos();
+                if (lista.esVacia()) {
+                    texto = texto + "   (sin desafios resueltos)\n";
+                } else {
+                    for (int j = 1; j <= lista.longitud(); j++) {
+                        Desafio d = (Desafio) lista.recuperar(j);
+                        texto = texto + "   - [" + d.getPuntaje() + " pts] " + d.getNombre()
+                                + " (" + d.getTipo() + ")\n";
+                    }
+                }
+
                 aux = aux.getSiguiente();
             }
         }

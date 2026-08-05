@@ -65,7 +65,7 @@ public class ABM {
                     break;
 
                 case 7:
-                    System.out.println(avlHabitaciones);
+                    System.out.println(avlHabitaciones.toStringBonito());
                     System.out.println(grafo);
                     System.out.println(tablaEquipos);
                     System.out.println(desResueltos);

@@ -84,6 +84,10 @@ public class Habitacion implements Comparable<Habitacion> {
         return iguales;
     }
 
+    public String toStringCorto() {
+        return "Cod." + codigo;
+    }
+
     @Override
     public int hashCode() {
         return Integer.hashCode(this.codigo);
