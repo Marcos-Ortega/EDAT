@@ -309,7 +309,7 @@ public class ArbolAVL {
         String s = "";
         if (n != null) {
             s = s + toStringBonitoAux(n.getDerecho(), prefijo + (esIzquierdo ? "|   " : "    "), false);
-            s = s + prefijo + "+-- " + ((Habitacion) n.getElemento()).toStringCorto() + " (h=" + n.getAltura() + ")\n";
+            s = s + prefijo + "+-- " + ((Habitacion) n.getElemento()).toStringCorto() + "\n";
             s = s + toStringBonitoAux(n.getIzquierdo(), prefijo + (esIzquierdo ? "    " : "|   "), true);
         }
         return s;
