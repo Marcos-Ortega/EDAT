@@ -123,7 +123,7 @@ public class TablaHashEquipos {
 }
 public String toString() {
 
-    String texto = "Equipos Registrados\n";
+    String texto = "---Equipos Registrados--- \n";
 
     // recorremos todas las posiciones del arreglo (toda la tabla hash)
     for (int i = 0; i < TAMANIO_INICIAL; i++) {

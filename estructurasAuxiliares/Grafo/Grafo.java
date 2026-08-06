@@ -441,8 +441,23 @@ public class Grafo {
         }
         return res;
     }
-
-    private String toStringAux(NodoVert vert) {
+    private String toStringAux(NodoVert v){
+        String res = "----GRAFO-----\n";
+        NodoVert aux=v;
+        while(aux!=null){
+            res += "("+aux.getElem()+")\n";
+            NodoAdy auxAdy=aux.getPrimerAdy();
+            while (auxAdy!=null) {
+                res+="|___ "+auxAdy.getVertice().getElem()+"("+auxAdy.getEtiqueta()+")";
+                res+="\n";
+                auxAdy=auxAdy.getSigAdyacente();
+            }
+            res+="\n";
+            aux=aux.getSigVert();
+        }
+        return res;
+    }
+    /* private String toStringAux(NodoVert vert) {
         String s = "";
         if (vert != null) {
             s = s + "Vertice: " + vert.getElem() + "\n";
@@ -461,5 +476,5 @@ public class Grafo {
             s = s + toStringAux(vert.getSigVert());
         }
         return s;
-    }
+    } */
 }

@@ -65,7 +65,10 @@ public class ABM {
                     break;
 
                 case 7:
+                    System.out.println("---Arbol De Habitaciones--- \n");
                     System.out.println(avlHabitaciones.toStringBonito());
+                    System.out.println("Informacion De Habitaciones \n");
+                    System.out.println(avlHabitaciones);
                     System.out.println(grafo);
                     System.out.println(tablaEquipos);
                     System.out.println(desResueltos);
