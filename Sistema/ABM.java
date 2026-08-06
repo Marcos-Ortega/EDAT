@@ -329,7 +329,8 @@ public class ABM {
         System.out.println("ingrese el codigo de la habitacion: ");
         codigo = sc.nextInt();
         Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigo));
-        //si al recuperar la habitacion esta existe, la mostramos si no, informamos que no existe
+        // si al recuperar la habitacion esta existe, la mostramos si no, informamos que
+        // no existe
         if (habActual != null) {
             System.out.println(habActual);
             log.registrar("habitacion con el codigo: " + codigo);
@@ -348,12 +349,12 @@ public class ABM {
         codigo = sc.nextInt();
 
         Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigo));
-        //misma verificacion si existe habitacion
+        // misma verificacion si existe habitacion
         if (habActual != null) {
             NodoAdy auxAdy = grafo.getAdyacentes(codigo);
-            //verificamos que la habitacion tenga adyacentes
+            // verificamos que la habitacion tenga adyacentes
             if (auxAdy != null) {
-                //si tiene adyacentes los recorremos y mostramos
+                // si tiene adyacentes los recorremos y mostramos
                 while (auxAdy != null) {
                     Object codigo2 = auxAdy.getVertice().getElem();
                     System.out.println("el codigo de la habitacion: " + codigo2);
@@ -387,13 +388,16 @@ public class ABM {
 
         Habitacion hab1 = (Habitacion) avl.recuperar(new Habitacion(cod1));
         Habitacion hab2 = (Habitacion) avl.recuperar(new Habitacion(cod2));
-        //verificamos que ambas habitaciones existan
+        // verificamos que ambas habitaciones existan
         if (hab1 != null && hab2 != null) {
-            //llamamos al metodo de grafo que verifica si hay camino entre esas dos habitaciones y si se puede hacer con ese puntaje
+            // llamamos al metodo de grafo que verifica si hay camino entre esas dos
+            // habitaciones y si se puede hacer con ese puntaje
             boolean existe = grafo.sePuedeLlegar(cod1, cod2, k);
-            //si el metodo de grafo devuelve verdaderole decimos que si puede llegar, de lo contrario le decimos que no es posible
+            // si el metodo de grafo devuelve verdaderole decimos que si puede llegar, de lo
+            // contrario le decimos que no es posible
             if (existe) {
-                System.out.println("es posible llegar de la habitacion de origen a la habitacion de destino con la cantidad de puntos ingresados.");
+                System.out.println(
+                        "es posible llegar de la habitacion de origen a la habitacion de destino con la cantidad de puntos ingresados.");
                 log.registrar("es posible llegar de la habitacion: " + cod1 + " a la habitacion: " + cod2);
             } else {
                 System.out.println("no es posible llegar de la habitacion de origen a la de destino.");
@@ -417,14 +421,17 @@ public class ABM {
 
         Habitacion hab1 = (Habitacion) avl.recuperar(new Habitacion(cod1));
         Habitacion hab2 = (Habitacion) avl.recuperar(new Habitacion(cod2));
-        //verificamos que las habitaciones existan
+        // verificamos que las habitaciones existan
         if (hab1 != null && hab2 != null) {
-            //creamos arreglo y lista para ir guardando lo que le vamos a mostrar al usuario
+            // creamos arreglo y lista para ir guardando lo que le vamos a mostrar al
+            // usuario
             int[] mejorPuntaje = new int[1];
             Lista[] mejorCamino = new Lista[1];
-            //llamamos al metodo de grafo que verifica si se puede llegar de una habitacion a la otra y cual es el mejor camino y mininmo puntaje
+            // llamamos al metodo de grafo que verifica si se puede llegar de una habitacion
+            // a la otra y cual es el mejor camino y mininmo puntaje
             boolean exito = grafo.minimoPuntaje(cod1, cod2, mejorPuntaje, mejorCamino);
-            //en el caso de poder ir de una habitacion a la otra mostramos el mejor camino y minimo puntaje, de lo contrario indicamos que no hay un camino posible
+            // en el caso de poder ir de una habitacion a la otra mostramos el mejor camino
+            // y minimo puntaje, de lo contrario indicamos que no hay un camino posible
             if (exito) {
                 System.out.println("El puntaje minimo es: " + mejorPuntaje[0]);
                 System.out.println("El camino es: " + mejorCamino[0]);
@@ -455,11 +462,13 @@ public class ABM {
         Habitacion hab1 = (Habitacion) avl.recuperar(new Habitacion(cod1));
         Habitacion hab2 = (Habitacion) avl.recuperar(new Habitacion(cod2));
         Habitacion hab3 = (Habitacion) avl.recuperar(new Habitacion(cod3));
-        //verifica que existan las 3 habitaciones
+        // verifica que existan las 3 habitaciones
         if (hab1 != null && hab2 != null && hab3 != null && cod2 != cod3) {
-            //llama al metodo de grafos que verifica el camino y lo devuelve en una lista
+            // llama al metodo de grafos que verifica el camino y lo devuelve en una lista
             Lista caminos = grafo.sinPasarPor(cod1, cod2, cod3, p);
-            //si la lista no esta vacia quiere decir que si existe un camino o varios caminos entonces lo mostramos, de lo contario, decimos que no existe ningun camino
+            // si la lista no esta vacia quiere decir que si existe un camino o varios
+            // caminos entonces lo mostramos, de lo contario, decimos que no existe ningun
+            // camino
             if (caminos.esVacia()) {
                 System.out.println("No hay caminos posibles con esas condiciones.");
                 log.registrar("No hay caminos de " + cod1 + " a " + cod2 + " sin pasar por " + cod3);
@@ -716,14 +725,14 @@ public class ABM {
         System.out.println("Ingrese el codigo de la habitacion del desafio: ");
         codigoHab = sc.nextInt();
         Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigoHab));
-        //verifica que la habitacion ingresada exista
+        // verifica que la habitacion ingresada exista
         if (habActual != null) {
             System.out.println("Ingrese el puntaje del desafio a mostrar: ");
             puntajeBuscar = sc.nextInt();
             Desafio desafioActual = (Desafio) habActual.getDesafios().recuperar(new Desafio(puntajeBuscar));
-            //verifica que en esa habitacion exista el desafio con puntaje ingresado
+            // verifica que en esa habitacion exista el desafio con puntaje ingresado
             if (desafioActual != null) {
-                //si existe lo muestra
+                // si existe lo muestra
                 System.out.println(desafioActual);
                 log.registrar("Se mostro el desafio " + desafioActual);
             } else {
@@ -743,9 +752,11 @@ public class ABM {
         sc.nextLine();
         System.out.println("Ingrese el nombre del equipo: ");
         nombreEquipo = sc.nextLine();
-        //nos traemos los desafios que tiene resueltos ese equipo de TablaDesafioResuelto donde tenemos hechas las relaciones de los desafios que resolveio cada equipo 
+        // nos traemos los desafios que tiene resueltos ese equipo de
+        // TablaDesafioResuelto donde tenemos hechas las relaciones de los desafios que
+        // resolveio cada equipo
         Lista resueltos = desResueltos.obtenerResueltos(nombreEquipo);
-        //si la lista no esta vacia muestra los desafio resueltos del equipo 
+        // si la lista no esta vacia muestra los desafio resueltos del equipo
         if (resueltos.esVacia()) {
             System.out.println("El equipo " + nombreEquipo + " todavia no resolvio ningun desafio.");
             log.registrar("El equipo" + nombreEquipo + "no resolvio desafios");
@@ -771,21 +782,22 @@ public class ABM {
         puntaje = sc.nextInt();
 
         Habitacion hab = (Habitacion) avl.recuperar(new Habitacion(codigoHab));
-        //verificamos que la habitacion exista 
+        // verificamos que la habitacion exista
         if (hab == null) {
             System.out.println("La habitacion no existe.");
             log.registrar("La habitaccion ingresada por el ususario no existe");
         } else {
 
             Desafio desafio = (Desafio) hab.getDesafios().recuperar(new Desafio(puntaje));
-            //verificamos que el desafio exista en esa habitacion
+            // verificamos que el desafio exista en esa habitacion
             if (desafio == null) {
                 System.out.println("Ese desafio no existe en esa habitacion.");
                 log.registrar("El desafio ingresado por el ususario no existe en la habitacion" + hab);
             } else {
-                //llamamos al metodo de TablaDesafioResuelto para ver si el desafio esta entre los resueltos por ese equipo
+                // llamamos al metodo de TablaDesafioResuelto para ver si el desafio esta entre
+                // los resueltos por ese equipo
                 boolean resuelto = desResueltos.yaResuelto(nombreEquipo, desafio);
-                //indica si el desafio se resolvio o no
+                // indica si el desafio se resolvio o no
                 if (resuelto) {
                     System.out.println("El equipo " + nombreEquipo + " YA resolvio ese desafio.");
                     log.registrar("Se indica que el equipo ya resolvio el desafio");
@@ -807,7 +819,7 @@ public class ABM {
         codigoHab = sc.nextInt();
 
         Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigoHab));
-        //verifica que la habitacion exista
+        // verifica que la habitacion exista
         if (habActual != null) {
 
             System.out.println("Ingrese el puntaje minimo (a): ");
@@ -819,21 +831,22 @@ public class ABM {
 
             System.out.println("Ingrese el tipo de desafio a buscar: ");
             tipo = sc.nextLine();
-            // de la lista de desafios que tiene esa habitacion utilizamos el metodo de lista que hace una sublista que se encuentre el el rango indicado
+            // de la lista de desafios que tiene esa habitacion utilizamos el metodo de
+            // lista que hace una sublista que se encuentre el el rango indicado
             Lista enRango = habActual.getDesafios().listarRango(new Desafio(a), new Desafio(b));
             boolean encontroAlguno = false;
-            //recorre toda la lista de en rango
+            // recorre toda la lista de en rango
             for (int i = 1; i <= enRango.longitud(); i++) {
                 Desafio d = (Desafio) enRango.recuperar(i);
-                //se fija si el desafio en el que estamos es del tipo indicado
+                // se fija si el desafio en el que estamos es del tipo indicado
                 if (d.getTipo().equalsIgnoreCase(tipo)) {
-                    //si el desafio es del tipo ingresado lo muestra
+                    // si el desafio es del tipo ingresado lo muestra
                     System.out.println(d);
                     encontroAlguno = true;
                     log.registrar("Se muestran los desafios del tipo ingresado que estan dentro del rango ingresado");
                 }
             }
-            //no se encuentro ningun desafio de ese tipo en el rango
+            // no se encuentro ningun desafio de ese tipo en el rango
             if (!encontroAlguno) {
                 System.out.println("No hay desafios de tipo " + tipo + " en ese rango.");
                 log.registrar("No hay desafios del tipo " + tipo + "en el rango ingresado");
@@ -1040,7 +1053,7 @@ public class ABM {
                     String nombreEquip = sc.nextLine();
                     System.out.println("Ingrese el codigo de la habitacion destino: ");
                     int codDestinoPosibles = sc.nextInt();
-                    posiblesDesafios( tablaEquipos, desResueltos, grafoMapa, nombreEquip, codDestinoPosibles);
+                    posiblesDesafios(tablaEquipos, desResueltos, grafoMapa, nombreEquip, codDestinoPosibles);
                     break;
 
                 case 3:
@@ -1133,89 +1146,91 @@ public class ABM {
         return puntaje;
     }
 
-
     public static void posiblesDesafios(TablaHashEquipos tablaEquipos, TablaDesafioResueltos tablaResueltos,
-        Grafo grafoMapa, String nombreEquipo, int codHabitacionDestino) {
+            Grafo grafoMapa, String nombreEquipo, int codHabitacionDestino) {
 
-    // buscamos el equipo en la tabla hash por su nombre
-    Equipo eq = tablaEquipos.buscar(nombreEquipo);
+        // buscamos el equipo en la tabla hash por su nombre
+        Equipo eq = tablaEquipos.buscar(nombreEquipo);
 
-    if (eq == null) {
-        System.out.println("Error: El equipo '" + nombreEquipo + "' no existe");
-        log.registrar("Error en posiblesDesafios: El equipo '" + nombreEquipo + "' no existe");
-    } else {
-        //obtenemos la habitación donde está ubicado actualmente el equipo
-        Habitacion habActual = eq.getHabitacionActual();
-
-        if (habActual == null) {
-            System.out.println("Error: El equipo no tiene una habitación asignada actualmente");
-            log.registrar(
-                    "Error en posiblesDesafios: El equipo '" + nombreEquipo + "' no tiene habitación asignada");
+        if (eq == null) {
+            System.out.println("Error: El equipo '" + nombreEquipo + "' no existe");
+            log.registrar("Error en posiblesDesafios: El equipo '" + nombreEquipo + "' no existe");
         } else {
-            int codHabActual = habActual.getCodigo();
+            // obtenemos la habitación donde está ubicado actualmente el equipo
+            Habitacion habActual = eq.getHabitacionActual();
 
-            // verificamos que la habitación destino sea adyacente a la actual
-            if (!grafoMapa.existeArco(codHabActual, codHabitacionDestino)) {
-                System.out.println("La habitación " + codHabitacionDestino +
-                        " no es adyacente a la ubicación actual del equipo (" + codHabActual + ").");
-                log.registrar("Consulta posiblesDesafios: La habitación " + codHabitacionDestino +
-                        " no es adyacente a la habitación " + codHabActual + " para el equipo " + nombreEquipo);
+            if (habActual == null) {
+                System.out.println("Error: El equipo no tiene una habitación asignada actualmente");
+                log.registrar(
+                        "Error en posiblesDesafios: El equipo '" + nombreEquipo + "' no tiene habitación asignada");
             } else {
-                //obtenemos el puntaje minimo exigido en el arco entre la habitación actual y la destino
-                int puntajeMinimoArco = obtenerPuntajeArco(grafoMapa, codHabActual, codHabitacionDestino);
+                int codHabActual = habActual.getCodigo();
 
-                //calculamos cuanto puntaje le falta al equipo dentro de esta habitación para poder pasar
-                int puntajeQueFalta = puntajeMinimoArco - eq.getPuntajeActualHab();
-
-                // obtenemos el AVL de desafíos de la habitación actual
-                ArbolAVL avlDesafios = habActual.getDesafios();
-
-                if (avlDesafios == null || avlDesafios.esVacio()) {
-                    System.out.println("La habitación " + codHabActual + " no tiene desafíos disponibles.");
-                    log.registrar("Consulta posiblesDesafios: La habitación " + codHabActual
-                            + " no tiene desafíos disponibles");
+                // verificamos que la habitación destino sea adyacente a la actual
+                if (!grafoMapa.existeArco(codHabActual, codHabitacionDestino)) {
+                    System.out.println("La habitación " + codHabitacionDestino +
+                            " no es adyacente a la ubicación actual del equipo (" + codHabActual + ").");
+                    log.registrar("Consulta posiblesDesafios: La habitación " + codHabitacionDestino +
+                            " no es adyacente a la habitación " + codHabActual + " para el equipo " + nombreEquipo);
                 } else {
-                    //listamos los desafios de la habitacion (ordenados por puntaje gracias al AVL)
-                    Lista listaDesafios = avlDesafios.listar();
-                    boolean hayAlguno = false;
+                    // obtenemos el puntaje minimo exigido en el arco entre la habitación actual y
+                    // la destino
+                    int puntajeMinimoArco = obtenerPuntajeArco(grafoMapa, codHabActual, codHabitacionDestino);
 
-                    System.out.println("\nDESAFÍOS QUE PERMITEN PASAR DE LA HABITACIÓN " + codHabActual +
-                            " A LA HABITACIÓN " + codHabitacionDestino);
-                    System.out.println("Puntaje mínimo exigido en el arco: " + puntajeMinimoArco);
-                    System.out.println(
-                            "Puntaje ya acumulado por el equipo en esta habitación: " + eq.getPuntajeActualHab());
+                    // calculamos cuanto puntaje le falta al equipo dentro de esta habitación para
+                    // poder pasar
+                    int puntajeQueFalta = puntajeMinimoArco - eq.getPuntajeActualHab();
 
-                    //recorremos los desafíos con un while, filtrando los que sirven:
-                    //que el equipo no haya resuelto todavía ese desafío y que resolviéndolo solo (sumado a lo que ya tiene acumulado en la habitación)
-                    //sea igual o mayor que el puntaje minimo exigido en el arco
-                    int i = 1;
-                    while (i <= listaDesafios.longitud()) {
-                        Desafio des = (Desafio) listaDesafios.recuperar(i);
+                    // obtenemos el AVL de desafíos de la habitación actual
+                    ArbolAVL avlDesafios = habActual.getDesafios();
 
-                        if (!tablaResueltos.yaResuelto(nombreEquipo, des) && des.getPuntaje() >= puntajeQueFalta) {
-                            System.out.println(" - [Puntaje: " + des.getPuntaje() + "] Nombre: " + des.getNombre()
-                                    + " | Tipo: " + des.getTipo());
-                            hayAlguno = true;
+                    if (avlDesafios == null || avlDesafios.esVacio()) {
+                        System.out.println("La habitación " + codHabActual + " no tiene desafíos disponibles.");
+                        log.registrar("Consulta posiblesDesafios: La habitación " + codHabActual
+                                + " no tiene desafíos disponibles");
+                    } else {
+                        // listamos los desafios de la habitacion (ordenados por puntaje gracias al AVL)
+                        Lista listaDesafios = avlDesafios.listar();
+                        boolean hayAlguno = false;
+
+                        System.out.println("\nDESAFÍOS QUE PERMITEN PASAR DE LA HABITACIÓN " + codHabActual +
+                                " A LA HABITACIÓN " + codHabitacionDestino);
+                        System.out.println("Puntaje mínimo exigido en el arco: " + puntajeMinimoArco);
+                        System.out.println(
+                                "Puntaje ya acumulado por el equipo en esta habitación: " + eq.getPuntajeActualHab());
+
+                        // recorremos los desafíos con un while, filtrando los que sirven:
+                        // que el equipo no haya resuelto todavía ese desafío y que resolviéndolo solo
+                        // (sumado a lo que ya tiene acumulado en la habitación)
+                        // sea igual o mayor que el puntaje minimo exigido en el arco
+                        int i = 1;
+                        while (i <= listaDesafios.longitud()) {
+                            Desafio des = (Desafio) listaDesafios.recuperar(i);
+
+                            if (!tablaResueltos.yaResuelto(nombreEquipo, des) && des.getPuntaje() >= puntajeQueFalta) {
+                                System.out.println(" - [Puntaje: " + des.getPuntaje() + "] Nombre: " + des.getNombre()
+                                        + " | Tipo: " + des.getTipo());
+                                hayAlguno = true;
+                            }
+
+                            i++;
                         }
 
-                        i++;
-                    }
+                        // si no encontramos ningún desafío que sirva
+                        if (!hayAlguno) {
+                            System.out.println(
+                                    "No hay ningún desafío disponible en esta habitación que, resuelto solo, "
+                                            + "le alcance al equipo para pasar a la habitación " + codHabitacionDestino
+                                            + ".");
+                        }
 
-                    // si no encontramos ningún desafío que sirva
-                    if (!hayAlguno) {
-                        System.out.println(
-                                "No hay ningún desafío disponible en esta habitación que, resuelto solo, "
-                                        + "le alcance al equipo para pasar a la habitación " + codHabitacionDestino
-                                        + ".");
+                        log.registrar("Se consultaron los posibles desafíos para el equipo " + nombreEquipo +
+                                " en la habitación " + codHabActual + " hacia la habitación " + codHabitacionDestino);
                     }
-
-                    log.registrar("Se consultaron los posibles desafíos para el equipo " + nombreEquipo +
-                            " en la habitación " + codHabActual + " hacia la habitación " + codHabitacionDestino);
                 }
             }
         }
     }
-}
 
     public static boolean jugarDesafio(TablaHashEquipos tablaEquipos, TablaDesafioResueltos tablaResueltos,
             String nombreEquipo, int codHabitacion, int puntajeDesafio) {
@@ -1228,72 +1243,72 @@ public class ABM {
         if (eq == null) {
             System.out.println("ERROR: El equipo '" + nombreEquipo + "' no existe.");
             log.registrar("Error en jugarDesafio: El equipo '" + nombreEquipo + "' no existe");
-            return exito;
+        } else {
+            // obtenemos la habitación donde está ubicado el equipo
+            Habitacion habActual = eq.getHabitacionActual();
+
+            if (habActual == null) {
+                System.out.println("error, el equipo no se encuentra en ninguna habitacion");
+                log.registrar("Error en jugarDesafio: El equipo '" + nombreEquipo
+                        + "' no se encuentra en ninguna habitación");
+            } else {
+                // la habitación que pasan por parámetro tiene que ser la habitacion
+                // donde el equipo está ubicado (no puede resolver desafíos de otra habitacion)
+                if (habActual.getCodigo() != codHabitacion) {
+                    System.out.println("error, el equipo no se encuentra en la habitación " + codHabitacion
+                            + ". Está en la habitación " + habActual.getCodigo());
+                    log.registrar("Error en jugarDesafio: El equipo '" + nombreEquipo
+                            + "' intentó jugar un desafío en la habitación " + codHabitacion
+                            + " pero está en la habitación " + habActual.getCodigo());
+                } else {
+                    // buscamos el desafío dentro del AVL de la habitación actual, por su puntaje
+                    // (clave)
+                    ArbolAVL avlDesafios = habActual.getDesafios();
+                    Desafio desafioBuscado = new Desafio(puntajeDesafio);
+                    Desafio desafioEncontrado = (Desafio) avlDesafios.recuperar(desafioBuscado);
+
+                    if (desafioEncontrado == null) {
+                        System.out.println(
+                                "error, no existe un desafío con puntaje " + puntajeDesafio
+                                        + " en la habitación actual.");
+                        log.registrar("Error en jugarDesafio: No existe desafío con puntaje " + puntajeDesafio +
+                                " en la habitación " + habActual.getCodigo());
+                    } else {
+                        // como cada equipo puede resolver un desafío una única vez por eso consultamos
+                        // yaResuelto pasando el nombre de este equipo puntual.
+                        if (tablaResueltos.yaResuelto(nombreEquipo, desafioEncontrado)) {
+                            System.out.println("El equipo '" + nombreEquipo + "' ya había resuelto el desafío '"
+                                    + desafioEncontrado.getNombre() + "' anteriormente. No otorga puntaje nuevamente.");
+                            log.registrar("Aviso en jugarDesafio: el equipo '" + nombreEquipo +
+                                    "' ya había resuelto el desafío de puntaje " + puntajeDesafio +
+                                    " en la habitación " + habActual.getCodigo());
+                        } else {
+                            // sumamos los puntos al equipo: al acumulado total del juego y al acumulado
+                            // dentro de la habitación actual
+                            int puntos = desafioEncontrado.getPuntaje();
+                            eq.setPuntajeAcumulado(eq.getPuntajeAcumulado() + puntos);
+                            eq.setPuntajeActualHab(eq.getPuntajeActualHab() + puntos);
+
+                            // registramos el desafío como resuelto por este equipo en la tabla
+                            tablaResueltos.agregar(nombreEquipo, desafioEncontrado);
+
+                            System.out.println("Desafío resuelto exitosamente por " + nombreEquipo);
+                            System.out
+                                    .println("Se sumaron " + puntos + " puntos. Puntaje acumulado en esta habitación: "
+                                            + eq.getPuntajeActualHab());
+
+                            log.registrar(
+                                    "El equipo " + nombreEquipo + " resolvió el desafío '"
+                                            + desafioEncontrado.getNombre()
+                                            + "' de " + puntos + " puntos en la habitación " + habActual.getCodigo());
+
+                            exito = true;
+                        }
+                    }
+                }
+            }
         }
 
-        // obtenemos la habitación donde está ubicado el equipo
-        Habitacion habActual = eq.getHabitacionActual();
-
-        if (habActual == null) {
-            System.out.println("error, el equipo no se encuentra en ninguna habitacion");
-            log.registrar("Error en jugarDesafio: El equipo '" + nombreEquipo
-                    + "' no se encuentra en ninguna habitación");
-            return exito;
-        }
-
-        // la habitación que pasan por parámetro tiene que ser la habitacion
-        // donde el equipo está ubicado (no puede resolver desafíos de otra habitacion)
-        if (habActual.getCodigo() != codHabitacion) {
-            System.out.println("error, el equipo no se encuentra en la habitación " + codHabitacion
-                    + ". Está en la habitación " + habActual.getCodigo());
-            log.registrar("Error en jugarDesafio: El equipo '" + nombreEquipo
-                    + "' intentó jugar un desafío en la habitación " + codHabitacion
-                    + " pero está en la habitación " + habActual.getCodigo());
-            return exito;
-        }
-
-        // buscamos el desafío dentro del AVL de la habitación actual, por su puntaje
-        // (clave)
-        ArbolAVL avlDesafios = habActual.getDesafios();
-        Desafio desafioBuscado = new Desafio(puntajeDesafio);
-        Desafio desafioEncontrado = (Desafio) avlDesafios.recuperar(desafioBuscado);
-
-        if (desafioEncontrado == null) {
-            System.out.println(
-                    "error, no existe un desafío con puntaje " + puntajeDesafio + " en la habitación actual.");
-            log.registrar("Error en jugarDesafio: No existe desafío con puntaje " + puntajeDesafio +
-                    " en la habitación " + habActual.getCodigo());
-            return exito;
-        }
-
-        // como cada equipo puede resolver un desafío una única vez por eso consultamos
-        // yaResuelto pasando el nombre de este equipo puntual.
-        if (tablaResueltos.yaResuelto(nombreEquipo, desafioEncontrado)) {
-            System.out.println("El equipo '" + nombreEquipo + "' ya había resuelto el desafío '"
-                    + desafioEncontrado.getNombre() + "' anteriormente. No otorga puntaje nuevamente.");
-            log.registrar("Aviso en jugarDesafio: el equipo '" + nombreEquipo +
-                    "' ya había resuelto el desafío de puntaje " + puntajeDesafio +
-                    " en la habitación " + habActual.getCodigo());
-            return exito;
-        }
-
-        // sumamos los puntos al equipo: al acumulado total del juego y al acumulado
-        // dentro de la habitación actual
-        int puntos = desafioEncontrado.getPuntaje();
-        eq.setPuntajeAcumulado(eq.getPuntajeAcumulado() + puntos);
-        eq.setPuntajeActualHab(eq.getPuntajeActualHab() + puntos);
-
-        // registramos el desafío como resuelto por este equipo en la tabla
-        tablaResueltos.agregar(nombreEquipo, desafioEncontrado);
-
-        System.out.println("Desafío resuelto exitosamente por " + nombreEquipo);
-        System.out.println("Se sumaron " + puntos + " puntos. Puntaje acumulado en esta habitación: "
-                + eq.getPuntajeActualHab());
-
-        log.registrar("El equipo " + nombreEquipo + " resolvió el desafío '" + desafioEncontrado.getNombre()
-                + "' de " + puntos + " puntos en la habitación " + habActual.getCodigo());
-
-        exito = true;
         return exito;
     }
 
