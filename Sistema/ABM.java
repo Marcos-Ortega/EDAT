@@ -1095,12 +1095,12 @@ public class ABM {
 
                     // recuperamos el objeto habitacion desde el avl para pasarlo al metodo
                     Habitacion habDestino = (Habitacion) avlHabitaciones.recuperar(new Habitacion(codHabDestino));
-                    if (habDestino!=null) {
+                    if (habDestino != null) {
                         System.out.println("Ingrese el puntaje requerido para la puerta: ");
                         int puntajeReq = sc.nextInt();
-    
+
                         cambiarDeHabitacion(tablaEquipos, grafoMapa, eqCambiar, habDestino, puntajeReq);
-                    }else{
+                    } else {
                         System.out.println("No existe la habitacion ingresada");
                         log.registrar("Cambio el puntaje exigido del equipo " + codHabDestino);
                     }
@@ -1339,7 +1339,7 @@ public class ABM {
 
                 // verificamos si la habitacion destino es contigua
                 boolean esContigua = grafoMapa.existeArco(codOrigen, codDestino);
-                
+
                 // verificamos si el puntaje acumulado en la habitación actual alcanza
                 boolean puntajeSuficiente = (eq.getPuntajeActualHab() >= puntajeRequerido);
 
