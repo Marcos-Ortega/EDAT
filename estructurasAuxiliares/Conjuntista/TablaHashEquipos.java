@@ -121,4 +121,21 @@ public class TablaHashEquipos {
 
     return encontrado;
 }
+public String toString() {
+
+    String texto = "Equipos Registrados\n";
+
+    // recorremos todas las posiciones del arreglo (toda la tabla hash)
+    for (int i = 0; i < TAMANIO_INICIAL; i++) {
+        NodoHash aux = tabla[i];
+
+        //recorremos la lista encadenada de equipos
+        while (aux != null) {
+            texto += aux.getEquipo() + "\n";
+            aux = aux.getSiguiente();
+        }
+    }
+
+    return texto;
+}
 }

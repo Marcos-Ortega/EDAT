@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ABM",
+            "request": "launch",
+            "mainClass": "Sistema.ABM",
+            "projectName": "EDAT_3df14bca"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

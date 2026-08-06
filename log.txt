@@ -1,0 +1,612 @@
+05/08/2026 22:26:39 - --- ESTADO DEL SISTEMA AL FINALIZAR LA CARGA INICIAL ---
+Nodo: Habitacion [Codigo: 10, Nombre: Dormitorio de huéspedes, Planta: 1, Metros: 22, Salida Exterior: No] (Altura: 4)
+   HI: Habitacion [Codigo: 6, Nombre: Baño, Planta: 0, Metros: 10, Salida Exterior: No]
+   HD: Habitacion [Codigo: 15, Nombre: Invernadero, Planta: 0, Metros: 28, Salida Exterior: S�]
+Nodo: Habitacion [Codigo: 6, Nombre: Baño, Planta: 0, Metros: 10, Salida Exterior: No] (Altura: 3)
+   HI: Habitacion [Codigo: 3, Nombre: Comedor, Planta: 0, Metros: 30, Salida Exterior: No]
+   HD: Habitacion [Codigo: 8, Nombre: Escritorio, Planta: 1, Metros: 18, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 3, Nombre: Comedor, Planta: 0, Metros: 30, Salida Exterior: No] (Altura: 2)
+   HI: Habitacion [Codigo: 2, Nombre: Sala de Estar, Planta: 0, Metros: 35, Salida Exterior: No]
+   HD: Habitacion [Codigo: 5, Nombre: Pasillo, Planta: 0, Metros: 15, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 2, Nombre: Sala de Estar, Planta: 0, Metros: 35, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 1, Nombre: Recibidor, Planta: 0, Metros: 25, Salida Exterior: S�]
+   HD: -
+Nodo: Habitacion [Codigo: 1, Nombre: Recibidor, Planta: 0, Metros: 25, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 5, Nombre: Pasillo, Planta: 0, Metros: 15, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 4, Nombre: Cocina, Planta: 0, Metros: 20, Salida Exterior: S�]
+   HD: -
+Nodo: Habitacion [Codigo: 4, Nombre: Cocina, Planta: 0, Metros: 20, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 8, Nombre: Escritorio, Planta: 1, Metros: 18, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 7, Nombre: Biblioteca, Planta: 1, Metros: 25, Salida Exterior: No]
+   HD: Habitacion [Codigo: 9, Nombre: Dormitorio principal, Planta: 1, Metros: 30, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 7, Nombre: Biblioteca, Planta: 1, Metros: 25, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 9, Nombre: Dormitorio principal, Planta: 1, Metros: 30, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 15, Nombre: Invernadero, Planta: 0, Metros: 28, Salida Exterior: S�] (Altura: 3)
+   HI: Habitacion [Codigo: 13, Nombre: Bodega, Planta: -1, Metros: 25, Salida Exterior: No]
+   HD: Habitacion [Codigo: 19, Nombre: Sala de Música, Planta: 1, Metros: 20, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 13, Nombre: Bodega, Planta: -1, Metros: 25, Salida Exterior: No] (Altura: 2)
+   HI: Habitacion [Codigo: 11, Nombre: Escalera, Planta: 0, Metros: 12, Salida Exterior: No]
+   HD: Habitacion [Codigo: 14, Nombre: Altillo, Planta: 2, Metros: 20, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 11, Nombre: Escalera, Planta: 0, Metros: 12, Salida Exterior: No] (Altura: 1)
+   HI: -
+   HD: Habitacion [Codigo: 12, Nombre: Sótano, Planta: -1, Metros: 40, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 12, Nombre: Sótano, Planta: -1, Metros: 40, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 14, Nombre: Altillo, Planta: 2, Metros: 20, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 19, Nombre: Sala de Música, Planta: 1, Metros: 20, Salida Exterior: No] (Altura: 2)
+   HI: Habitacion [Codigo: 17, Nombre: Gimnasio, Planta: 1, Metros: 25, Salida Exterior: No]
+   HD: Habitacion [Codigo: 20, Nombre: Quincho, Planta: 0, Metros: 45, Salida Exterior: S�]
+Nodo: Habitacion [Codigo: 17, Nombre: Gimnasio, Planta: 1, Metros: 25, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 16, Nombre: Cochera, Planta: 0, Metros: 35, Salida Exterior: S�]
+   HD: Habitacion [Codigo: 18, Nombre: Sala de Juegos, Planta: 1, Metros: 30, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 16, Nombre: Cochera, Planta: 0, Metros: 35, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 18, Nombre: Sala de Juegos, Planta: 1, Metros: 30, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 20, Nombre: Quincho, Planta: 0, Metros: 45, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+
+Vertice: 20
+   ADY: 16 (Puntaje: 30)
+   ADY: 15 (Puntaje: 15)
+   ADY: 4 (Puntaje: 25)
+Vertice: 6
+   ADY: 5 (Puntaje: 5)
+Vertice: 15
+   ADY: 20 (Puntaje: 15)
+   ADY: 4 (Puntaje: 20)
+Vertice: 5
+   ADY: 6 (Puntaje: 5)
+   ADY: 4 (Puntaje: 7)
+   ADY: 2 (Puntaje: 8)
+Vertice: 10
+   ADY: 18 (Puntaje: 12)
+   ADY: 9 (Puntaje: 15)
+   ADY: 8 (Puntaje: 10)
+Vertice: 14
+   ADY: 19 (Puntaje: 12)
+   ADY: 11 (Puntaje: 25)
+Vertice: 16
+   ADY: 20 (Puntaje: 30)
+   ADY: 1 (Puntaje: 15)
+Vertice: 19
+   ADY: 14 (Puntaje: 12)
+   ADY: 18 (Puntaje: 10)
+Vertice: 7
+   ADY: 9 (Puntaje: 12)
+   ADY: 8 (Puntaje: 8)
+   ADY: 11 (Puntaje: 10)
+Vertice: 13
+   ADY: 12 (Puntaje: 10)
+Vertice: 18
+   ADY: 17 (Puntaje: 8)
+   ADY: 19 (Puntaje: 10)
+   ADY: 10 (Puntaje: 12)
+Vertice: 11
+   ADY: 14 (Puntaje: 25)
+   ADY: 12 (Puntaje: 15)
+   ADY: 7 (Puntaje: 10)
+   ADY: 1 (Puntaje: 5)
+Vertice: 2
+   ADY: 5 (Puntaje: 8)
+   ADY: 3 (Puntaje: 12)
+   ADY: 1 (Puntaje: 10)
+Vertice: 12
+   ADY: 13 (Puntaje: 10)
+   ADY: 11 (Puntaje: 15)
+Vertice: 3
+   ADY: 4 (Puntaje: 10)
+   ADY: 2 (Puntaje: 12)
+Vertice: 17
+   ADY: 18 (Puntaje: 8)
+   ADY: 9 (Puntaje: 18)
+Vertice: 8
+   ADY: 10 (Puntaje: 10)
+   ADY: 7 (Puntaje: 8)
+Vertice: 9
+   ADY: 17 (Puntaje: 18)
+   ADY: 10 (Puntaje: 15)
+   ADY: 7 (Puntaje: 12)
+Vertice: 1
+   ADY: 16 (Puntaje: 15)
+   ADY: 11 (Puntaje: 5)
+   ADY: 2 (Puntaje: 10)
+Vertice: 4
+   ADY: 20 (Puntaje: 25)
+   ADY: 15 (Puntaje: 20)
+   ADY: 5 (Puntaje: 7)
+   ADY: 3 (Puntaje: 10)
+
+Equipos Registrados
+Equipo: Escapistas Pro | Exigido: 400 | Acumulado: 170 | Hab. Actual: 10 | Puntaje en Hab: 0
+Equipo: Los Búhos | Exigido: 300 | Acumulado: 50 | Hab. Actual: 5 | Puntaje en Hab: 0
+Equipo: Los Valientes | Exigido: 400 | Acumulado: 220 | Hab. Actual: 4 | Puntaje en Hab: 0
+Equipo: Misterio Inc | Exigido: 450 | Acumulado: 230 | Hab. Actual: 7 | Puntaje en Hab: 0
+Equipo: Los Imparables | Exigido: 350 | Acumulado: 100 | Hab. Actual: 3 | Puntaje en Hab: 0
+Equipo: Navegantes | Exigido: 350 | Acumulado: 145 | Hab. Actual: 8 | Puntaje en Hab: 0
+Equipo: Los Locos Adams | Exigido: 400 | Acumulado: 30 | Hab. Actual: 2 | Puntaje en Hab: 0
+Equipo: Masterminds | Exigido: 500 | Acumulado: 295 | Hab. Actual: 14 | Puntaje en Hab: 85
+Equipo: Estrategas | Exigido: 400 | Acumulado: 195 | Hab. Actual: 9 | Puntaje en Hab: 55
+Equipo: Cazadores de Pistas | Exigido: 500 | Acumulado: 395 | Hab. Actual: 12 | Puntaje en Hab: 90
+
+--- Desafios Resueltos por Equipo ---
+
+Equipo: Escapistas Pro
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [75 pts] Mapa Antiguo (Ingenio)
+   - [45 pts] Clave Encriptada (Matemático)
+
+Equipo: Los Búhos
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [20 pts] Sudoku Estar (Matemático)
+
+Equipo: Los Valientes
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [20 pts] Sudoku Estar (Matemático)
+   - [80 pts] Ecuacion Secreta (Matemático)
+   - [40 pts] Anagrama Cena (Letras)
+
+Equipo: Misterio Inc
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [80 pts] Ecuacion Secreta (Matemático)
+   - [40 pts] Anagrama Cena (Letras)
+   - [35 pts] Laberinto Sombras (Lógico)
+   - [25 pts] Espejo Oculto (Búsqueda)
+
+Equipo: Los Imparables
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [20 pts] Sudoku Estar (Matemático)
+
+Equipo: Navegantes
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [20 pts] Sudoku Estar (Matemático)
+   - [75 pts] Mapa Antiguo (Ingenio)
+
+Equipo: Los Locos Adams
+   - [30 pts] Busqueda de Llave (Búsqueda)
+
+Equipo: Masterminds
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [90 pts] Enigma del Sotano (Lógico)
+   - [70 pts] Contraseña Barrica (Ingenio)
+   - [85 pts] Adivinanza Polvorienta (Lógico)
+
+Equipo: Estrategas
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [20 pts] Sudoku Estar (Matemático)
+   - [40 pts] Anagrama Cena (Letras)
+   - [55 pts] Candado Numerico (Lógico)
+
+Equipo: Cazadores de Pistas
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [80 pts] Ecuacion Secreta (Matemático)
+   - [75 pts] Mapa Antiguo (Ingenio)
+   - [45 pts] Clave Encriptada (Matemático)
+   - [55 pts] Candado Numerico (Lógico)
+   - [90 pts] Enigma del Sotano (Lógico)
+
+05/08/2026 22:26:52 - --- ESTADO DEL SISTEMA AL FINALIZAR LA CARGA INICIAL ---
+Nodo: Habitacion [Codigo: 10, Nombre: Dormitorio de huéspedes, Planta: 1, Metros: 22, Salida Exterior: No] (Altura: 4)
+   HI: Habitacion [Codigo: 6, Nombre: Baño, Planta: 0, Metros: 10, Salida Exterior: No]
+   HD: Habitacion [Codigo: 15, Nombre: Invernadero, Planta: 0, Metros: 28, Salida Exterior: S�]
+Nodo: Habitacion [Codigo: 6, Nombre: Baño, Planta: 0, Metros: 10, Salida Exterior: No] (Altura: 3)
+   HI: Habitacion [Codigo: 3, Nombre: Comedor, Planta: 0, Metros: 30, Salida Exterior: No]
+   HD: Habitacion [Codigo: 8, Nombre: Escritorio, Planta: 1, Metros: 18, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 3, Nombre: Comedor, Planta: 0, Metros: 30, Salida Exterior: No] (Altura: 2)
+   HI: Habitacion [Codigo: 2, Nombre: Sala de Estar, Planta: 0, Metros: 35, Salida Exterior: No]
+   HD: Habitacion [Codigo: 5, Nombre: Pasillo, Planta: 0, Metros: 15, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 2, Nombre: Sala de Estar, Planta: 0, Metros: 35, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 1, Nombre: Recibidor, Planta: 0, Metros: 25, Salida Exterior: S�]
+   HD: -
+Nodo: Habitacion [Codigo: 1, Nombre: Recibidor, Planta: 0, Metros: 25, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 5, Nombre: Pasillo, Planta: 0, Metros: 15, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 4, Nombre: Cocina, Planta: 0, Metros: 20, Salida Exterior: S�]
+   HD: -
+Nodo: Habitacion [Codigo: 4, Nombre: Cocina, Planta: 0, Metros: 20, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 8, Nombre: Escritorio, Planta: 1, Metros: 18, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 7, Nombre: Biblioteca, Planta: 1, Metros: 25, Salida Exterior: No]
+   HD: Habitacion [Codigo: 9, Nombre: Dormitorio principal, Planta: 1, Metros: 30, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 7, Nombre: Biblioteca, Planta: 1, Metros: 25, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 9, Nombre: Dormitorio principal, Planta: 1, Metros: 30, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 15, Nombre: Invernadero, Planta: 0, Metros: 28, Salida Exterior: S�] (Altura: 3)
+   HI: Habitacion [Codigo: 13, Nombre: Bodega, Planta: -1, Metros: 25, Salida Exterior: No]
+   HD: Habitacion [Codigo: 19, Nombre: Sala de Música, Planta: 1, Metros: 20, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 13, Nombre: Bodega, Planta: -1, Metros: 25, Salida Exterior: No] (Altura: 2)
+   HI: Habitacion [Codigo: 11, Nombre: Escalera, Planta: 0, Metros: 12, Salida Exterior: No]
+   HD: Habitacion [Codigo: 14, Nombre: Altillo, Planta: 2, Metros: 20, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 11, Nombre: Escalera, Planta: 0, Metros: 12, Salida Exterior: No] (Altura: 1)
+   HI: -
+   HD: Habitacion [Codigo: 12, Nombre: Sótano, Planta: -1, Metros: 40, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 12, Nombre: Sótano, Planta: -1, Metros: 40, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 14, Nombre: Altillo, Planta: 2, Metros: 20, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 19, Nombre: Sala de Música, Planta: 1, Metros: 20, Salida Exterior: No] (Altura: 2)
+   HI: Habitacion [Codigo: 17, Nombre: Gimnasio, Planta: 1, Metros: 25, Salida Exterior: No]
+   HD: Habitacion [Codigo: 20, Nombre: Quincho, Planta: 0, Metros: 45, Salida Exterior: S�]
+Nodo: Habitacion [Codigo: 17, Nombre: Gimnasio, Planta: 1, Metros: 25, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 16, Nombre: Cochera, Planta: 0, Metros: 35, Salida Exterior: S�]
+   HD: Habitacion [Codigo: 18, Nombre: Sala de Juegos, Planta: 1, Metros: 30, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 16, Nombre: Cochera, Planta: 0, Metros: 35, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 18, Nombre: Sala de Juegos, Planta: 1, Metros: 30, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 20, Nombre: Quincho, Planta: 0, Metros: 45, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+
+Vertice: 20
+   ADY: 16 (Puntaje: 30)
+   ADY: 15 (Puntaje: 15)
+   ADY: 4 (Puntaje: 25)
+Vertice: 6
+   ADY: 5 (Puntaje: 5)
+Vertice: 15
+   ADY: 20 (Puntaje: 15)
+   ADY: 4 (Puntaje: 20)
+Vertice: 5
+   ADY: 6 (Puntaje: 5)
+   ADY: 4 (Puntaje: 7)
+   ADY: 2 (Puntaje: 8)
+Vertice: 10
+   ADY: 18 (Puntaje: 12)
+   ADY: 9 (Puntaje: 15)
+   ADY: 8 (Puntaje: 10)
+Vertice: 14
+   ADY: 19 (Puntaje: 12)
+   ADY: 11 (Puntaje: 25)
+Vertice: 16
+   ADY: 20 (Puntaje: 30)
+   ADY: 1 (Puntaje: 15)
+Vertice: 19
+   ADY: 14 (Puntaje: 12)
+   ADY: 18 (Puntaje: 10)
+Vertice: 7
+   ADY: 9 (Puntaje: 12)
+   ADY: 8 (Puntaje: 8)
+   ADY: 11 (Puntaje: 10)
+Vertice: 13
+   ADY: 12 (Puntaje: 10)
+Vertice: 18
+   ADY: 17 (Puntaje: 8)
+   ADY: 19 (Puntaje: 10)
+   ADY: 10 (Puntaje: 12)
+Vertice: 11
+   ADY: 14 (Puntaje: 25)
+   ADY: 12 (Puntaje: 15)
+   ADY: 7 (Puntaje: 10)
+   ADY: 1 (Puntaje: 5)
+Vertice: 2
+   ADY: 5 (Puntaje: 8)
+   ADY: 3 (Puntaje: 12)
+   ADY: 1 (Puntaje: 10)
+Vertice: 12
+   ADY: 13 (Puntaje: 10)
+   ADY: 11 (Puntaje: 15)
+Vertice: 3
+   ADY: 4 (Puntaje: 10)
+   ADY: 2 (Puntaje: 12)
+Vertice: 17
+   ADY: 18 (Puntaje: 8)
+   ADY: 9 (Puntaje: 18)
+Vertice: 8
+   ADY: 10 (Puntaje: 10)
+   ADY: 7 (Puntaje: 8)
+Vertice: 9
+   ADY: 17 (Puntaje: 18)
+   ADY: 10 (Puntaje: 15)
+   ADY: 7 (Puntaje: 12)
+Vertice: 1
+   ADY: 16 (Puntaje: 15)
+   ADY: 11 (Puntaje: 5)
+   ADY: 2 (Puntaje: 10)
+Vertice: 4
+   ADY: 20 (Puntaje: 25)
+   ADY: 15 (Puntaje: 20)
+   ADY: 5 (Puntaje: 7)
+   ADY: 3 (Puntaje: 10)
+
+Equipos Registrados
+Equipo: Escapistas Pro | Exigido: 400 | Acumulado: 170 | Hab. Actual: 10 | Puntaje en Hab: 0
+Equipo: Los Búhos | Exigido: 300 | Acumulado: 50 | Hab. Actual: 5 | Puntaje en Hab: 0
+Equipo: Los Valientes | Exigido: 400 | Acumulado: 220 | Hab. Actual: 4 | Puntaje en Hab: 0
+Equipo: Misterio Inc | Exigido: 450 | Acumulado: 230 | Hab. Actual: 7 | Puntaje en Hab: 0
+Equipo: Los Imparables | Exigido: 350 | Acumulado: 100 | Hab. Actual: 3 | Puntaje en Hab: 0
+Equipo: Navegantes | Exigido: 350 | Acumulado: 145 | Hab. Actual: 8 | Puntaje en Hab: 0
+Equipo: Los Locos Adams | Exigido: 400 | Acumulado: 30 | Hab. Actual: 2 | Puntaje en Hab: 0
+Equipo: Masterminds | Exigido: 500 | Acumulado: 295 | Hab. Actual: 14 | Puntaje en Hab: 85
+Equipo: Estrategas | Exigido: 400 | Acumulado: 195 | Hab. Actual: 9 | Puntaje en Hab: 55
+Equipo: Cazadores de Pistas | Exigido: 500 | Acumulado: 395 | Hab. Actual: 12 | Puntaje en Hab: 90
+
+--- Desafios Resueltos por Equipo ---
+
+Equipo: Escapistas Pro
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [75 pts] Mapa Antiguo (Ingenio)
+   - [45 pts] Clave Encriptada (Matemático)
+
+Equipo: Los Búhos
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [20 pts] Sudoku Estar (Matemático)
+
+Equipo: Los Valientes
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [20 pts] Sudoku Estar (Matemático)
+   - [80 pts] Ecuacion Secreta (Matemático)
+   - [40 pts] Anagrama Cena (Letras)
+
+Equipo: Misterio Inc
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [80 pts] Ecuacion Secreta (Matemático)
+   - [40 pts] Anagrama Cena (Letras)
+   - [35 pts] Laberinto Sombras (Lógico)
+   - [25 pts] Espejo Oculto (Búsqueda)
+
+Equipo: Los Imparables
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [20 pts] Sudoku Estar (Matemático)
+
+Equipo: Navegantes
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [20 pts] Sudoku Estar (Matemático)
+   - [75 pts] Mapa Antiguo (Ingenio)
+
+Equipo: Los Locos Adams
+   - [30 pts] Busqueda de Llave (Búsqueda)
+
+Equipo: Masterminds
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [90 pts] Enigma del Sotano (Lógico)
+   - [70 pts] Contraseña Barrica (Ingenio)
+   - [85 pts] Adivinanza Polvorienta (Lógico)
+
+Equipo: Estrategas
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [20 pts] Sudoku Estar (Matemático)
+   - [40 pts] Anagrama Cena (Letras)
+   - [55 pts] Candado Numerico (Lógico)
+
+Equipo: Cazadores de Pistas
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [80 pts] Ecuacion Secreta (Matemático)
+   - [75 pts] Mapa Antiguo (Ingenio)
+   - [45 pts] Clave Encriptada (Matemático)
+   - [55 pts] Candado Numerico (Lógico)
+   - [90 pts] Enigma del Sotano (Lógico)
+
+05/08/2026 22:28:47 - --- ESTADO DEL SISTEMA AL FINALIZAR LA EJECUCION ---
+Nodo: Habitacion [Codigo: 10, Nombre: Dormitorio de huéspedes, Planta: 1, Metros: 22, Salida Exterior: No] (Altura: 4)
+   HI: Habitacion [Codigo: 6, Nombre: Baño, Planta: 0, Metros: 10, Salida Exterior: No]
+   HD: Habitacion [Codigo: 15, Nombre: Invernadero, Planta: 0, Metros: 28, Salida Exterior: S�]
+Nodo: Habitacion [Codigo: 6, Nombre: Baño, Planta: 0, Metros: 10, Salida Exterior: No] (Altura: 3)
+   HI: Habitacion [Codigo: 3, Nombre: Comedor, Planta: 0, Metros: 30, Salida Exterior: No]
+   HD: Habitacion [Codigo: 8, Nombre: Escritorio, Planta: 1, Metros: 18, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 3, Nombre: Comedor, Planta: 0, Metros: 30, Salida Exterior: No] (Altura: 2)
+   HI: Habitacion [Codigo: 2, Nombre: Sala de Estar, Planta: 0, Metros: 35, Salida Exterior: No]
+   HD: Habitacion [Codigo: 5, Nombre: Pasillo, Planta: 0, Metros: 15, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 2, Nombre: Sala de Estar, Planta: 0, Metros: 35, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 1, Nombre: Recibidor, Planta: 0, Metros: 25, Salida Exterior: S�]
+   HD: -
+Nodo: Habitacion [Codigo: 1, Nombre: Recibidor, Planta: 0, Metros: 25, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 5, Nombre: Pasillo, Planta: 0, Metros: 15, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 4, Nombre: Cocina, Planta: 0, Metros: 20, Salida Exterior: S�]
+   HD: -
+Nodo: Habitacion [Codigo: 4, Nombre: Cocina, Planta: 0, Metros: 20, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 8, Nombre: Escritorio, Planta: 1, Metros: 18, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 7, Nombre: Biblioteca, Planta: 1, Metros: 25, Salida Exterior: No]
+   HD: Habitacion [Codigo: 9, Nombre: Dormitorio principal, Planta: 1, Metros: 30, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 7, Nombre: Biblioteca, Planta: 1, Metros: 25, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 9, Nombre: Dormitorio principal, Planta: 1, Metros: 30, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 15, Nombre: Invernadero, Planta: 0, Metros: 28, Salida Exterior: S�] (Altura: 3)
+   HI: Habitacion [Codigo: 13, Nombre: Bodega, Planta: -1, Metros: 25, Salida Exterior: No]
+   HD: Habitacion [Codigo: 19, Nombre: Sala de Música, Planta: 1, Metros: 20, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 13, Nombre: Bodega, Planta: -1, Metros: 25, Salida Exterior: No] (Altura: 2)
+   HI: Habitacion [Codigo: 11, Nombre: Escalera, Planta: 0, Metros: 12, Salida Exterior: No]
+   HD: Habitacion [Codigo: 14, Nombre: Altillo, Planta: 2, Metros: 20, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 11, Nombre: Escalera, Planta: 0, Metros: 12, Salida Exterior: No] (Altura: 1)
+   HI: -
+   HD: Habitacion [Codigo: 12, Nombre: Sótano, Planta: -1, Metros: 40, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 12, Nombre: Sótano, Planta: -1, Metros: 40, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 14, Nombre: Altillo, Planta: 2, Metros: 20, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 19, Nombre: Sala de Música, Planta: 1, Metros: 20, Salida Exterior: No] (Altura: 2)
+   HI: Habitacion [Codigo: 17, Nombre: Gimnasio, Planta: 1, Metros: 25, Salida Exterior: No]
+   HD: Habitacion [Codigo: 20, Nombre: Quincho, Planta: 0, Metros: 45, Salida Exterior: S�]
+Nodo: Habitacion [Codigo: 17, Nombre: Gimnasio, Planta: 1, Metros: 25, Salida Exterior: No] (Altura: 1)
+   HI: Habitacion [Codigo: 16, Nombre: Cochera, Planta: 0, Metros: 35, Salida Exterior: S�]
+   HD: Habitacion [Codigo: 18, Nombre: Sala de Juegos, Planta: 1, Metros: 30, Salida Exterior: No]
+Nodo: Habitacion [Codigo: 16, Nombre: Cochera, Planta: 0, Metros: 35, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 18, Nombre: Sala de Juegos, Planta: 1, Metros: 30, Salida Exterior: No] (Altura: 0)
+   HI: -
+   HD: -
+Nodo: Habitacion [Codigo: 20, Nombre: Quincho, Planta: 0, Metros: 45, Salida Exterior: S�] (Altura: 0)
+   HI: -
+   HD: -
+
+Vertice: 20
+   ADY: 16 (Puntaje: 30)
+   ADY: 15 (Puntaje: 15)
+   ADY: 4 (Puntaje: 25)
+Vertice: 6
+   ADY: 5 (Puntaje: 5)
+Vertice: 15
+   ADY: 20 (Puntaje: 15)
+   ADY: 4 (Puntaje: 20)
+Vertice: 5
+   ADY: 6 (Puntaje: 5)
+   ADY: 4 (Puntaje: 7)
+   ADY: 2 (Puntaje: 8)
+Vertice: 10
+   ADY: 18 (Puntaje: 12)
+   ADY: 9 (Puntaje: 15)
+   ADY: 8 (Puntaje: 10)
+Vertice: 14
+   ADY: 19 (Puntaje: 12)
+   ADY: 11 (Puntaje: 25)
+Vertice: 16
+   ADY: 20 (Puntaje: 30)
+   ADY: 1 (Puntaje: 15)
+Vertice: 19
+   ADY: 14 (Puntaje: 12)
+   ADY: 18 (Puntaje: 10)
+Vertice: 7
+   ADY: 9 (Puntaje: 12)
+   ADY: 8 (Puntaje: 8)
+   ADY: 11 (Puntaje: 10)
+Vertice: 13
+   ADY: 12 (Puntaje: 10)
+Vertice: 18
+   ADY: 17 (Puntaje: 8)
+   ADY: 19 (Puntaje: 10)
+   ADY: 10 (Puntaje: 12)
+Vertice: 11
+   ADY: 14 (Puntaje: 25)
+   ADY: 12 (Puntaje: 15)
+   ADY: 7 (Puntaje: 10)
+   ADY: 1 (Puntaje: 5)
+Vertice: 2
+   ADY: 5 (Puntaje: 8)
+   ADY: 3 (Puntaje: 12)
+   ADY: 1 (Puntaje: 10)
+Vertice: 12
+   ADY: 13 (Puntaje: 10)
+   ADY: 11 (Puntaje: 15)
+Vertice: 3
+   ADY: 4 (Puntaje: 10)
+   ADY: 2 (Puntaje: 12)
+Vertice: 17
+   ADY: 18 (Puntaje: 8)
+   ADY: 9 (Puntaje: 18)
+Vertice: 8
+   ADY: 10 (Puntaje: 10)
+   ADY: 7 (Puntaje: 8)
+Vertice: 9
+   ADY: 17 (Puntaje: 18)
+   ADY: 10 (Puntaje: 15)
+   ADY: 7 (Puntaje: 12)
+Vertice: 1
+   ADY: 16 (Puntaje: 15)
+   ADY: 11 (Puntaje: 5)
+   ADY: 2 (Puntaje: 10)
+Vertice: 4
+   ADY: 20 (Puntaje: 25)
+   ADY: 15 (Puntaje: 20)
+   ADY: 5 (Puntaje: 7)
+   ADY: 3 (Puntaje: 10)
+
+Equipos Registrados
+Equipo: Escapistas Pro | Exigido: 400 | Acumulado: 170 | Hab. Actual: 10 | Puntaje en Hab: 0
+Equipo: Los Búhos | Exigido: 300 | Acumulado: 50 | Hab. Actual: 5 | Puntaje en Hab: 0
+Equipo: Los Valientes | Exigido: 400 | Acumulado: 220 | Hab. Actual: 4 | Puntaje en Hab: 0
+Equipo: Misterio Inc | Exigido: 450 | Acumulado: 230 | Hab. Actual: 7 | Puntaje en Hab: 0
+Equipo: Los Imparables | Exigido: 350 | Acumulado: 100 | Hab. Actual: 3 | Puntaje en Hab: 0
+Equipo: Navegantes | Exigido: 350 | Acumulado: 145 | Hab. Actual: 8 | Puntaje en Hab: 0
+Equipo: Los Locos Adams | Exigido: 400 | Acumulado: 30 | Hab. Actual: 2 | Puntaje en Hab: 0
+Equipo: Masterminds | Exigido: 500 | Acumulado: 295 | Hab. Actual: 14 | Puntaje en Hab: 85
+Equipo: Estrategas | Exigido: 400 | Acumulado: 195 | Hab. Actual: 9 | Puntaje en Hab: 55
+Equipo: Cazadores de Pistas | Exigido: 500 | Acumulado: 395 | Hab. Actual: 12 | Puntaje en Hab: 90
+
+--- Desafios Resueltos por Equipo ---
+
+Equipo: Escapistas Pro
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [75 pts] Mapa Antiguo (Ingenio)
+   - [45 pts] Clave Encriptada (Matemático)
+
+Equipo: Los Búhos
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [20 pts] Sudoku Estar (Matemático)
+
+Equipo: Los Valientes
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [20 pts] Sudoku Estar (Matemático)
+   - [80 pts] Ecuacion Secreta (Matemático)
+   - [40 pts] Anagrama Cena (Letras)
+
+Equipo: Misterio Inc
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [80 pts] Ecuacion Secreta (Matemático)
+   - [40 pts] Anagrama Cena (Letras)
+   - [35 pts] Laberinto Sombras (Lógico)
+   - [25 pts] Espejo Oculto (Búsqueda)
+
+Equipo: Los Imparables
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [20 pts] Sudoku Estar (Matemático)
+
+Equipo: Navegantes
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [20 pts] Sudoku Estar (Matemático)
+   - [75 pts] Mapa Antiguo (Ingenio)
+
+Equipo: Los Locos Adams
+   - [30 pts] Busqueda de Llave (Búsqueda)
+
+Equipo: Masterminds
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [90 pts] Enigma del Sotano (Lógico)
+   - [70 pts] Contraseña Barrica (Ingenio)
+   - [85 pts] Adivinanza Polvorienta (Lógico)
+
+Equipo: Estrategas
+   - [30 pts] Busqueda de Llave (Búsqueda)
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [20 pts] Sudoku Estar (Matemático)
+   - [40 pts] Anagrama Cena (Letras)
+   - [55 pts] Candado Numerico (Lógico)
+
+Equipo: Cazadores de Pistas
+   - [50 pts] Acertijo Inicial (Lógico)
+   - [80 pts] Ecuacion Secreta (Matemático)
+   - [75 pts] Mapa Antiguo (Ingenio)
+   - [45 pts] Clave Encriptada (Matemático)
+   - [55 pts] Candado Numerico (Lógico)
+   - [90 pts] Enigma del Sotano (Lógico)
+
