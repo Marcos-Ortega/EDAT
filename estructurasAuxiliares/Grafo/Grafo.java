@@ -276,6 +276,7 @@ public class Grafo {
         boolean exito = false;
         // va a entrar solo si existe ese codigo en el grafo
         if (existeVertice(origen) && existeVertice(destino)) {
+            // creamos la lista y llamamos al metodo privado que recorre el grafo
             Lista visitados = new Lista();
             exito = sePuedeLlegarAux(origen, destino, puntajeDisponible, visitados);
         }
@@ -288,9 +289,10 @@ public class Grafo {
         if (actual.equals(destino)) {
             exito = true;
         } else {
+            // insertamos el vertice en la lista
             visitados.insertar(actual, visitados.longitud() + 1);
             NodoAdy auxAdy = getAdyacentes(actual);
-
+            // si existe un adyacente y si todavia no llegamos a destino entra
             while (auxAdy != null && !exito) {
                 // va a entrar si todavia hay el suficiente puntaje que requiere el vertice
                 if (visitados.localizar(auxAdy.getVertice().getElem()) < 0
@@ -309,13 +311,15 @@ public class Grafo {
         boolean exito = false;
         // va a entrar solo si existe ese codigo en el grafo
         if (existeVertice(origen) && existeVertice(destino)) {
+            // creamos dos listas para ir guardando los vertices que ya accedimos para no
+            // recorrer de mas y la otra para guardar el camino que hacemos
             Lista visitados = new Lista();
             Lista caminoActual = new Lista();
             // guarda el valor mas alto que java puede asignar
             mejorPuntaje[0] = Integer.MAX_VALUE;
-
+            // llamamos al metodo privado que recorre
             minimoPuntajeAux(origen, destino, 0, visitados, caminoActual, mejorPuntaje, mejorCamino);
-
+            // si efectivamente existe un camino mejor camino lo debe tener
             if (mejorCamino[0] != null) {
                 exito = true;
             }
@@ -326,10 +330,12 @@ public class Grafo {
     private void minimoPuntajeAux(Object actual, Object destino, int acumulado, Lista visitados,
             Lista caminoActual, int[] mejorPuntaje, Lista[] mejorCamino) {
 
+        // inserta el primer vertice en ambas listas porque es el de origen
         visitados.insertar(actual, visitados.longitud() + 1);
         caminoActual.insertar(actual, caminoActual.longitud() + 1);
-
+        //entra si ya estamos parados en destino
         if (actual.equals(destino)) {
+            //se fija que el puntaje que acumulamos es mejor al que ya teniamos, si lo es asigna el nuevo camino, si no lo es mantiene el viejo
             if (acumulado < mejorPuntaje[0]) {
                 mejorPuntaje[0] = acumulado;
                 // clona el camino actual para asignarlo como el mejor
@@ -337,7 +343,9 @@ public class Grafo {
             }
         } else {
             NodoAdy auxAdy = getAdyacentes(actual);
+            //mientras existan adyacentes los va a recorrer
             while (auxAdy != null) {
+                //en acumulado va a sumando los puntos que necesita entre cada vertice
                 if (visitados.localizar(auxAdy.getVertice().getElem()) < 0) {
                     minimoPuntajeAux(auxAdy.getVertice().getElem(), destino,
                             acumulado + auxAdy.getEtiqueta(), visitados, caminoActual,
@@ -353,10 +361,13 @@ public class Grafo {
 
     public Lista sinPasarPor(Object origen, Object destino, Object evitar, int limitePuntos) {
         Lista caminos = new Lista();
-        if (existeVertice(origen) && existeVertice(destino) && existeVertice(evitar) && !destino.equals(evitar)) {
+        //entra si existen todos los vertices, y si el origen y el destino son distons del que debemos evitar
+        if (existeVertice(origen) && existeVertice(destino) && existeVertice(evitar) && !origen.equals(evitar)&& !destino.equals(evitar)) {
             Lista visitados = new Lista();
             Lista caminoActual = new Lista();
+            //insertamos primero el que debemos evitar para que al hacer el recorrido siempre piense que ya pasamos por ese y no entre justamente porque es el que debemos evitar
             visitados.insertar(evitar, visitados.longitud() + 1);
+            //llamamos al metodo que recorre e indica camino
             sinPasarPorAux(origen, destino, 0, limitePuntos, visitados, caminoActual, caminos);
         }
         return caminos;
@@ -367,14 +378,16 @@ public class Grafo {
 
         visitados.insertar(actual, visitados.longitud() + 1);
         caminoActual.insertar(actual, caminoActual.longitud() + 1);
-
+        //estamos parados a donde tenemos que llegar 
         if (actual.equals(destino)) {
+            //inserta el camino que hicimos recien acumulando si antes ya habiamos encontrado otro
             caminos.insertar(caminoActual.clone(), caminos.longitud() + 1);
         } else {
             NodoAdy auxAdy = getAdyacentes(actual);
+            //recorremos mientras existan adayacentes
             while (auxAdy != null) {
-                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0
-                        && acumulado + auxAdy.getEtiqueta() <= limitePuntos) {
+                //verifica que ese vertice no este en la lista (que ya lo hayamos visitado) y que todavia no lleguemos al tope de puntos
+                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0 && acumulado + auxAdy.getEtiqueta() <= limitePuntos) {
                     sinPasarPorAux(auxAdy.getVertice().getElem(), destino,
                             acumulado + auxAdy.getEtiqueta(), limitePuntos, visitados, caminoActual, caminos);
                 }

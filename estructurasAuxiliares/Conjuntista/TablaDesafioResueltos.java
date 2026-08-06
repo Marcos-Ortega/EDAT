@@ -21,7 +21,7 @@ public class TablaDesafioResueltos {
         int pos = funcionHash(nombreEquipo);
         NodoHashResueltos aux = tabla[pos];
         boolean encontrado = false;
-
+        // buscamos si existe el equipo dentro de la tabla ya creada
         while (aux != null && !encontrado) {
             if (aux.getNombreEquipo().equalsIgnoreCase(nombreEquipo)) {
                 encontrado = true;
@@ -37,17 +37,20 @@ public class TablaDesafioResueltos {
             boolean yaEsta = false;
             Lista lista = aux.getDesafiosResueltos();
             for (int i = 1; i <= lista.longitud() && !yaEsta; i++) {
+                // verifico si ya resolvio ese desafio
                 Desafio d = (Desafio) lista.recuperar(i);
                 if (d == desafio) {
                     yaEsta = true;
                 }
             }
+            // si no lo reslvio antes, le inserto el desafio (se lo marco como resuelto)
             if (!yaEsta) {
                 lista.insertar(desafio, lista.longitud() + 1);
                 exito = true;
             }
         } else {
-            // primera vez que este equipo resuelve un desafio
+            // primera vez que este equipo resuelve un desafio, insertamos al equipo en la
+            // tabla y le marcamos el desafion como resuelto
             Lista nuevaLista = new Lista();
             nuevaLista.insertar(desafio, 1);
             tabla[pos] = new NodoHashResueltos(nombreEquipo, nuevaLista, tabla[pos]);
@@ -61,18 +64,18 @@ public class TablaDesafioResueltos {
 
         int pos = funcionHash(nombreEquipo);
         NodoHashResueltos aux = tabla[pos];
-        Lista resultado = null;
+        boolean encontrado = false;
+        Lista resultado = new Lista();
 
-        while (aux != null && resultado == null) {
+        while (aux != null && !encontrado) {
+            //si encuentro el equipo en la tabla dejo de recorrer y a resultado le asigno todos los desafios que resolvio ese equipo
             if (aux.getNombreEquipo().equalsIgnoreCase(nombreEquipo)) {
                 resultado = aux.getDesafiosResueltos();
+                encontrado = true;
             } else {
+                //avanzo la siguiente
                 aux = aux.getSiguiente();
             }
-        }
-
-        if (resultado == null) {
-            resultado = new Lista();
         }
 
         return resultado;
@@ -82,12 +85,14 @@ public class TablaDesafioResueltos {
 
         Lista lista = obtenerResueltos(nombreEquipo);
         boolean encontrado = false;
-
-        for (int i = 1; i <= lista.longitud() && !encontrado; i++) {
+        int i = 1;
+        //recorremos la lista de desafios que reoslvio el equipo y nos fijamos si en ella esta el desafio indicado
+        while ((!encontrado) && (i <= lista.longitud())) {
             Desafio d = (Desafio) lista.recuperar(i);
             if (d == desafio) {
                 encontrado = true;
             }
+            i++;
         }
 
         return encontrado;

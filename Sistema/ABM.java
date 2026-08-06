@@ -323,12 +323,13 @@ public class ABM {
         } while (opc != 0);
     }
 
-    // case 1
+    // punto 1
     public static void mostrarHabitacion(Scanner sc, ArbolAVL avl) {
         int codigo;
         System.out.println("ingrese el codigo de la habitacion: ");
         codigo = sc.nextInt();
         Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigo));
+        //si al recuperar la habitacion esta existe, la mostramos si no, informamos que no existe
         if (habActual != null) {
             System.out.println(habActual);
             log.registrar("habitacion con el codigo: " + codigo);
@@ -338,7 +339,7 @@ public class ABM {
         }
     }
 
-    // case 2
+    // punto 2
     public static void habitacionesContiguas(Scanner sc, ArbolAVL avl, Grafo grafo) {
 
         int codigo;
@@ -347,10 +348,12 @@ public class ABM {
         codigo = sc.nextInt();
 
         Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigo));
-
+        //misma verificacion si existe habitacion
         if (habActual != null) {
             NodoAdy auxAdy = grafo.getAdyacentes(codigo);
+            //verificamos que la habitacion tenga adyacentes
             if (auxAdy != null) {
+                //si tiene adyacentes los recorremos y mostramos
                 while (auxAdy != null) {
                     Object codigo2 = auxAdy.getVertice().getElem();
                     System.out.println("el codigo de la habitacion: " + codigo2);
@@ -369,7 +372,7 @@ public class ABM {
         }
     }
 
-    // case 3
+    // punto 3
     public static void esPosibleLlegar(Scanner sc, Grafo grafo, ArbolAVL avl) {
         int cod1, cod2, k;
 
@@ -384,11 +387,13 @@ public class ABM {
 
         Habitacion hab1 = (Habitacion) avl.recuperar(new Habitacion(cod1));
         Habitacion hab2 = (Habitacion) avl.recuperar(new Habitacion(cod2));
-
+        //verificamos que ambas habitaciones existan
         if (hab1 != null && hab2 != null) {
+            //llamamos al metodo de grafo que verifica si hay camino entre esas dos habitaciones y si se puede hacer con ese puntaje
             boolean existe = grafo.sePuedeLlegar(cod1, cod2, k);
+            //si el metodo de grafo devuelve verdaderole decimos que si puede llegar, de lo contrario le decimos que no es posible
             if (existe) {
-                System.out.println("es posible llegar de la habitacion de origen a la habitacion de destino.");
+                System.out.println("es posible llegar de la habitacion de origen a la habitacion de destino con la cantidad de puntos ingresados.");
                 log.registrar("es posible llegar de la habitacion: " + cod1 + " a la habitacion: " + cod2);
             } else {
                 System.out.println("no es posible llegar de la habitacion de origen a la de destino.");
@@ -400,7 +405,7 @@ public class ABM {
         }
     }
 
-    // case 4
+    // punto 4
     public static void minimoPuntaje(Scanner sc, Grafo grafo, ArbolAVL avl) {
         int cod1, cod2;
 
@@ -412,21 +417,21 @@ public class ABM {
 
         Habitacion hab1 = (Habitacion) avl.recuperar(new Habitacion(cod1));
         Habitacion hab2 = (Habitacion) avl.recuperar(new Habitacion(cod2));
-
+        //verificamos que las habitaciones existan
         if (hab1 != null && hab2 != null) {
-
+            //creamos arreglo y lista para ir guardando lo que le vamos a mostrar al usuario
             int[] mejorPuntaje = new int[1];
             Lista[] mejorCamino = new Lista[1];
-
+            //llamamos al metodo de grafo que verifica si se puede llegar de una habitacion a la otra y cual es el mejor camino y mininmo puntaje
             boolean exito = grafo.minimoPuntaje(cod1, cod2, mejorPuntaje, mejorCamino);
-
+            //en el caso de poder ir de una habitacion a la otra mostramos el mejor camino y minimo puntaje, de lo contrario indicamos que no hay un camino posible
             if (exito) {
                 System.out.println("El puntaje minimo es: " + mejorPuntaje[0]);
                 System.out.println("El camino es: " + mejorCamino[0]);
-                log.registrar("Se calculo el puntaje minimo entre " + cod1 + " y " + cod2);
+                log.registrar("Se mostro el puntaje minimo y el camino entre las habitaciones " + cod1 + " y " + cod2);
             } else {
                 System.out.println("No existe camino entre esas dos habitaciones.");
-                log.registrar("No existe camino entre " + cod1 + " y " + cod2);
+                log.registrar("No existe camino entre las habitaciones" + cod1 + " y " + cod2);
             }
 
         } else {
@@ -435,7 +440,7 @@ public class ABM {
         }
     }
 
-    // case 5
+    // punto 5
     public static void sinPasarPor(Scanner sc, Grafo grafo, ArbolAVL avl) {
         int cod1, cod2, cod3, p;
         System.out.println("ingrese el codigo de la habitacion 1: ");
@@ -450,11 +455,11 @@ public class ABM {
         Habitacion hab1 = (Habitacion) avl.recuperar(new Habitacion(cod1));
         Habitacion hab2 = (Habitacion) avl.recuperar(new Habitacion(cod2));
         Habitacion hab3 = (Habitacion) avl.recuperar(new Habitacion(cod3));
-
+        //verifica que existan las 3 habitaciones
         if (hab1 != null && hab2 != null && hab3 != null && cod2 != cod3) {
-
+            //llama al metodo de grafos que verifica el camino y lo devuelve en una lista
             Lista caminos = grafo.sinPasarPor(cod1, cod2, cod3, p);
-
+            //si la lista no esta vacia quiere decir que si existe un camino o varios caminos entonces lo mostramos, de lo contario, decimos que no existe ningun camino
             if (caminos.esVacia()) {
                 System.out.println("No hay caminos posibles con esas condiciones.");
                 log.registrar("No hay caminos de " + cod1 + " a " + cod2 + " sin pasar por " + cod3);
@@ -710,17 +715,15 @@ public class ABM {
 
         System.out.println("Ingrese el codigo de la habitacion del desafio: ");
         codigoHab = sc.nextInt();
-
         Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigoHab));
-
+        //verifica que la habitacion ingresada exista
         if (habActual != null) {
-
             System.out.println("Ingrese el puntaje del desafio a mostrar: ");
             puntajeBuscar = sc.nextInt();
-
             Desafio desafioActual = (Desafio) habActual.getDesafios().recuperar(new Desafio(puntajeBuscar));
-
+            //verifica que en esa habitacion exista el desafio con puntaje ingresado
             if (desafioActual != null) {
+                //si existe lo muestra
                 System.out.println(desafioActual);
                 log.registrar("Se mostro el desafio " + desafioActual);
             } else {
@@ -736,14 +739,13 @@ public class ABM {
 
     // punto b
     public static void mostrarDesafiosResueltos(Scanner sc, TablaDesafioResueltos desResueltos) {
-
         String nombreEquipo;
         sc.nextLine();
         System.out.println("Ingrese el nombre del equipo: ");
         nombreEquipo = sc.nextLine();
-
+        //nos traemos los desafios que tiene resueltos ese equipo de TablaDesafioResuelto donde tenemos hechas las relaciones de los desafios que resolveio cada equipo 
         Lista resueltos = desResueltos.obtenerResueltos(nombreEquipo);
-
+        //si la lista no esta vacia muestra los desafio resueltos del equipo 
         if (resueltos.esVacia()) {
             System.out.println("El equipo " + nombreEquipo + " todavia no resolvio ningun desafio.");
             log.registrar("El equipo" + nombreEquipo + "no resolvio desafios");
@@ -769,21 +771,21 @@ public class ABM {
         puntaje = sc.nextInt();
 
         Habitacion hab = (Habitacion) avl.recuperar(new Habitacion(codigoHab));
-
+        //verificamos que la habitacion exista 
         if (hab == null) {
             System.out.println("La habitacion no existe.");
             log.registrar("La habitaccion ingresada por el ususario no existe");
         } else {
 
             Desafio desafio = (Desafio) hab.getDesafios().recuperar(new Desafio(puntaje));
-
+            //verificamos que el desafio exista en esa habitacion
             if (desafio == null) {
                 System.out.println("Ese desafio no existe en esa habitacion.");
-                log.registrar("El desafip ingresado por el ususario no existe en la habitacion" + hab);
+                log.registrar("El desafio ingresado por el ususario no existe en la habitacion" + hab);
             } else {
-
+                //llamamos al metodo de TablaDesafioResuelto para ver si el desafio esta entre los resueltos por ese equipo
                 boolean resuelto = desResueltos.yaResuelto(nombreEquipo, desafio);
-
+                //indica si el desafio se resolvio o no
                 if (resuelto) {
                     System.out.println("El equipo " + nombreEquipo + " YA resolvio ese desafio.");
                     log.registrar("Se indica que el equipo ya resolvio el desafio");
@@ -805,7 +807,7 @@ public class ABM {
         codigoHab = sc.nextInt();
 
         Habitacion habActual = (Habitacion) avl.recuperar(new Habitacion(codigoHab));
-
+        //verifica que la habitacion exista
         if (habActual != null) {
 
             System.out.println("Ingrese el puntaje minimo (a): ");
@@ -817,18 +819,21 @@ public class ABM {
 
             System.out.println("Ingrese el tipo de desafio a buscar: ");
             tipo = sc.nextLine();
-
+            // de la lista de desafios que tiene esa habitacion utilizamos el metodo de lista que hace una sublista que se encuentre el el rango indicado
             Lista enRango = habActual.getDesafios().listarRango(new Desafio(a), new Desafio(b));
-
             boolean encontroAlguno = false;
+            //recorre toda la lista de en rango
             for (int i = 1; i <= enRango.longitud(); i++) {
                 Desafio d = (Desafio) enRango.recuperar(i);
+                //se fija si el desafio en el que estamos es del tipo indicado
                 if (d.getTipo().equalsIgnoreCase(tipo)) {
+                    //si el desafio es del tipo ingresado lo muestra
                     System.out.println(d);
                     encontroAlguno = true;
                     log.registrar("Se muestran los desafios del tipo ingresado que estan dentro del rango ingresado");
                 }
             }
+            //no se encuentro ningun desafio de ese tipo en el rango
             if (!encontroAlguno) {
                 System.out.println("No hay desafios de tipo " + tipo + " en ese rango.");
                 log.registrar("No hay desafios del tipo " + tipo + "en el rango ingresado");
