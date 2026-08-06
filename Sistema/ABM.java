@@ -1081,6 +1081,9 @@ public class ABM {
 
                         boolean resultado = jugarDesafio(tablaEquipos, desResueltos,
                                 nombreEquipo, codHabitacion, puntajeDesafio);
+                        if (resultado) {
+                            System.out.println("Desafío resuelto exitosamente por " + nombreEquipo);
+                        }
                     }
                     break;
 
@@ -1092,11 +1095,15 @@ public class ABM {
 
                     // recuperamos el objeto habitacion desde el avl para pasarlo al metodo
                     Habitacion habDestino = (Habitacion) avlHabitaciones.recuperar(new Habitacion(codHabDestino));
-
-                    System.out.println("Ingrese el puntaje requerido para la puerta: ");
-                    int puntajeReq = sc.nextInt();
-
-                    cambiarDeHabitacion(tablaEquipos, grafoMapa, eqCambiar, habDestino, puntajeReq);
+                    if (habDestino!=null) {
+                        System.out.println("Ingrese el puntaje requerido para la puerta: ");
+                        int puntajeReq = sc.nextInt();
+    
+                        cambiarDeHabitacion(tablaEquipos, grafoMapa, eqCambiar, habDestino, puntajeReq);
+                    }else{
+                        System.out.println("No existe la habitacion ingresada");
+                        log.registrar("Cambio el puntaje exigido del equipo " + codHabDestino);
+                    }
                     break;
 
                 case 5:
@@ -1291,8 +1298,6 @@ public class ABM {
 
                             // registramos el desafío como resuelto por este equipo en la tabla
                             tablaResueltos.agregar(nombreEquipo, desafioEncontrado);
-
-                            System.out.println("Desafío resuelto exitosamente por " + nombreEquipo);
                             System.out
                                     .println("Se sumaron " + puntos + " puntos. Puntaje acumulado en esta habitación: "
                                             + eq.getPuntajeActualHab());
@@ -1308,7 +1313,6 @@ public class ABM {
                 }
             }
         }
-
         return exito;
     }
 
@@ -1322,13 +1326,9 @@ public class ABM {
         if (eq == null) {
             System.out.println("error, el equipo '" + nombreEquipo + "' no existe.");
             log.registrar("Error en cambiarDeHabitacion: El equipo '" + nombreEquipo + "' no existe");
-        } else if (habDestino == null) {
-            System.out.println("error, la habitación de destino ingresada no es válida.");
-            log.registrar("Error en cambiarDeHabitacion: Habitación de destino no válida");
         } else {
             // obtenemos la habitación actual donde se encuentra el equipo
             Habitacion habOrigen = eq.getHabitacionActual();
-
             if (habOrigen == null) {
                 System.out.println("Eror, el equipo no tiene asignada una habitación actual.");
                 log.registrar(
@@ -1339,7 +1339,7 @@ public class ABM {
 
                 // verificamos si la habitacion destino es contigua
                 boolean esContigua = grafoMapa.existeArco(codOrigen, codDestino);
-
+                
                 // verificamos si el puntaje acumulado en la habitación actual alcanza
                 boolean puntajeSuficiente = (eq.getPuntajeActualHab() >= puntajeRequerido);
 
