@@ -101,6 +101,7 @@ public class ABM {
             System.out.println("1. Alta Habitacion");
             System.out.println("2. Baja Habitacion");
             System.out.println("3. Modificacion Habitacion");
+            System.out.println("4. Agregar una puerta a otra Habitacion");
             System.out.println("0. Volver");
             System.out.print("Opcion: ");
 
@@ -119,7 +120,9 @@ public class ABM {
                 case 3:
                     modificarHabitacion(sc, avl);
                     break;
-
+                case 4:
+                    agregarPuertaHabitacion(sc, avl, grafo);
+                    break;
                 case 0:
                     break;
 
@@ -284,6 +287,35 @@ public class ABM {
         } else {
             System.out.println("La habitacion no existe.");
             log.registrar("No se puede modificar habitacion " + codigoBuscar + ", no existe la habitacion.");
+        }
+    }
+
+    public static void agregarPuertaHabitacion(Scanner sc, ArbolAVL avl, Grafo grafo) {
+        int codigoBuscar1, codigoBuscar2, puntaje;
+
+        System.out.println("Ingrese el codigo de la primera habitacion donde esta la puerta: ");
+        codigoBuscar1 = sc.nextInt();
+        System.out.println("Ingrese el codigo de la segunda habitacion donde esta la puerta: ");
+        codigoBuscar2 = sc.nextInt();
+
+        Habitacion habOrigen = (Habitacion) avl.recuperar(new Habitacion(codigoBuscar1));
+        Habitacion habDestino = (Habitacion) avl.recuperar(new Habitacion(codigoBuscar2));
+        if (habOrigen == null || habDestino == null) {
+            System.out.println("Error, las habitaciones no existen.");
+            log.registrar("Error al agregar una puerta de una habitacion, habitacion no existe");
+        } else if (codigoBuscar1 == codigoBuscar2) {
+            System.out.println("Error, las habitaciones son las mismas.");
+            log.registrar("Error al agregar una puerta de una habitacion, habitacion no existe");
+        }else{
+            System.out.println("Ingrese el puntaje requerido para pasar de habitacion: ");
+            puntaje=sc.nextInt();
+            if(grafo.insertarArco(codigoBuscar1, codigoBuscar2, puntaje)){
+                System.out.println("La puerta se agrego exitosamente.");
+                log.registrar("Se agrego una puerta para la habitacion "+codigoBuscar1+" y "+codigoBuscar2 +"con un puntaje requerido de "+puntaje);
+            }else{
+                System.out.println("Error al agregar la puerta, ya existe una puerta que conecta esas habitaciones.");
+                log.registrar("Error al agregar una puerta para la habitacion "+codigoBuscar1+" y "+codigoBuscar2 +"con un puntaje requerido de "+puntaje+". Ya existe una puerta para esas habitaciones");
+            }
         }
     }
 
