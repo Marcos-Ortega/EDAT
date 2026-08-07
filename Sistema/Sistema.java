@@ -10,7 +10,7 @@ import estructurasAuxiliares.Grafo.Grafo;
 import estructurasAuxiliares.Grafo.NodoAdy;
 import estructurasAuxiliares.Lineales.Lista;
 
-public class ABM {
+public class Sistema {
 
     public static void main(String[] args) {
 
