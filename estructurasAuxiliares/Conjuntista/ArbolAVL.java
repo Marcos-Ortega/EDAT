@@ -366,7 +366,7 @@ public class ArbolAVL {
     }
 
 
-   /*public String toString() {
+   /*public String toStringInOrden() {
     String res;
     if (this.raiz == null) {
         res = "arbol avl vacio";
