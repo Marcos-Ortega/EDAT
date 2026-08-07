@@ -194,7 +194,7 @@ public class Grafo {
         boolean eliminado = false;
         NodoAdy anterior = null;
         NodoAdy aux2 = v1.getPrimerAdy();
-        // recorremos hasta que encontremos la habitacion a eliminar o no queden mas
+        // recorremos hasta que encontremos el vertice a eliminar o no queden mas
         // habitaciones
         while ((aux2 != null) && (!eliminado)) {
             if (aux2.getVertice().getElem().equals(v2.getElem())) {
@@ -206,7 +206,7 @@ public class Grafo {
                 }
                 eliminado = true;
             } else {
-                // avanzamos si no es la habitacion que queremos
+                // avanzamos si no es el vertice que queremos
                 anterior = aux2;
                 aux2 = aux2.getSigAdyacente();
             }
@@ -221,7 +221,7 @@ public class Grafo {
         boolean exito = false;
         if (v1 != null && v2 != null) {
             boolean verificarArco = verificarArcoAux(v1, v2);
-            // busco si existe un arco entre las habitaciones
+            // busco si existe un arco entre las vertices
             if (!verificarArco) {
                 // si no existe el arco, lo creo
                 NodoAdy nuevoAdy1 = new NodoAdy(v2, v1.getPrimerAdy(), etiqueta);
@@ -333,11 +333,10 @@ public class Grafo {
             // creamos dos listas para ir guardando los vertices que ya accedimos para no
             // recorrer de mas y la otra para guardar el camino que hacemos
             Lista visitados = new Lista();
-            Lista caminoActual = new Lista();
             // guarda el valor mas alto que java puede asignar
             mejorPuntaje[0] = Integer.MAX_VALUE;
             // llamamos al metodo privado que recorre
-            minimoPuntajeAux(origen, destino, 0, visitados, caminoActual, mejorPuntaje, mejorCamino);
+            minimoPuntajeAux(origen, destino, 0, visitados, mejorPuntaje, mejorCamino);
             // si efectivamente existe un camino mejor camino lo debe tener
             if (mejorCamino[0] != null) {
                 exito = true;
@@ -346,28 +345,26 @@ public class Grafo {
         return exito;
     }
 
-    private void minimoPuntajeAux(Object actual, Object destino, int acumulado, Lista visitados,
-            Lista caminoActual, int[] mejorPuntaje, Lista[] mejorCamino) {
+    private void minimoPuntajeAux(Object actual, Object destino, int acumulado, Lista visitados, int[] mejorPuntaje, Lista[] mejorCamino) {
 
         // inserta el primer vertice en ambas listas porque es el de origen
         visitados.insertar(actual, visitados.longitud() + 1);
-        caminoActual.insertar(actual, caminoActual.longitud() + 1);
         //entra si ya estamos parados en destino
         if (actual.equals(destino)) {
             //se fija que el puntaje que acumulamos es mejor al que ya teniamos, si lo es asigna el nuevo camino, si no lo es mantiene el viejo
             if (acumulado < mejorPuntaje[0]) {
                 mejorPuntaje[0] = acumulado;
                 // clona el camino actual para asignarlo como el mejor
-                mejorCamino[0] = caminoActual.clone();
+                mejorCamino[0] = visitados.clone();
             }
         } else {
             NodoAdy auxAdy = getAdyacentes(actual);
             //mientras existan adyacentes los va a recorrer
             while (auxAdy != null) {
                 //en acumulado va a sumando los puntos que necesita entre cada vertice
-                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0) {
+                if ((visitados.localizar(auxAdy.getVertice().getElem()) < 0) &&(acumulado+auxAdy.getEtiqueta() < mejorPuntaje[0])) {
                     minimoPuntajeAux(auxAdy.getVertice().getElem(), destino,
-                            acumulado + auxAdy.getEtiqueta(), visitados, caminoActual,
+                            acumulado + auxAdy.getEtiqueta(), visitados,
                             mejorPuntaje, mejorCamino);
                 }
                 auxAdy = auxAdy.getSigAdyacente();
@@ -375,7 +372,6 @@ public class Grafo {
         }
 
         visitados.eliminar(visitados.localizar(actual));
-        caminoActual.eliminar(caminoActual.localizar(actual));
     }
 
     public Lista sinPasarPor(Object origen, Object destino, Object evitar, int limitePuntos) {
