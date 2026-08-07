@@ -4,10 +4,10 @@ H;15;Invernadero;0;28;true
 H;5;Pasillo;0;15;false
 H;10;Dormitorio de huéspedes;1;22;false
 H;14;Altillo;2;20;false
-H;16;Cochera;0;35;true
+H;16;Cochera;0;35;false
 H;19;Sala de Música;1;20;false
-H;7;Biblioteca;1;25;false
-H;13;Bodega;-1;25;false
+H;7;Biblioteca;1;25;true
+H;13;Bodega;-1;25;true
 H;18;Sala de Juegos;1;30;false
 H;11;Escalera;0;12;false
 H;2;Sala de Estar;0;35;false
@@ -17,7 +17,7 @@ H;17;Gimnasio;1;25;false
 H;8;Escritorio;1;18;false
 H;9;Dormitorio principal;1;30;false
 H;1;Recibidor;0;25;true
-H;4;Cocina;0;20;true
+H;4;Cocina;0;20;false
 P:1;2;10
 P:1;11;5
 P:1;16;15
