@@ -487,11 +487,11 @@ public class ABM {
     // punto 5
 public static void sinPasarPor(Scanner sc, Grafo grafo, ArbolAVL avl) {
     int cod1, cod2, cod3, p;
-    System.out.println("ingrese el codigo de la habitacion 1: ");
+    System.out.println("ingrese el codigo de la habitacion de origen: ");
     cod1 = sc.nextInt();
-    System.out.println("ingrese el codigo de la habitacion 2: ");
+    System.out.println("ingrese el codigo de la habitacion de destino: ");
     cod2 = sc.nextInt();
-    System.out.println("ingrese el codigo de la habitacion 3: ");
+    System.out.println("ingrese el codigo de la habitacion a la que no quiere pasar: ");
     cod3 = sc.nextInt();
     System.out.println("ingrese el tope de puntos: ");
     p = sc.nextInt();
