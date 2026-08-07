@@ -269,7 +269,26 @@ public class Grafo {
         }
         return existe;
     }
+    public int getEtiqueta(Object vert1, Object vert2) {
+        int etiqueta = -1;//si el arco no existe retorna -1
 
+        NodoVert v1 = buscarVertice(vert1);
+        NodoVert v2 = buscarVertice(vert2);
+
+        if (v1 != null && v2 != null) {
+            NodoAdy aux = v1.getPrimerAdy();
+
+            while (aux != null && etiqueta == -1) {
+                if (aux.getVertice().getElem().equals(vert2)) {
+                    etiqueta = aux.getEtiqueta();
+                } else {
+                    aux = aux.getSigAdyacente();
+                }
+            }
+        }
+
+        return etiqueta;
+    }
     // metodos para el menu
 
     public boolean sePuedeLlegar(Object origen, Object destino, int puntajeDisponible) {

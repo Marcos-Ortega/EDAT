@@ -1131,10 +1131,7 @@ public class ABM {
                     // recuperamos el objeto habitacion desde el avl para pasarlo al metodo
                     Habitacion habDestino = (Habitacion) avlHabitaciones.recuperar(new Habitacion(codHabDestino));
                     if (habDestino != null) {
-                        System.out.println("Ingrese el puntaje requerido para la puerta: ");
-                        int puntajeReq = sc.nextInt();
-
-                        cambiarDeHabitacion(tablaEquipos, grafoMapa, eqCambiar, habDestino, puntajeReq);
+                        cambiarDeHabitacion(tablaEquipos, grafoMapa, eqCambiar, habDestino);
                     } else {
                         System.out.println("No existe la habitacion ingresada");
                         log.registrar("Cambio el puntaje exigido del equipo " + codHabDestino);
@@ -1352,9 +1349,8 @@ public class ABM {
     }
 
     public static boolean cambiarDeHabitacion(TablaHashEquipos tablaEquipos, Grafo grafoMapa, String nombreEquipo,
-            Habitacion habDestino, int puntajeRequerido) {
+            Habitacion habDestino) {
         boolean exito = false;
-
         // buscamos el equipo en la tabla hash por su nombre
         Equipo eq = tablaEquipos.buscar(nombreEquipo);
 
@@ -1371,40 +1367,41 @@ public class ABM {
             } else {
                 int codOrigen = habOrigen.getCodigo();
                 int codDestino = habDestino.getCodigo();
-
                 // verificamos si la habitacion destino es contigua
-                boolean esContigua = grafoMapa.existeArco(codOrigen, codDestino);
-
-                // verificamos si el puntaje acumulado en la habitación actual alcanza
-                boolean puntajeSuficiente = (eq.getPuntajeActualHab() >= puntajeRequerido);
-
-                if (!esContigua) {
+                if(!grafoMapa.existeArco(codOrigen, codDestino)){
                     System.out.println("Rechazado. La habitación " + codDestino +
                             " no es contigua a la ubicación actual (" + codOrigen + ").");
                     log.registrar("Rechazado cambiarDeHabitacion: Habitación " + codDestino +
                             " no es contigua a " + codOrigen + " para el equipo " + nombreEquipo);
-                } else if (!puntajeSuficiente) {
-                    System.out.println("Rechazado. Puntaje insuficiente en la habitación actual ("
-                            + eq.getPuntajeActualHab() + " / " + puntajeRequerido + " requeridos).");
-                    log.registrar("Rechazado cambiarDeHabitacion: Puntaje insuficiente (" + eq.getPuntajeActualHab() +
-                            "/" + puntajeRequerido + ") para el equipo " + nombreEquipo);
-                } else {
-                    // si cumple ambas condiciones actualizamos los datos del equipo
-                    eq.setHabitacionActual(habDestino);
+                }else{
+                    //obtenemos el puntaje que se necesita para pasar de habitacion
+                    int puntajeReq = grafoMapa.getEtiqueta(codOrigen, codDestino);
+                    // verificamos si el puntaje acumulado en la habitación actual alcanza
+                    boolean puntajeSuficiente = (eq.getPuntajeActualHab() >= puntajeReq);
+                    if (!puntajeSuficiente) {
+                        System.out.println("Rechazado. Puntaje insuficiente en la habitación actual ("
+                            + eq.getPuntajeActualHab() + " / " + puntajeReq + " requeridos).");
+                        log.registrar("Rechazado cambiarDeHabitacion: Puntaje insuficiente (" + eq.getPuntajeActualHab() +
+                            "/" + puntajeReq + ") para el equipo " + nombreEquipo);
+                    }
+                    else {
+                        // si cumple ambas condiciones actualizamos los datos del equipo
+                        eq.setHabitacionActual(habDestino);
 
-                    // reiniciamos el puntaje acumulado de la habitación para la nueva hab
-                    eq.setPuntajeActualHab(0);
+                        // reiniciamos el puntaje acumulado de la habitación para la nueva hab
+                        eq.setPuntajeActualHab(0);
 
-                    System.out.println(
+                        System.out.println(
                             "Exito, el equipo " + nombreEquipo + " avanzó a la habitación " + codDestino + ".");
-                    log.registrar("El equipo " + nombreEquipo + " cambió exitosamente de la habitación " +
+                        log.registrar("El equipo " + nombreEquipo + " cambió exitosamente de la habitación " +
                             codOrigen + " a la habitación " + codDestino);
 
-                    exito = true;
+                        exito = true;
+                    }
+                
                 }
             }
         }
-
         return exito;
     }
 
