@@ -348,4 +348,42 @@ public class ArbolAVL {
         }
         return s;
     }
+
+
+   /*public String toString() {
+    String res;
+    if (this.raiz == null) {
+        res = "arbol avl vacio";
+    } else {
+        res = toStringAux(this.raiz);
+    }
+    return res;
+}
+
+private String toStringAux(NodoAVL n) {
+    String s = "";
+    if (n != null) {
+        // primero recorremos todo el subarbol izquierdo
+        s = s + toStringAux(n.getIzquierdo());
+
+        // despues armamos el texto del nodo actual
+        s = s + "Nodo: " + n.getElemento() + " (Altura: " + n.getAltura() + ")\n";
+
+        if (n.getIzquierdo() != null) {
+            s = s + "   HI: " + n.getIzquierdo().getElemento() + "\n";
+        } else {
+            s = s + "   HI: -\n";
+        }
+
+        if (n.getDerecho() != null) {
+            s = s + "   HD: " + n.getDerecho().getElemento() + "\n";
+        } else {
+            s = s + "   HD: -\n";
+        }
+
+        // por ultimo recorremos todo el subarbol derecho
+        s = s + toStringAux(n.getDerecho());
+    }
+    return s;
+}*/ 
 }
