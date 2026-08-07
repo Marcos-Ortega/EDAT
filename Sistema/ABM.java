@@ -485,42 +485,44 @@ public class ABM {
     }
 
     // punto 5
-    public static void sinPasarPor(Scanner sc, Grafo grafo, ArbolAVL avl) {
-        int cod1, cod2, cod3, p;
-        System.out.println("ingrese el codigo de la habitacion de Origen: ");
-        cod1 = sc.nextInt();
-        System.out.println("ingrese el codigo de la habitacion de Destino: ");
-        cod2 = sc.nextInt();
-        System.out.println("ingrese el codigo de la habitacion por la que no debe pasar: ");
-        cod3 = sc.nextInt();
-        System.out.println("ingrese el tope de puntos que se pueden utilizar: ");
-        p = sc.nextInt();
+public static void sinPasarPor(Scanner sc, Grafo grafo, ArbolAVL avl) {
+    int cod1, cod2, cod3, p;
+    System.out.println("ingrese el codigo de la habitacion 1: ");
+    cod1 = sc.nextInt();
+    System.out.println("ingrese el codigo de la habitacion 2: ");
+    cod2 = sc.nextInt();
+    System.out.println("ingrese el codigo de la habitacion 3: ");
+    cod3 = sc.nextInt();
+    System.out.println("ingrese el tope de puntos: ");
+    p = sc.nextInt();
 
-        Habitacion hab1 = (Habitacion) avl.recuperar(new Habitacion(cod1));
-        Habitacion hab2 = (Habitacion) avl.recuperar(new Habitacion(cod2));
-        Habitacion hab3 = (Habitacion) avl.recuperar(new Habitacion(cod3));
-        // verifica que existan las 3 habitaciones
-        if (hab1 != null && hab2 != null && hab3 != null && cod2 != cod3) {
-            // llama al metodo de grafos que verifica el camino y lo devuelve en una lista
-            Lista caminos = grafo.sinPasarPor(cod1, cod2, cod3, p);
-            // si la lista no esta vacia quiere decir que si existe un camino o varios
-            // caminos entonces lo mostramos, de lo contario, decimos que no existe ningun
-            // camino
-            if (caminos.esVacia()) {
-                System.out.println("No hay caminos posibles con esas condiciones.");
-                log.registrar("No hay caminos de " + cod1 + " a " + cod2 + " sin pasar por " + cod3);
-            } else {
-                System.out.println("Los caminos encontrados son:");
-                for (int i = 1; i <= caminos.longitud(); i++) {
-                    System.out.println(caminos.recuperar(i));
-                }
-                log.registrar("Se mostraron los caminos de " + cod1 + " a " + cod2 + " sin pasar por " + cod3);
-            }
+    Habitacion hab1 = (Habitacion) avl.recuperar(new Habitacion(cod1));
+    Habitacion hab2 = (Habitacion) avl.recuperar(new Habitacion(cod2));
+    Habitacion hab3 = (Habitacion) avl.recuperar(new Habitacion(cod3));
+    // verifica que existan las 3 habitaciones
+    if (hab1 != null && hab2 != null && hab3 != null && cod2 != cod3) {
+        // llama al metodo de grafos que verifica el camino y lo devuelve en una lista
+        Lista caminos = grafo.sinPasarPor(cod1, cod2, cod3, p);
+        // si la lista no esta vacia quiere decir que si existe un camino o varios
+        // caminos entonces lo mostramos, de lo contario, decimos que no existe ningun
+        // camino
+        if (caminos.esVacia()) {
+            System.out.println("No hay caminos posibles con esas condiciones.");
+            log.registrar("No hay caminos de " + cod1 + " a " + cod2 + " sin pasar por " + cod3);
         } else {
-            System.out.println("error, alguna de las habitaciones no existe.");
-            log.registrar("alguna habitacion, no existe");
+            System.out.println("Los caminos encontrados son:");
+            for (int i = 1; i <= caminos.longitud(); i++) {
+                Lista unCamino = (Lista) caminos.recuperar(i);
+                System.out.println(unCamino.toStringConCorchetes());
+            }
+            log.registrar("Se mostraron los caminos de " + cod1 + " a " + cod2 + " sin pasar por " + cod3);
         }
+    } else {
+        System.out.println("error, alguna de las habitaciones no existe.");
+        log.registrar("alguna habitacion, no existe");
     }
+}
+
 
     // MENU DESAFIOS
     public static void menuDesafios(Scanner sc, ArbolAVL avl) {

@@ -375,43 +375,40 @@ public class Grafo {
     }
 
     public Lista sinPasarPor(Object origen, Object destino, Object evitar, int limitePuntos) {
-        Lista caminos = new Lista();
-        //entra si existen todos los vertices, y si el origen y el destino son distons del que debemos evitar
-        if (existeVertice(origen) && existeVertice(destino) && existeVertice(evitar) && !origen.equals(evitar)&& !destino.equals(evitar)) {
-            Lista visitados = new Lista();
-            Lista caminoActual = new Lista();
-            //insertamos primero el que debemos evitar para que al hacer el recorrido siempre piense que ya pasamos por ese y no entre justamente porque es el que debemos evitar
-            visitados.insertar(evitar, visitados.longitud() + 1);
-            //llamamos al metodo que recorre e indica camino
-            sinPasarPorAux(origen, destino, 0, limitePuntos, visitados, caminoActual, caminos);
-        }
-        return caminos;
+    Lista caminos = new Lista();
+    if (existeVertice(origen) && existeVertice(destino) && existeVertice(evitar) && !destino.equals(evitar)) {
+        Lista visitados = new Lista();
+        Lista caminoActual = new Lista();
+        visitados.insertar(evitar, visitados.longitud() + 1);
+        sinPasarPorAux(origen, destino, 0, limitePuntos, visitados, caminoActual, caminos);
     }
+    return caminos;
+}
 
-    private void sinPasarPorAux(Object actual, Object destino, int acumulado, int limitePuntos,
-            Lista visitados, Lista caminoActual, Lista caminos) {
+private void sinPasarPorAux(Object actual, Object destino, int acumulado, int limitePuntos,
+        Lista visitados, Lista caminoActual, Lista caminos) {
 
-        visitados.insertar(actual, visitados.longitud() + 1);
-        caminoActual.insertar(actual, caminoActual.longitud() + 1);
-        //estamos parados a donde tenemos que llegar 
-        if (actual.equals(destino)) {
-            //inserta el camino que hicimos recien acumulando si antes ya habiamos encontrado otro
-            caminos.insertar(caminoActual.clone(), caminos.longitud() + 1);
-        } else {
-            NodoAdy auxAdy = getAdyacentes(actual);
-            //recorremos mientras existan adayacentes
-            while (auxAdy != null) {
-                //verifica que ese vertice no este en la lista (que ya lo hayamos visitado) y que todavia no lleguemos al tope de puntos
-                if (visitados.localizar(auxAdy.getVertice().getElem()) < 0 && acumulado + auxAdy.getEtiqueta() <= limitePuntos) {
-                    sinPasarPorAux(auxAdy.getVertice().getElem(), destino,
-                            acumulado + auxAdy.getEtiqueta(), limitePuntos, visitados, caminoActual, caminos);
-                }
-                auxAdy = auxAdy.getSigAdyacente();
+    visitados.insertar(actual, visitados.longitud() + 1);
+    caminoActual.insertar(actual, caminoActual.longitud() + 1);
+    // estamos parados a donde tenemos que llegar
+    if (actual.equals(destino)) {
+        // inserta el camino que hicimos recien acumulando si antes ya habiamos encontrado otro
+        caminos.insertar(caminoActual.clone(), caminos.longitud() + 1);
+    } else {
+        NodoAdy auxAdy = getAdyacentes(actual);
+        // recorremos mientras existan adayacentes
+        while (auxAdy != null) {
+            // verifica que ese vertice no este en la lista (que ya lo hayamos visitado) y que todavia no lleguemos al tope de puntos
+            if (visitados.localizar(auxAdy.getVertice().getElem()) < 0 && acumulado + auxAdy.getEtiqueta() <= limitePuntos) {
+                sinPasarPorAux(auxAdy.getVertice().getElem(), destino,
+                        acumulado + auxAdy.getEtiqueta(), limitePuntos, visitados, caminoActual, caminos);
             }
+            auxAdy = auxAdy.getSigAdyacente();
         }
-        visitados.eliminar(visitados.localizar(actual));
-        caminoActual.eliminar(caminoActual.localizar(actual));
     }
+    visitados.eliminar(visitados.localizar(actual));
+    caminoActual.eliminar(caminoActual.localizar(actual));
+}
 
     /*
      * //metodo si se puede llegar a modificar el puntaje entre algunas habitaciones

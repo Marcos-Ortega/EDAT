@@ -139,4 +139,19 @@ public class Lista {
 
         return mostrar;
     }
+
+public String toStringConCorchetes() {
+    String resultado = "[";
+
+    for (int i = 1; i <= this.longitud(); i++) {
+        resultado = resultado + this.recuperar(i);
+
+        if (i < this.longitud()) {
+            resultado = resultado + ", ";
+        }
+    }
+
+    resultado = resultado + "]";
+    return resultado;
+}
 }
