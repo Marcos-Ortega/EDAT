@@ -15,7 +15,7 @@ public class TablaHashEquipos {
     // java toma la cadena de texto y calcula un número entero a partir de las
     // letras de la clave
     private int funcionHash(String clave) {
-        int hash = Math.abs(clave.hashCode());
+        int hash = Math.abs(clave.toLowerCase().hashCode());
         return hash % TAMANIO_INICIAL;
     }
 

@@ -1170,21 +1170,6 @@ public class ABM {
         }
     }
 
-    private static int obtenerPuntajeArco(Grafo grafoMapa, Object origen, Object destino) {
-        int puntaje = -1;
-        boolean encontrado = false;
-        NodoAdy auxAdy = grafoMapa.getAdyacentes(origen);
-        while (auxAdy != null && !encontrado) {
-            if (auxAdy.getVertice().getElem().equals(destino)) {
-                puntaje = auxAdy.getEtiqueta();
-                encontrado = true;
-            } else {
-                auxAdy = auxAdy.getSigAdyacente();
-            }
-        }
-        return puntaje;
-    }
-
     public static void posiblesDesafios(TablaHashEquipos tablaEquipos, TablaDesafioResueltos tablaResueltos,
             Grafo grafoMapa, String nombreEquipo, int codHabitacionDestino) {
 
@@ -1214,7 +1199,7 @@ public class ABM {
                 } else {
                     // obtenemos el puntaje minimo exigido en el arco entre la habitación actual y
                     // la destino
-                    int puntajeMinimoArco = obtenerPuntajeArco(grafoMapa, codHabActual, codHabitacionDestino);
+                    int puntajeMinimoArco = grafoMapa.getEtiqueta(codHabActual, codHabitacionDestino);
 
                     // calculamos cuanto puntaje le falta al equipo dentro de esta habitación para
                     // poder pasar
