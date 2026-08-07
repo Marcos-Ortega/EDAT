@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 
 public class CargarArchivo {
@@ -26,15 +27,16 @@ public class CargarArchivo {
             String linea = ""; // creo variable linea vacia, para leer cada linea del txt
             while ((linea = lectura.readLine()) != null) { // se recorre mientras haya una linea
                 if(!linea.isEmpty()){
-                    String primerCaracter = linea.substring(0, 1);
-                    String[] bloque = linea.split(";"); // variable para leer cada cadena de linea y separarlo con el ;
+                    String primerCaracter = linea.substring(0,1);
+                    StringTokenizer tokenizer = new StringTokenizer(linea, ";"); // variable para leer cada cadena de linea y separarlo con el ;
                     if (primerCaracter.equals("H")) {
-                        if (bloque.length == 6) { // valido si la cadena del bloque tiene todos los datos
-                            int codigo = Integer.parseInt(bloque[1]);// uso Integer.parseInt para cambiar el tipo de dato
-                            String nombre = bloque[2];
-                            int planta = Integer.parseInt(bloque[3]); // uso Integer.parseInt para cambiar el tipo de dato
-                            int metros = Integer.parseInt(bloque[4]); // uso Integer.parseInt para cambiar el tipo de dato
-                            boolean tieneSalida = Boolean.parseBoolean(bloque[5]); // uso Boolean.parseBoolean para cambiar
+                        if (tokenizer.countTokens() == 6) { // valido si la cadena del bloque tiene todos los datos
+                            tokenizer.nextToken(); ////saco la "H"
+                            int codigo = Integer.parseInt(tokenizer.nextToken());// uso Integer.parseInt para cambiar el tipo de dato
+                            String nombre = tokenizer.nextToken();
+                            int planta = Integer.parseInt(tokenizer.nextToken()); // uso Integer.parseInt para cambiar el tipo de dato
+                            int metros = Integer.parseInt(tokenizer.nextToken()); // uso Integer.parseInt para cambiar el tipo de dato
+                            boolean tieneSalida = Boolean.parseBoolean(tokenizer.nextToken()); // uso Boolean.parseBoolean para cambiar
                                                                                    // el tipo de dato
     
                             // Almaceno la habitacion
@@ -42,11 +44,12 @@ public class CargarArchivo {
                             grafo.insertarVertice(codigo);
                         }
                     } else if (primerCaracter.equals("D")) {
-                        if (bloque.length == 5) {
-                            int puntaje = Integer.parseInt(bloque[1]);
-                            int codigoHab = Integer.parseInt(bloque[2]);
-                            String nombre = bloque[3];
-                            String tipo = bloque[4];
+                        if (tokenizer.countTokens() == 5) {
+                            tokenizer.nextToken();//saco la "D"
+                            int puntaje = Integer.parseInt(tokenizer.nextToken());
+                            int codigoHab = Integer.parseInt(tokenizer.nextToken());
+                            String nombre = tokenizer.nextToken();
+                            String tipo = tokenizer.nextToken();
                             //busco la habitacion
                             Habitacion hab = (Habitacion) avlHabitaciones.recuperar(new Habitacion(codigoHab));//creo nueva habitacion para buscarla en el arbol con el compareTo. Como buscar devuelve un comparable, yo lo casteo a un Habitacion
                             if (hab != null) {
@@ -55,27 +58,28 @@ public class CargarArchivo {
                         }
                     } else if (primerCaracter.equals("P")) {
                         String siguiente = linea.substring(2); // saco P:
-                        String[] datosArco = siguiente.split(";");
-                        int codigoHab1 = Integer.parseInt(datosArco[0]);
-                        int codigoHab2 = Integer.parseInt(datosArco[1]);
-                        int puntajeExigido = Integer.parseInt(datosArco[2]);
+                        StringTokenizer tokenizer2 = new StringTokenizer(siguiente,";");
+                        int codigoHab1 = Integer.parseInt(tokenizer2.nextToken());
+                        int codigoHab2 = Integer.parseInt(tokenizer2.nextToken());
+                        int puntajeExigido = Integer.parseInt(tokenizer2.nextToken());
     
                         grafo.insertarArco(codigoHab1, codigoHab2, puntajeExigido);
                     } else if (primerCaracter.equals("E")) {
-                        if (bloque.length >= 6) {
-                            String nombreEquipo = bloque[1];
-                            int puntajeExigido = Integer.parseInt(bloque[2]);
-                            int puntajeAcumulado = Integer.parseInt(bloque[3]);
-                            int codigoHabActual = Integer.parseInt(bloque[4]);
-                            int puntajeActualHab = Integer.parseInt(bloque[5]);
+                        if (tokenizer.countTokens() >= 6) {
+                            tokenizer.nextToken();//saco la "E"
+                            String nombreEquipo = tokenizer.nextToken();
+                            int puntajeExigido = Integer.parseInt(tokenizer.nextToken());
+                            int puntajeAcumulado = Integer.parseInt(tokenizer.nextToken());
+                            int codigoHabActual = Integer.parseInt(tokenizer.nextToken());
+                            int puntajeActualHab = Integer.parseInt(tokenizer.nextToken());
                             //busco la habitacion
                             Habitacion habActual = (Habitacion) avlHabitaciones.recuperar(new Habitacion(codigoHabActual));//creo nueva habitacion para buscarla en el arbol con el compareTo. Como buscar devuelve un comparable, yo lo casteo a un Habitacion
     
                             Equipo nuevoEquipo = new Equipo(nombreEquipo, puntajeExigido, puntajeAcumulado, habActual, puntajeActualHab);
                             tablaEquipos.insertar(nuevoEquipo);
     
-                            if (bloque.length == 7) {
-                                String listaDesafios = bloque[6];
+                            if (tokenizer.countTokens() == 1) {
+                                String listaDesafios = tokenizer.nextToken();
                                 int pos = 0; //pos marca desde donde sigo buscando el proximo "(" en cada vuelta del while
                                 while (listaDesafios.indexOf("(", pos) != -1) {
     
@@ -84,17 +88,18 @@ public class CargarArchivo {
     
                                     String grupo = listaDesafios.substring(inicioParentesis + 1, finParentesis);//guardo el formato de 1:20,30 sin los paretenssus
     
-                                    String[] partesGrupo = grupo.split(":");//primero esta el codigo de la habtacion y despues se separa con : para los puntajes de los desafios, por eso corto con :
-                                    int codigoHabDesafio = Integer.parseInt(partesGrupo[0]); //guardo el codigo de la habitacion
-    
-                                    String[] puntajes = partesGrupo[1].split(",");//los puntajes se separan por ,
+                                    StringTokenizer partesGrupo = new StringTokenizer(grupo, ":");//primero esta el codigo de la habtacion y despues se separa con : para los puntajes de los desafios, por eso corto con :
+                                    int codigoHabDesafio = Integer.parseInt(partesGrupo.nextToken()); //guardo el codigo de la habitacion
+                                    String puntajeString=partesGrupo.nextToken();//aca guardo el puntaje sacando el codigo, 20,30,etc.
+
+                                    StringTokenizer puntajes = new StringTokenizer(puntajeString, ",");//los puntajes se separan por ,
                                     //busco la habitacion
                                     Habitacion habDesafio = (Habitacion) avlHabitaciones.recuperar(new Habitacion(codigoHabDesafio));////creo nueva habitacion para buscarla en el arbol con el compareTo. Como buscar devuelve un comparable, yo lo casteo a un Habitacion
     
                                     if (habDesafio != null) {
                                         // recorro cada puntaje de la lista
-                                        for (int i = 0; i < puntajes.length; i++) {
-                                            int puntaje = Integer.parseInt(puntajes[i]);
+                                        while (puntajes.hasMoreTokens()) {//recorro mientras hayan tokens por leer
+                                            int puntaje = Integer.parseInt(puntajes.nextToken());
                                             //busco el desafio resuelto dentro de la habitacion
                                             Desafio desafioResuelto = (Desafio) habDesafio.getDesafios().recuperar(new Desafio(puntaje)); //hacer cuando terminen desafios
     
