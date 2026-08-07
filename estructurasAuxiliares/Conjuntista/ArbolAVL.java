@@ -1,5 +1,6 @@
 package estructurasAuxiliares.Conjuntista;
 
+import clases.Desafio;
 import clases.Habitacion;
 import estructurasAuxiliares.Lineales.Lista;
 
@@ -309,10 +310,25 @@ public class ArbolAVL {
         String s = "";
         if (n != null) {
             s = s + toStringBonitoAux(n.getDerecho(), prefijo + (esIzquierdo ? "|   " : "    "), false);
-            s = s + prefijo + "+-- " + ((Habitacion) n.getElemento()).toStringCorto() + "\n";
+            s = s + prefijo + "+-- " + obtenerEtiquetaCorta(n.getElemento()) + "\n";
             s = s + toStringBonitoAux(n.getIzquierdo(), prefijo + (esIzquierdo ? "    " : "|   "), true);
         }
         return s;
+    }
+
+    // devuelve una version corta del elemento, sin importar de que tipo sea
+    private String obtenerEtiquetaCorta(Comparable elem) {
+        String etiqueta;
+        if (elem instanceof Habitacion) {
+            etiqueta = ((Habitacion) elem).toStringCorto();
+        } else if (elem instanceof Desafio) {
+            etiqueta = "Pts." + ((Desafio) elem).getPuntaje();
+        } else {
+            // tipo desconocido: no rompe, solo usa el toString normal (mas largo, pero
+            // funciona)
+            etiqueta = elem.toString();
+        }
+        return etiqueta;
     }
 
     // @Override
