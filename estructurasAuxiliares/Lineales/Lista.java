@@ -128,19 +128,15 @@ public class Lista {
     }
     //toString
     public String toString() {
-        String mostrar = "[";
+        String mostrar= "";
         Nodo aux = this.cabecera;
 
         while (aux != null) {
             mostrar += aux.getElem();
             aux = aux.getEnlace();
 
-            if (aux != null) {
-                mostrar += ",";
-            }
         }
 
-        mostrar += "]";
         return mostrar;
     }
 }

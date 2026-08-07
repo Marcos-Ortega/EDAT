@@ -64,6 +64,6 @@ public class Desafio implements Comparable<Desafio> {
     }
 
     public String toString() {
-        return "Desafio [Puntaje: " + puntaje + ", Nombre: " + nombre + ", Tipo: " + tipo + "]";
+        return "[Desafio [Puntaje: " + puntaje + ", Nombre: " + nombre + ", Tipo: " + tipo + "] \n";
     }
 }
